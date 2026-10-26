@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-NqN1alYDD4x5cRgMsmb571FF8IKRbFl9QR0T7e0L6KQ=' 'sha256-PEsfxctj0ISQkQv3d6DXeDPc8S7yD9DN5iRNZb98gik='; style-src 'sha256-l+m+l2Cyku5s30u5+4+Bqr2MMMKk7FPjsxuRJaF3iDo='; img-src data:; font-src 'none'; connect-src 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; upgrade-insecure-requests"><meta name="referrer" content="no-referrer"><meta name="color-scheme" content="light"><title>AI予約システム｜操作体験デモ v0.23</title><style>:root{--text:#1b2b43;--muted:#53657b;--border:#d7e2ee;--blue:#2165bb;--blue-dark:#164986;--blue-tint:#eaf2fc;--bg:#f6f8fc;--surface:#fff;--green:#186b46;--red:#ac3030;--yellow:#82510f;--radius:15px}
+*{box-sizing:border-box}html{font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;color:var(--text);background:var(--bg)}body{margin:0}button,input,select{font:inherit}button{cursor:pointer;border:1px solid var(--border);border-radius:10px;padding:11px 15px;background:#fff;color:var(--text);font-weight:650}button:hover{background:#edf4fb}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #86b5fb;outline-offset:2px}button:disabled{cursor:not-allowed;opacity:.5}.primary{background:var(--blue);border-color:var(--blue);color:#fff}.primary:hover{background:var(--blue-dark)}.secondary{background:#fff}.textbtn{background:none;border:0;color:var(--blue)}.hidden{display:none!important}.top{background:#132945;color:#fff}.topinner{max-width:1400px;margin:auto;padding:24px 32px;display:flex;justify-content:space-between;align-items:center;gap:20px}.top h1{margin:2px 0 6px;font-size:25px}.top h1 span{color:#a5d1ff}.top p{color:#d8e5f5;margin:0;font-size:13px}.eyebrow{letter-spacing:1.8px;color:#a8ccf5;font-size:10px;font-weight:800}.eyebrow.blue{color:var(--blue)}.topactions{display:flex;align-items:center;gap:12px}.demo-tag{font-size:12px;padding:8px 12px;background:#314b68;border-radius:30px;white-space:nowrap}.notice{background:#fff5e5;border-bottom:1px solid #ead19f;padding:11px 24px;text-align:center;font-size:12px;color:#704d14}.layout{max-width:1400px;display:grid;grid-template-columns:252px minmax(0,1fr);gap:25px;margin:0 auto;padding:26px}.sidebar{background:#fff;border:1px solid var(--border);border-radius:var(--radius);min-height:620px;padding:17px;align-self:start;position:sticky;top:15px}.shop{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);padding-bottom:20px}.shop strong{font-size:13px}.shop small{color:var(--muted);font-size:11px;display:block;margin-top:4px}.logo{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#dceafa;color:var(--blue-dark);font-weight:800}.navigation{display:grid;gap:7px;margin-top:17px}.navigation button{border:0;text-align:left;background:transparent;display:flex;gap:12px;align-items:center;font-size:13px;font-weight:650;padding:13px 12px}.navigation button.active{background:var(--blue-tint);color:var(--blue-dark);box-shadow:inset 3px 0 var(--blue)}.sidefoot{margin-top:45px;border-top:1px solid var(--border);padding-top:18px;color:var(--muted);font-size:11px;line-height:1.8}.main{min-width:0}.page-title{display:flex;align-items:start;justify-content:space-between;gap:18px;margin:8px 0 22px}.page-title h2{font-size:25px;letter-spacing:-.4px;margin:7px 0}.page-title p{font-size:13px;color:var(--muted);line-height:1.8;margin:0}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin:0 0 18px;box-shadow:0 3px 13px rgba(19,41,69,.025)}.card h3{font-size:16px;margin:0 0 17px}.card p{line-height:1.75}.subdued{background:#eff5fc}.subdued p{font-size:12px;color:var(--muted)}.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:20px}.metric{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:19px}.metric small,.metric span{display:block;color:var(--muted);font-size:11px}.metric strong{font-size:31px;display:block;margin:9px 0}.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.tile{text-align:left;display:flex;flex-direction:column;gap:9px;min-height:176px;padding:20px;border-radius:12px}.tile strong{font-size:14px}.tile small{color:var(--muted);line-height:1.6}.tile .go{color:var(--blue);font-size:12px;margin-top:auto}.stepnum{font-size:11px;font-weight:800;color:var(--blue)}.progresslabel{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px}.progress{height:7px;border-radius:10px;background:#e7edf5;margin:13px 0 23px;overflow:hidden}.progress div{height:100%;background:var(--blue);transition:width .2s}.buttonrow{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-top:19px}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}label{font-size:12px;color:#38516b;font-weight:700;display:grid;gap:7px}select,input{width:100%;background:#fff;border:1px solid #b8c9dc;color:var(--text);border-radius:9px;padding:11px;min-width:0}.statusbox{padding:13px 14px;margin-top:14px;border-radius:10px;background:#edf3fb;color:#234b78;border:1px solid #d7e5f5;font-size:13px;line-height:1.7}.statusbox.bad{background:#fdecec;border-color:#f4c9c9;color:#8a2222}.statusbox.good{background:#e9f5ee;border-color:#bfe4ce;color:#176b45}.statusbox.soft{background:#f6f8fb;color:var(--muted)}.datepill{font-size:11px;color:#2b5e9d;background:#e6f0fc;padding:11px 12px;border-radius:30px;white-space:nowrap}.cardhead{display:flex;justify-content:space-between;align-items:center;gap:8px}.cardhead small,.muted{color:var(--muted);font-size:12px}.booking-row,.release-row,.offer-row,.connect-row{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--border);padding:13px 0}.booking-row strong,.release-row strong,.offer-row strong{font-size:13px}.booking-row small,.release-row small,.offer-row small,.connect-row small{color:var(--muted);font-size:11px;display:block;line-height:1.6;margin-top:3px}.booking-row button,.release-row button,.offer-row button{font-size:12px}.rowactions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.pill{display:inline-block;border-radius:20px;background:#e7f2ff;color:#16528b;padding:5px 10px;font-size:11px;font-weight:700}.pill.cancel{background:#fce9e9;color:#a32d2d}.pill.pending{background:#fff1da;color:#80510d}.pill.ok{background:#e0f3e8;color:#166a42}.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.pills button{color:var(--blue);border-color:#aecbee;background:#f3f8ff;font-size:12px}.question{font-size:19px;margin-bottom:20px;font-weight:750}.choices{display:grid;gap:10px}.choice{display:flex;gap:12px;align-items:center;text-align:left;padding:17px;white-space:normal}.choice.selected{background:var(--blue-tint);border-color:var(--blue)}.choice strong{font-size:13px}.choice small{font-size:11px;color:var(--muted)}.choice mark{margin-left:auto;background:var(--blue);color:#fff;padding:3px 8px;border-radius:20px;font-size:10px}.summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;font-size:12px}.summary div{background:#fff;border:1px solid var(--border);border-radius:9px;padding:12px}.summary strong{display:block;margin-bottom:7px}.connect-row>div:first-child{flex:1}.link-step{background:#f6f9fc;border:1px solid var(--border);border-radius:9px;padding:14px;margin:10px 0;font-size:12px;line-height:1.8}.footer{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:11px;color:var(--muted);padding:18px 5px}.flash{border:1px solid #b2d4bd;background:#e8f5ec;color:#17603d;border-radius:10px;padding:12px 17px;margin:0 0 20px;font-size:13px;line-height:1.6}.flash.bad{background:#fdeeee;border-color:#f4caca;color:#a52c2c}@media(max-width:850px){.layout{grid-template-columns:1fr;padding:15px;gap:12px}.sidebar{position:static;min-height:0;padding:12px}.shop,.sidefoot{display:none}.navigation{display:flex;overflow-x:auto;gap:7px;margin:0;scrollbar-width:thin}.navigation button{white-space:nowrap;background:#f4f7fb}.topinner{padding:19px 17px}.topactions{flex-direction:column;align-items:end}.top h1{font-size:19px}.tiles{grid-template-columns:1fr}.tile{min-height:0}.metrics{grid-template-columns:repeat(3,minmax(0,1fr))}.metric{padding:12px}.metric strong{font-size:26px}.card{padding:18px}.page-title h2{font-size:21px}}@media(max-width:550px){.topinner{display:block}.topactions{margin-top:14px;flex-direction:row;justify-content:space-between}.top p{line-height:1.5}.notice{text-align:left;padding:12px 16px}.fields{grid-template-columns:1fr}.page-title{display:block}.datepill{display:inline-block;margin-top:12px}.booking-row,.release-row,.offer-row,.connect-row{align-items:start;flex-wrap:wrap}.rowactions{width:100%}.rowactions button{flex:1}.summary{grid-template-columns:1fr}.metric small{font-size:10px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+/* Prevent intrinsic navigation width from expanding narrow phone viewports. */
+@media(max-width:850px){.layout{grid-template-columns:minmax(0,1fr)}.sidebar{min-width:0;max-width:100%}.navigation{min-width:0;max-width:100%;width:100%}.main{min-width:0;max-width:100%}}
+</style></head>
+<body>
+<header class="top"><div class="topinner"><div><div class="eyebrow">SMALL SALON · EXPERIENCE</div><h1>店舗予約システム <span>体験デモ</span></h1><p>架空の店舗で「設定 → 予約 → キャンセル枠回収」を操作できます。</p></div><div class="topactions"><span class="demo-tag">v0.23 · 架空データ専用</span><button class="secondary" id="resetTop">↻ 最初から</button></div></div></header>
+<div class="notice"><strong>安全な体験モード</strong>：実店舗・顧客情報・LINE・Google・決済・本番DBには接続しません。画面を閉じると操作内容は消えます。実際の予約は成立しません。</div>
+<main class="layout"><aside class="sidebar" aria-label="体験メニュー"><div class="shop"><div class="logo">青</div><div><strong id="storeName">架空・青空リラクゼーション</strong><small>店舗管理者の体験</small></div></div><nav class="navigation" aria-label="画面選択"><button data-page="home" class="active">⌂ <span>はじめに</span></button><button data-page="setup">▤ <span>店舗の初期設定</span></button><button data-page="booking">▦ <span>予約表と予約登録</span></button><button data-page="waitlist">◷ <span>キャンセル枠回収</span></button><button data-page="connect">↗ <span>LINE・Google案内</span></button></nav><div class="sidefoot">個人情報は入力しないでください。<br>データ保存・外部送信なし</div></aside><div class="main">
+<div id="flash" class="flash hidden" role="status" aria-live="polite"></div>
+<section id="page-home" class="page"><div class="page-title"><div><div class="eyebrow blue">WELCOME</div><h2>店舗運営を、ひとつの画面で。</h2><p>導入時の初期設定から、予約・キャンセル枠の回収までを体験できます。</p></div></div>
+<div class="metrics"><div class="metric"><small>確定中の予約</small><strong id="kpiBookings">3</strong><span>架空データ</span></div><div class="metric"><small>キャンセル待ち</small><strong id="kpiWaiting">3</strong><span>通知送信なし</span></div><div class="metric"><small>回収した空き枠</small><strong id="kpiRecovered">0</strong><span>模擬確定</span></div></div>
+<div class="card"><h3>まずはこの3つを試してください</h3><div class="tiles"><button class="tile" data-go="setup"><span class="stepnum">01</span><strong>初期設定ガイド</strong><small>質問に答えるだけで構成を確認</small><span class="go">体験する →</span></button><button class="tile" data-go="booking"><span class="stepnum">02</span><strong>予約登録</strong><small>スタッフ・ベッド・休憩を自動確認</small><span class="go">体験する →</span></button><button class="tile" data-go="waitlist"><span class="stepnum">03</span><strong>空き枠回収</strong><small>取消 → 候補提案 → 模擬確定</small><span class="go">体験する →</span></button></div></div><div class="card subdued"><h3>このデモと開発本体の違い</h3><p>この画面は操作体験専用の独立したシミュレーターです。v0.21のPython予約エンジンやDBには書き込みません。実際の予約同時確定、本人認証、外部通知の安全性を証明するものではありません。</p></div></section>
+<section id="page-setup" class="page hidden"><div class="page-title"><div><div class="eyebrow blue">ONBOARDING</div><h2>店舗初期設定ガイド</h2><p>AIのように順番に案内する定型ガイドです。実際の生成AIには接続しません。</p></div></div><div class="card"><div class="progresslabel"><span id="guideCount">ステップ 1 / 5</span><span id="guideDone">設定プレビュー</span></div><div class="progress"><div id="guideProgress"></div></div><div id="guideBody"></div><div class="buttonrow"><button class="secondary" id="guidePrev">戻る</button><button class="primary" id="guideNext">次へ進む</button></div></div><div class="card subdued"><h3>すでに用意された架空の設定</h3><div id="setupSummary"></div><p class="muted">この体験での選択は画面上だけに反映されます。実予約台帳の設定変更はありません。</p></div></section>
+<section id="page-booking" class="page hidden"><div class="page-title"><div><div class="eyebrow blue">RESERVATIONS</div><h2>予約登録・15分刻みの空き枠</h2><p>同じスタッフ・ベッド・個室の重複や、休憩・清掃時間を模擬チェックします。</p></div><span class="datepill">2026年10月26日 · 架空日付</span></div><div class="card"><h3>新しい架空予約</h3><div class="fields"><label>施術コース<select id="bMenu"><option value="m60">もみほぐし60分</option><option value="m90">個室ケア90分</option></select></label><label>担当スタッフ<select id="bStaff"><option value="s1">佐藤（準備15分）</option><option value="s2">田中（準備30分）</option></select></label><label>ベッド<select id="bBed"><option value="b1">オープン1</option><option value="b2">オープン2</option><option value="b3">個室1</option></select></label><label>開始時刻<select id="bTime"></select></label></div><div class="statusbox" id="bookingCheck" aria-live="polite"></div><div class="buttonrow"><button class="secondary" id="suggest">前後の候補を探す</button><button class="primary" id="bookNow">架空予約を確定</button></div><div id="suggestions" class="pills" aria-live="polite"></div></div><div class="card"><div class="cardhead"><h3>本日の予約一覧</h3><small>時刻・担当者・設備</small></div><div id="bookingList"></div></div></section>
+<section id="page-waitlist" class="page hidden"><div class="page-title"><div><div class="eyebrow blue">WAITLIST</div><h2>キャンセル枠を埋める体験</h2><p>通知先は架空です。案内は「未送信」のまま、承諾後の模擬予約だけ実行します。</p></div></div><div class="card"><h3>1. キャンセルを発生させる</h3><p class="muted">確定中の架空予約を取り消すと、回収候補を探す対象になります。</p><div id="cancelList"></div></div><div class="card"><h3>2. 空き枠の候補を案内する</h3><div id="releaseList"></div></div><div class="card"><h3>3. 案内の返答を処理する</h3><div id="offerList"></div><p class="muted">顧客の承諾を模擬確認してから確定。二重確定は拒否し、空き状況を再チェックします。</p></div></section>
+<section id="page-connect" class="page hidden"><div class="page-title"><div><div class="eyebrow blue">INTEGRATIONS</div><h2>外部サービス連携のガイド</h2><p>LINE公式・Googleを使わなくても基本予約機能を体験できます。</p></div></div><div class="card"><h3>各サービスは任意で追加</h3><div id="connectList"></div><div class="statusbox soft">「手順を見る」は説明を表示するだけです。ログイン、OAuth、API接続、送信などは行いません。</div></div></section>
+<div class="footer"><span>v0.22 操作体験専用｜データは画面内のメモリのみ</span><button class="textbtn" id="resetBottom">体験をリセット</button></div></div></main><script>/* v0.22 independent fictional demo. In-memory only. No network, no personal data. */
+(function (root) {
+  'use strict';
+  const DATE='2026-10-26';
+  const clone=x=>JSON.parse(JSON.stringify(x));
+  const initial=()=>({
+    store:'架空・青空リラクゼーション',step:0,
+    staff:[{id:'s1',name:'佐藤',prep:15,menus:['m60','m90']},{id:'s2',name:'田中',prep:30,menus:['m60']}],
+    menus:[{id:'m60',name:'もみほぐし60分',duration:60,price:5000,private:false},{id:'m90',name:'個室ケア90分',duration:90,price:9000,private:true}],
+    rooms:[{id:'open',private:false},{id:'pr1',private:true}],
+    beds:[{id:'b1',name:'オープン1',room:'open',clean:15},{id:'b2',name:'オープン2',room:'open',clean:15},{id:'b3',name:'個室1',room:'pr1',clean:20}],
+    bookings:[{id:1,staff:'s1',bed:'b1',menu:'m60',start:600,customer:'架空のお客様A',status:'CONFIRMED'},
+      {id:2,staff:'s2',bed:'b2',menu:'m60',start:630,customer:'架空のお客様B',status:'CONFIRMED'},
+      {id:3,staff:'s1',bed:'b3',menu:'m90',start:840,customer:'架空のお客様C',status:'CONFIRMED'}],
+    waiters:[{id:'w1',menu:'m60',earliest:570,latest:750,staff:null,consent:true,label:'架空の希望者A',status:'ACTIVE'},
+      {id:'w2',menu:'m60',earliest:570,latest:750,staff:'s1',consent:true,label:'架空の希望者B',status:'ACTIVE'},
+      {id:'w3',menu:'m90',earliest:780,latest:960,staff:'s1',consent:true,label:'架空の希望者C',status:'ACTIVE'}],
+    releases:[], offers:[],nextBooking:4,nextRelease:1,nextOffer:1,
+    connected:{line:false,google:false},guideDone:[],events:[]
+  });
+  function mins(value){if(!/^\d{2}:\d{2}$/.test(value))throw Error('時刻の形式が違います');const [h,m]=value.split(':').map(Number);if(h>23||m>59||m%15)throw Error('15分刻みの時刻を選んでください');return 60*h+m;}
+  function clock(t){return String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0');}
+  function intersects(a,b,c,d){return a<d&&c<b;}
+  function resourceWindow(model,booking){
+    const menu=model.menus.find(x=>x.id===booking.menu), staff=model.staff.find(x=>x.id===booking.staff),bed=model.beds.find(x=>x.id===booking.bed);
+    if(!menu||!staff||!bed)throw Error('存在しないコース・スタッフ・設備です');
+    return {start:booking.start,serviceEnd:booking.start+menu.duration,staffEnd:booking.start+menu.duration+staff.prep,bedEnd:booking.start+menu.duration+bed.clean,room:bed.room};
+  }
+  function canBook(model,request){
+    const m=model.menus.find(x=>x.id===request.menu), s=model.staff.find(x=>x.id===request.staff),b=model.beds.find(x=>x.id===request.bed);
+    if(!m||!s||!b)return {ok:false,reason:'コース・スタッフ・設備を選択してください'};
+    if(!Number.isInteger(request.start)||request.start%15||request.start<540)return {ok:false,reason:'予約は09:00以降、15分刻みです'};
+    if(!s.menus.includes(m.id))return {ok:false,reason:'担当スタッフはこのコースに対応していません'};
+    if(m.private&&b.room!=='pr1')return {ok:false,reason:'このコースには個室が必要です'};
+    const r=resourceWindow(model,request);
+    if(r.staffEnd>1080||r.bedEnd>1080)return {ok:false,reason:'施術・準備が営業時間を超えます'};
+    // Demo lunch breaks are fixed fictional staff blocks.
+    const lunch=s.id==='s1'?[720,780]:[750,810];
+    if(intersects(r.start,r.staffEnd,...lunch))return {ok:false,reason:'担当スタッフの休憩と重なります'};
+    for(const old of model.bookings.filter(x=>x.status==='CONFIRMED')){
+      const occupied=resourceWindow(model,old);
+      if(old.staff===request.staff&&intersects(r.start,r.staffEnd,occupied.start,occupied.staffEnd))return {ok:false,reason:'スタッフの予約・準備と重なります'};
+      if(old.bed===request.bed&&intersects(r.start,r.bedEnd,occupied.start,occupied.bedEnd))return {ok:false,reason:'ベッドの使用・清掃と重なります'};
+      if(b.room==='pr1'&&occupied.room==='pr1'&&intersects(r.start,r.bedEnd,occupied.start,occupied.bedEnd))return {ok:false,reason:'個室が使用中です'};
+    }
+    return {ok:true,reason:'予約可能（架空の体験）'};
+  }
+  function assert(cond,msg){if(!cond)throw Error(msg);}
+  function book(model,request){
+    const check=canBook(model,request);assert(check.ok,check.reason);
+    const id=model.nextBooking++;
+    model.bookings.push({id,menu:request.menu,staff:request.staff,bed:request.bed,start:request.start,customer:'架空の体験予約',status:'CONFIRMED'});
+    model.events.push('架空予約 #'+id+' を確定（外部送信なし）');return id;
+  }
+  function cancel(model,id){
+    const b=model.bookings.find(x=>x.id===id);assert(b&&b.status==='CONFIRMED','取消できる予約がありません');
+    b.status='CANCELLED';const rid=model.nextRelease++;
+    model.releases.push({id:rid,booking:id,offer:null,recovered:false});model.events.push('架空予約 #'+id+' の取消・空き枠発生');return rid;
+  }
+  function candidates(model,rid){
+    const release=model.releases.find(x=>x.id===rid);if(!release||release.recovered)return [];
+    const origin=model.bookings.find(x=>x.id===release.booking);
+    return model.waiters.filter(w=>w.status==='ACTIVE'&&w.consent&&w.menu===origin.menu&&(!w.staff||w.staff===origin.staff)&&w.earliest<=origin.start&&w.latest>=origin.start&&canBook(model,origin).ok);
+  }
+  function offer(model,rid){
+    const release=model.releases.find(x=>x.id===rid);assert(release&&!release.recovered,'空き枠がありません');
+    assert(!release.offer,'この空き枠には案内中の候補があります');
+    const list=candidates(model,rid);assert(list.length,'条件に合う希望者がいません');
+    const chosen=list[0];const id=model.nextOffer++;
+    model.offers.push({id,release:rid,waiter:chosen.id,status:'PENDING',delivery:'NOT_SENT'});
+    release.offer=id;chosen.status='OFFERED';model.events.push('架空の希望者に模擬案内（実送信なし）');return id;
+  }
+  function decline(model,oid){
+    const o=model.offers.find(x=>x.id===oid);assert(o&&o.status==='PENDING','有効な案内がありません');
+    o.status='DECLINED';const r=model.releases.find(x=>x.id===o.release);r.offer=null;
+    const w=model.waiters.find(x=>x.id===o.waiter);w.status='DECLINED';model.events.push('模擬辞退を受付');
+  }
+  function accept(model,oid,approved){
+    const o=model.offers.find(x=>x.id===oid);assert(o&&o.status==='PENDING','有効な案内がありません');
+    assert(approved===true,'架空のお客様の承諾確認が必要です');
+    const r=model.releases.find(x=>x.id===o.release),old=model.bookings.find(x=>x.id===r.booking);
+    assert(!r.recovered,'空き枠は回収済みです');
+    const id=book(model,{menu:old.menu,staff:old.staff,bed:old.bed,start:old.start});
+    o.status='ACCEPTED';r.recovered=true;r.offer=null;model.waiters.find(x=>x.id===o.waiter).status='BOOKED';
+    model.events.push('架空の空き枠を1件回収');return id;
+  }
+  function quote(model){return {total:model.bookings.filter(x=>x.status==='CONFIRMED').length,waiting:model.waiters.filter(x=>x.status==='ACTIVE').length,recovered:model.releases.filter(x=>x.recovered).length,notified:0};}
+  root.DemoCore={initial,mins,clock,canBook,book,cancel,candidates,offer,decline,accept,quote,clone,DATE};
+})(typeof module==='object'&&module.exports?module.exports:window);
+</script>
+<script>/* DOM-only controller for the fictional, memory-only demonstration. */
+(function(){'use strict';
+const Core=window.DemoCore;let model=Core.initial(),page='home';
+const $=id=>document.getElementById(id);
+const node=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n};
+function add(parent,child){parent.appendChild(child);return child}
+function clear(id){$(id).replaceChildren()}
+function info(message,bad=false){const f=$('flash');f.classList.remove('hidden');f.classList.toggle('bad',bad);f.textContent=message;f.scrollIntoView({block:'nearest',behavior:'smooth'});}
+function attempt(work){try{work();render()}catch(err){info(err.message||'操作できません',true)}}
+function go(next){page=next;document.querySelectorAll('.page').forEach(x=>x.classList.toggle('hidden',x.id!=='page-'+page));document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===page));$('flash').classList.add('hidden');render();window.scrollTo({top:0,behavior:'instant'})}
+function reset(){model=Core.initial();$('bMenu').value='m60';$('bStaff').value='s1';$('bBed').value='b1';$('bTime').value='10:00';go('home');info('架空の初期データに戻しました。実際の情報は保存していません。')}
+const line=(left,right)=>{const r=node('div','booking-row');add(r,left);if(right)add(r,right);return r};
+function actionsButton(label,fn,style='secondary'){const b=node('button',style,label);b.type='button';b.addEventListener('click',()=>attempt(fn));return b}
+function textBlock(title,description){const d=node('div');add(d,node('strong','',title));add(d,node('small','',description));return d}
+function summary(){const counts=Core.quote(model);$('kpiBookings').textContent=counts.total;$('kpiWaiting').textContent=counts.waiting;$('kpiRecovered').textContent=counts.recovered;}
+function render(){summary();if(page==='setup')renderGuide();if(page==='booking')renderBooking();if(page==='waitlist')renderWaitlist();if(page==='connect')renderConnect();}
+const guideSteps=[
+ {heading:'1. お店の営業時間を確認しましょう', options:[['9:00〜18:00（試作予約の時間帯）','9時から18時まで。架空店舗の固定営業時間。'],['別の営業時間が必要','この簡易デモでは変更不可。製品版の設定ガイドで扱う予定。']]},
+ {heading:'2. スタッフを確認しましょう', options:[['2人で開始','佐藤・田中。準備時間はそれぞれ15分と30分。'],['あとからスタッフを追加したい','製品版は複数スタッフに対応。デモでは2人で体験。']]},
+ {heading:'3. 施術メニューを確認しましょう', options:[['60分・90分の2コース','もみほぐし60分／個室ケア90分。'],['コースを増やしたい','製品版の下書き編集で追加できます。デモは2種類を固定。']]},
+ {heading:'4. ベッド・個室を確認しましょう', options:[['オープン2台と個室1台','個室必須コースは個室だけに割り当て。'],['設備を変更したい','この簡易デモでは固定。製品版の設定機能で変更可能。']]},
+ {heading:'5. 外部サービスは使用しますか？', options:[['LINEもGoogleも使わない','予約とキャンセル枠回収の模擬体験は可能です。'],['あとでLINE・Googleも検討','店舗自身が契約し、接続手順を案内する構想です。']]}
+];
+function renderGuide(){const i=model.step,step=guideSteps[i];$('guideCount').textContent=`ステップ ${i+1} / ${guideSteps.length}`;$('guideProgress').style.width=((i+1)/guideSteps.length*100)+'%';$('guideDone').textContent=model.guideDone.filter(Boolean).length+' 件回答済み';
+ const area=$('guideBody');area.replaceChildren();add(area,node('div','question',step.heading));const options=add(area,node('div','choices'));
+ step.options.forEach((o,j)=>{const b=node('button','choice'+(model.guideDone[i]===j?' selected':''));b.type='button';const wrap=add(b,node('div'));add(wrap,node('strong','',o[0]));add(wrap,node('small','',o[1]));if(model.guideDone[i]===j)add(b,node('mark','', '選択中'));b.addEventListener('click',()=>{model.guideDone[i]=j;renderGuide()});add(options,b)});
+ $('guidePrev').disabled=i===0;$('guideNext').textContent=i===guideSteps.length-1?'設定を確認して完了':'次へ進む';
+ const summaryArea=$('setupSummary');summaryArea.replaceChildren();const s=add(summaryArea,node('div','summary'));
+ [['スタッフ','佐藤・田中（2名）'],['コース','60分・90分（2種類）'],['ベッド','オープン2・個室1'],['営業時間','09:00〜18:00（体験用）']].forEach(k=>{let cell=add(s,node('div'));add(cell,node('strong','',k[0]));add(cell,node('span','',k[1]))});
+}
+function renderBooking(){const req=bookingRequest(),check=Core.canBook(model,req);const status=$('bookingCheck');status.className='statusbox '+(check.ok?'good':'bad');status.textContent=(check.ok?'✓ ':'! ')+check.reason;$('bookNow').disabled=!check.ok;
+ const area=$('bookingList');area.replaceChildren();const active=[...model.bookings].sort((a,b)=>a.start-b.start);
+ active.forEach(b=>{const m=model.menus.find(x=>x.id===b.menu),s=model.staff.find(x=>x.id===b.staff),bed=model.beds.find(x=>x.id===b.bed);
+ let row=line(textBlock(Core.clock(b.start)+'〜'+Core.clock(b.start+m.duration)+'　'+m.name,`${s.name} · ${bed.name} · ${b.customer}`));let tag=add(row,node('span','pill'+(b.status==='CANCELLED'?' cancel':''),b.status==='CONFIRMED'?'確定（架空）':'取消済み'));add(area,row)});
+}
+function bookingRequest(){return {menu:$('bMenu').value,staff:$('bStaff').value,bed:$('bBed').value,start:Core.mins($('bTime').value)};}
+function renderWaitlist(){const cancel=$('cancelList'),release=$('releaseList'),offer=$('offerList');cancel.replaceChildren();release.replaceChildren();offer.replaceChildren();
+ const active=model.bookings.filter(x=>x.status==='CONFIRMED').sort((a,b)=>a.start-b.start);if(!active.length)add(cancel,node('p','muted','取消可能な予約はありません。最初からやり直すか、予約を追加してください。'));
+ active.forEach(b=>{const menu=model.menus.find(x=>x.id===b.menu),staff=model.staff.find(x=>x.id===b.staff);let row=line(textBlock(Core.clock(b.start)+'　'+menu.name,staff.name+' · '+b.customer));let group=add(row,node('div','rowactions'));add(group,actionsButton('この予約を取消',()=>{Core.cancel(model,b.id);info('空き枠が発生しました。次に候補を確認してください。')},'secondary'));add(cancel,row)});
+ if(!model.releases.length)add(release,node('p','muted','まだキャンセル枠はありません。上の予約を1件取り消してみてください。'));
+ model.releases.forEach(r=>{const b=model.bookings.find(x=>x.id===r.booking),menu=model.menus.find(x=>x.id===b.menu),candidates=Core.candidates(model,r.id);let row=line(textBlock(Core.clock(b.start)+'　'+menu.name+'（'+(r.recovered?'回収済':'未回収')+'）',r.recovered?'確定した架空予約に置き換わりました':`条件に合う架空希望者 ${candidates.length} 件`));const group=add(row,node('div','rowactions'));
+ if(r.recovered)add(group,node('span','pill ok','回収済'));else if(r.offer)add(group,node('span','pill pending','案内中 · 未送信'));else add(group,actionsButton('候補へ模擬案内',()=>{Core.offer(model,r.id);info('架空の希望者へ模擬案内を作成しました。実送信はありません。')},'primary'));add(release,row)});
+ const pending=model.offers.filter(x=>x.status==='PENDING');if(!pending.length)add(offer,node('p','muted','現在、案内中の候補はありません。'));
+ pending.forEach(o=>{const r=model.releases.find(x=>x.id===o.release),origin=model.bookings.find(x=>x.id===r.booking),w=model.waiters.find(x=>x.id===o.waiter);let row=line(textBlock(w.label+' · '+Core.clock(origin.start), '通知状態：未送信 ／ 返信期限・実送信なし'));const g=add(row,node('div','rowactions'));
+ add(g,actionsButton('辞退を模擬',()=>{Core.decline(model,o.id);info('辞退を記録しました。次の候補を案内できます。')}));add(g,actionsButton('承諾を確認して確定',()=>{Core.accept(model,o.id,true);info('架空の予約を1件確定しました。実予約ではありません。')},'primary'));add(offer,row)});
+}
+function renderConnect(){const list=$('connectList');list.replaceChildren();[
+ {name:'LINE公式アカウント',key:'line',summary:'店舗が開設・所有。Messaging APIの設定は本人操作が必要な場合があります。',steps:['店舗自身のLINE公式アカウントを準備','Messaging APIの利用条件とプロバイダーを確認','店舗側で必要な設定・許可を実施','接続テスト（このデモでは未実装）']},
+ {name:'Google',key:'google',summary:'Googleカレンダー・ビジネスプロフィール等は権限やAPI条件が異なります。',steps:['店舗自身のGoogleアカウントを使用','連携するサービスを確認','許可画面やAPI要件を確認','接続テスト（このデモでは未実装）']}
+ ].forEach(service=>{const row=add(list,node('div','connect-row'));add(row,textBlock(service.name,service.summary));const b=node('button','secondary','設定手順を見る');add(row,b);const detail=node('div','link-step hidden');service.steps.forEach((s,i)=>add(detail,node('div','',`${i+1}. ${s}`)));add(detail,node('p','muted','このデモは案内のみです。実際の連携・認証・通知・費用の発生はありません。'));row.after(detail);b.addEventListener('click',()=>detail.classList.toggle('hidden'))});
+}
+function setup(){for(let t=540;t<=1020;t+=15){const option=node('option','',Core.clock(t));option.value=Core.clock(t);$('bTime').append(option)}$('bTime').value='10:00';
+ document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
+ $('resetTop').addEventListener('click',reset);$('resetBottom').addEventListener('click',reset);$('guidePrev').addEventListener('click',()=>{model.step=Math.max(0,model.step-1);renderGuide()});
+ $('guideNext').addEventListener('click',()=>attempt(()=>{if(model.guideDone[model.step]===undefined)throw Error('回答を選択してください');if(model.step<guideSteps.length-1){model.step++;}else{go('booking');info('初期設定の模擬確認が完了しました。架空予約を試してください。')}}));
+ ['bMenu','bStaff','bBed','bTime'].forEach(id=>$(id).addEventListener('change',()=>{clear('suggestions');renderBooking()}));
+ $('bookNow').addEventListener('click',()=>attempt(()=>{Core.book(model,bookingRequest());go('booking');info('架空予約を登録しました。スタッフとベッドの重複を確認しています。')}));
+ $('suggest').addEventListener('click',()=>{const req=bookingRequest(),a=$('suggestions');a.replaceChildren();let count=0;
+ if(Core.canBook(model,req).ok){add(a,node('span','pill ok','希望時間に予約可能です'));return}
+ for(let dt=15;dt<=60;dt+=15)for(const offset of [-dt,dt]){const r={...req,start:req.start+offset};if(Core.canBook(model,r).ok){const b=actionsButton(Core.clock(r.start)+' を選択',()=>{$('bTime').value=Core.clock(r.start);renderBooking();clear('suggestions')});add(a,b);count++}}
+ if(!count)add(a,node('span','muted','前後60分以内に条件の合う候補はありません'));
+ });go('home');
+}
+document.addEventListener('DOMContentLoaded',setup);
+})();
+</script>
+</body></html>
