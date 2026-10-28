@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-RoGdf565Edonh+UOgb2N4UO8+3UUqlk4GS4S8DGcR0Y=' 'sha256-w7nCV61lP5LCDW5/+qJVgxhKzJO9Whb8Ces2FOgWzyE='; style-src 'sha256-eNNhLDCmLC4VZ7nBhyiGP6R8+3nkHrZ91RFtfbkUaGI='; img-src data:; font-src 'none'; connect-src 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; upgrade-insecure-requests"><title>AI予約システム｜操作体験デモ v0.31</title><style>:root{--text:#1b2b43;--muted:#53657b;--border:#d7e2ee;--blue:#2165bb;--blue-dark:#164986;--blue-tint:#eaf2fc;--bg:#f6f8fc;--surface:#fff;--green:#186b46;--red:#ac3030;--yellow:#82510f;--radius:15px}
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-hWeXtyftSPmqop/dmU1y6An7VHBrihl42y0U6Xr8FPg=' 'sha256-nAs/J5k1YWhf1knhSLb6SCbAvJeFpNku7wDHLXwKy7o='; style-src 'sha256-JjfkgwW48qYZeqTzjjbSCrW6lYdFMhUG8XNBEcnhtpc='; img-src data:; font-src 'none'; connect-src 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; upgrade-insecure-requests"><title>AI予約システム｜操作体験デモ v0.32</title><style>:root{--text:#1b2b43;--muted:#53657b;--border:#d7e2ee;--blue:#2165bb;--blue-dark:#164986;--blue-tint:#eaf2fc;--bg:#f6f8fc;--surface:#fff;--green:#186b46;--red:#ac3030;--yellow:#82510f;--radius:15px}
 *{box-sizing:border-box}html{font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;color:var(--text);background:var(--bg)}body{margin:0}button,input,select{font:inherit}button{cursor:pointer;border:1px solid var(--border);border-radius:10px;padding:11px 15px;background:#fff;color:var(--text);font-weight:650}button:hover{background:#edf4fb}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #86b5fb;outline-offset:2px}button:disabled{cursor:not-allowed;opacity:.5}.primary{background:var(--blue);border-color:var(--blue);color:#fff}.primary:hover{background:var(--blue-dark)}.secondary{background:#fff}.textbtn{background:none;border:0;color:var(--blue)}.hidden{display:none!important}.top{background:#132945;color:#fff}.topinner{max-width:1400px;margin:auto;padding:24px 32px;display:flex;justify-content:space-between;align-items:center;gap:20px}.top h1{margin:2px 0 6px;font-size:25px}.top h1 span{color:#a5d1ff}.top p{color:#d8e5f5;margin:0;font-size:13px}.eyebrow{letter-spacing:1.8px;color:#a8ccf5;font-size:10px;font-weight:800}.eyebrow.blue{color:var(--blue)}.topactions{display:flex;align-items:center;gap:12px}.demo-tag{font-size:12px;padding:8px 12px;background:#314b68;border-radius:30px;white-space:nowrap}.notice{background:#fff5e5;border-bottom:1px solid #ead19f;padding:11px 24px;text-align:center;font-size:12px;color:#704d14}.layout{max-width:1400px;display:grid;grid-template-columns:252px minmax(0,1fr);gap:25px;margin:0 auto;padding:26px}.sidebar{background:#fff;border:1px solid var(--border);border-radius:var(--radius);min-height:620px;padding:17px;align-self:start;position:sticky;top:15px}.shop{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);padding-bottom:20px}.shop strong{font-size:13px}.shop small{color:var(--muted);font-size:11px;display:block;margin-top:4px}.logo{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#dceafa;color:var(--blue-dark);font-weight:800}.navigation{display:grid;gap:7px;margin-top:17px}.navigation button{border:0;text-align:left;background:transparent;display:flex;gap:12px;align-items:center;font-size:13px;font-weight:650;padding:13px 12px}.navigation button.active{background:var(--blue-tint);color:var(--blue-dark);box-shadow:inset 3px 0 var(--blue)}.sidefoot{margin-top:45px;border-top:1px solid var(--border);padding-top:18px;color:var(--muted);font-size:11px;line-height:1.8}.main{min-width:0}.page-title{display:flex;align-items:start;justify-content:space-between;gap:18px;margin:8px 0 22px}.page-title h2{font-size:25px;letter-spacing:-.4px;margin:7px 0}.page-title p{font-size:13px;color:var(--muted);line-height:1.8;margin:0}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin:0 0 18px;box-shadow:0 3px 13px rgba(19,41,69,.025)}.card h3{font-size:16px;margin:0 0 17px}.card p{line-height:1.75}.subdued{background:#eff5fc}.subdued p{font-size:12px;color:var(--muted)}.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:20px}.metric{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:19px}.metric small,.metric span{display:block;color:var(--muted);font-size:11px}.metric strong{font-size:31px;display:block;margin:9px 0}.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.tile{text-align:left;display:flex;flex-direction:column;gap:9px;min-height:176px;padding:20px;border-radius:12px}.tile strong{font-size:14px}.tile small{color:var(--muted);line-height:1.6}.tile .go{color:var(--blue);font-size:12px;margin-top:auto}.stepnum{font-size:11px;font-weight:800;color:var(--blue)}.progresslabel{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px}.progress{height:7px;border-radius:10px;background:#e7edf5;margin:13px 0 23px;overflow:hidden}.progress div{height:100%;background:var(--blue);transition:width .2s}.buttonrow{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-top:19px}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}label{font-size:12px;color:#38516b;font-weight:700;display:grid;gap:7px}select,input{width:100%;background:#fff;border:1px solid #b8c9dc;color:var(--text);border-radius:9px;padding:11px;min-width:0}.statusbox{padding:13px 14px;margin-top:14px;border-radius:10px;background:#edf3fb;color:#234b78;border:1px solid #d7e5f5;font-size:13px;line-height:1.7}.statusbox.bad{background:#fdecec;border-color:#f4c9c9;color:#8a2222}.statusbox.good{background:#e9f5ee;border-color:#bfe4ce;color:#176b45}.statusbox.soft{background:#f6f8fb;color:var(--muted)}.datepill{font-size:11px;color:#2b5e9d;background:#e6f0fc;padding:11px 12px;border-radius:30px;white-space:nowrap}.cardhead{display:flex;justify-content:space-between;align-items:center;gap:8px}.cardhead small,.muted{color:var(--muted);font-size:12px}.booking-row,.release-row,.offer-row,.connect-row{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--border);padding:13px 0}.booking-row strong,.release-row strong,.offer-row strong{font-size:13px}.booking-row small,.release-row small,.offer-row small,.connect-row small{color:var(--muted);font-size:11px;display:block;line-height:1.6;margin-top:3px}.booking-row button,.release-row button,.offer-row button{font-size:12px}.rowactions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.pill{display:inline-block;border-radius:20px;background:#e7f2ff;color:#16528b;padding:5px 10px;font-size:11px;font-weight:700}.pill.cancel{background:#fce9e9;color:#a32d2d}.pill.pending{background:#fff1da;color:#80510d}.pill.ok{background:#e0f3e8;color:#166a42}.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.pills button{color:var(--blue);border-color:#aecbee;background:#f3f8ff;font-size:12px}.question{font-size:19px;margin-bottom:20px;font-weight:750}.choices{display:grid;gap:10px}.choice{display:flex;gap:12px;align-items:center;text-align:left;padding:17px;white-space:normal}.choice.selected{background:var(--blue-tint);border-color:var(--blue)}.choice strong{font-size:13px}.choice small{font-size:11px;color:var(--muted)}.choice mark{margin-left:auto;background:var(--blue);color:#fff;padding:3px 8px;border-radius:20px;font-size:10px}.summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;font-size:12px}.summary div{background:#fff;border:1px solid var(--border);border-radius:9px;padding:12px}.summary strong{display:block;margin-bottom:7px}.connect-row>div:first-child{flex:1}.link-step{background:#f6f9fc;border:1px solid var(--border);border-radius:9px;padding:14px;margin:10px 0;font-size:12px;line-height:1.8}.footer{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:11px;color:var(--muted);padding:18px 5px}.flash{border:1px solid #b2d4bd;background:#e8f5ec;color:#17603d;border-radius:10px;padding:12px 17px;margin:0 0 20px;font-size:13px;line-height:1.6}.flash.bad{background:#fdeeee;border-color:#f4caca;color:#a52c2c}@media(max-width:850px){.layout{grid-template-columns:1fr;padding:15px;gap:12px}.sidebar{position:static;min-height:0;padding:12px}.shop,.sidefoot{display:none}.navigation{display:flex;overflow-x:auto;gap:7px;margin:0;scrollbar-width:thin}.navigation button{white-space:nowrap;background:#f4f7fb}.topinner{padding:19px 17px}.topactions{flex-direction:column;align-items:end}.top h1{font-size:19px}.tiles{grid-template-columns:1fr}.tile{min-height:0}.metrics{grid-template-columns:repeat(3,minmax(0,1fr))}.metric{padding:12px}.metric strong{font-size:26px}.card{padding:18px}.page-title h2{font-size:21px}}@media(max-width:550px){.topinner{display:block}.topactions{margin-top:14px;flex-direction:row;justify-content:space-between}.top p{line-height:1.5}.notice{text-align:left;padding:12px 16px}.fields{grid-template-columns:1fr}.page-title{display:block}.datepill{display:inline-block;margin-top:12px}.booking-row,.release-row,.offer-row,.connect-row{align-items:start;flex-wrap:wrap}.rowactions{width:100%}.rowactions button{flex:1}.summary{grid-template-columns:1fr}.metric small{font-size:10px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 /* Prevent intrinsic navigation width from expanding narrow phone viewports. */
 @media(max-width:850px){.layout{grid-template-columns:minmax(0,1fr)}.sidebar{min-width:0;max-width:100%}.navigation{min-width:0;max-width:100%;width:100%}.main{min-width:0;max-width:100%}}
@@ -135,17 +135,23 @@
 .schedule-queue-block .origin-badge{position:absolute;right:5px;top:4px;width:25px;height:20px;font-size:9px}
 @media(max-width:550px){.schedule-book .origin-badge{right:29px;width:23px;font-size:9px}.schedule-book .time{padding-right:26px}}
 
-/* v0.31: resizable, confirmation-gated staff breaks. */
+/* v0.32: resizable, confirmation-gated staff breaks. */
 .schedule-break.break-resizable{top:7px;height:91px;z-index:4;overflow:visible;display:flex;justify-content:space-between;align-items:center;padding:0;gap:0;box-shadow:0 1px 3px #26374d24}
 .break-text{min-width:0;flex:1;overflow:hidden;text-overflow:clip;white-space:nowrap;font-size:11px;line-height:1.2;text-align:center;font-weight:800;padding:0 1px}
 .break-grip{height:calc(100% + 2px);width:26px;min-width:26px;flex:none;display:flex;align-items:center;justify-content:center;padding:0;margin:-1px -1px -1px 0;border:1px solid #8397ac;border-radius:0 6px 6px 0;color:#34465a;background:#cfd9e5;font-size:15px;touch-action:none;user-select:none;-webkit-user-select:none;cursor:ew-resize}
 .break-grip:hover{background:#b9c9d9}
 .break-grip:focus-visible{outline:3px solid #2570c7;outline-offset:2px}
 .schedule-break.break-resizable.drag-preview{box-shadow:0 0 0 3px #9cadbf;border:2px solid #61798e}
+/* v0.32: center moves entire break; right grip changes break length. */
+.break-move{border:0;border-radius:5px 0 0 5px;appearance:none;background:transparent;color:inherit;height:100%;min-width:0;display:flex;align-items:center;justify-content:center;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+.break-move:active{cursor:grabbing}
+.break-move:focus-visible{outline:3px solid #2570c7;outline-offset:0;z-index:1}
+.break-resizable .break-grip{cursor:ew-resize}
+.break-resizable .break-move:hover{background:#cbd9e8a8}
 @media(max-width:550px){.break-grip{width:24px;min-width:24px}.break-text{font-size:10px}}
 </style></head>
 <body>
-<header class="top"><div class="topinner"><div><div class="eyebrow">SMALL SALON · EXPERIENCE</div><h1>店舗予約システム <span>体験デモ</span></h1><p>店舗スタッフは予約表から操作。その他の機能は管理メニューにまとめました。</p></div><div class="topactions"><span class="demo-tag">v0.31 · 架空データ専用</span><button class="secondary" id="resetTop">↻ 最初から</button></div></div></header>
+<header class="top"><div class="topinner"><div><div class="eyebrow">SMALL SALON · EXPERIENCE</div><h1>店舗予約システム <span>体験デモ</span></h1><p>店舗スタッフは予約表から操作。その他の機能は管理メニューにまとめました。</p></div><div class="topactions"><span class="demo-tag">v0.32 · 架空データ専用</span><button class="secondary" id="resetTop">↻ 最初から</button></div></div></header>
 <div class="notice"><strong>安全な体験モード</strong>：実店舗・顧客情報・LINE・Google・決済・本番DBには接続しません。画面を閉じると操作内容は消えます。実際の予約は成立しません。</div>
 <div class="rolebar" aria-label="画面モード"><div class="roleinner"><button type="button" id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="adminMenu">☰ 管理メニュー</button><span class="role-caption">予約表がメイン画面です</span><div class="rolebuttons"><button type="button" id="viewAdmin" class="rolebutton active" aria-pressed="true">店舗管理者の画面</button><button type="button" id="viewCustomer" class="rolebutton" aria-pressed="false">お客様の予約画面</button></div></div></div>
 <button type="button" id="drawerShade" class="drawer-shade" hidden aria-label="管理メニューを閉じる"></button><main class="layout"><aside id="adminMenu" class="sidebar" aria-label="管理メニュー" aria-hidden="true"><div class="drawer-top"><strong>管理メニュー</strong><button type="button" id="menuClose" class="drawer-close" aria-label="管理メニューを閉じる">✕ 閉じる</button></div><div class="shop"><div class="logo">青</div><div><strong id="storeName">架空・青空リラクゼーション</strong><small>店舗管理者の体験</small></div></div><nav class="navigation" aria-label="管理画面の切り替え"><button data-page="booking" class="active">▦ <span>予約表と予約登録</span></button><button data-page="waitlist">◷ <span>キャンセル枠回収</span></button><button data-page="setup">▤ <span>店舗の初期設定</span></button><button data-page="connect">↗ <span>LINE・Google案内</span></button><button data-page="home">⌂ <span>使い方・ご案内</span></button></nav><div class="sidefoot">個人情報は入力しないでください。<br>データ保存・外部送信なし</div></aside><div class="main">
@@ -154,9 +160,9 @@
 <div class="metrics"><div class="metric"><small>確定中の予約</small><strong id="kpiBookings">3</strong><span>架空データ</span></div><div class="metric"><small>キャンセル待ち</small><strong id="kpiWaiting">3</strong><span>通知送信なし</span></div><div class="metric"><small>回収した空き枠</small><strong id="kpiRecovered">0</strong><span>模擬確定</span></div></div>
 <div class="card"><h3>まずはこの3つを試してください</h3><div class="tiles"><button class="tile" data-go="setup"><span class="stepnum">01</span><strong>初期設定ガイド</strong><small>質問に答えるだけで構成を確認</small><span class="go">体験する →</span></button><button class="tile" data-go="booking"><span class="stepnum">02</span><strong>予約登録</strong><small>スタッフ・ベッド・休憩を自動確認</small><span class="go">体験する →</span></button><button class="tile" data-go="waitlist"><span class="stepnum">03</span><strong>空き枠回収</strong><small>取消 → 候補提案 → 模擬確定</small><span class="go">体験する →</span></button></div></div><div class="card subdued"><h3>このデモと開発本体の違い</h3><p>この画面は操作体験専用の独立したシミュレーターです。v0.21のPython予約エンジンやDBには書き込みません。実際の予約同時確定、本人認証、外部通知の安全性を証明するものではありません。</p></div></section>
 <section id="page-setup" class="page hidden"><div class="page-title"><div><div class="eyebrow blue">ONBOARDING</div><h2>店舗初期設定ガイド</h2><p>AIのように順番に案内する定型ガイドです。実際の生成AIには接続しません。</p></div></div><div class="card"><div class="progresslabel"><span id="guideCount">ステップ 1 / 5</span><span id="guideDone">設定プレビュー</span></div><div class="progress"><div id="guideProgress"></div></div><div id="guideBody"></div><div class="buttonrow"><button class="secondary" id="guidePrev">戻る</button><button class="primary" id="guideNext">次へ進む</button></div></div><div class="card subdued"><h3>すでに用意された架空の設定</h3><div id="setupSummary"></div><p class="muted">この体験での選択は画面上だけに反映されます。実予約台帳の設定変更はありません。</p></div></section>
-<section id="page-booking" class="page"><div class="page-title"><div><div class="eyebrow blue">RESERVATIONS</div><h2>スタッフ別予約表・予約登録</h2><p>スタッフごとの予約と予約経路を一目で確認できます。下部の担当未定の枠から付け回しも試せます。</p></div><span class="datepill">2026年10月26日 · 架空日付</span></div><div class="card"><div class="cardhead"><h3>スタッフ別・本日の予約表</h3><small>15分区切り・横にスクロールできます</small></div>
+<section id="page-booking" class="page"><div class="page-title"><div><div class="eyebrow blue">RESERVATIONS</div><h2>スタッフ別予約表・予約登録</h2><p>スタッフごとの予約と予約経路を一目で確認できます。下部の担当未定の枠から付け回しも試せます。</p></div><span class="datepill">2026年10月26日 · 架空日付</span></div><div class="card"><div class="cardhead"><h3>スタッフ別・本日の予約表</h3><small>15分刻み・横にスクロールできます</small></div>
 <div class="schedule-legend"><span><i class="legend-book"></i>施術</span><span><i class="legend-prep"></i>準備</span><span><i class="legend-break"></i>休憩</span><span><i class="legend-free"></i>空き</span><span><i class="legend-queue"></i>付け回し待ち（未確定）</span></div>
-<p class="schedule-help">スタッフ名は左に固定。予約枠内の小さな「HPB」「L」「HP」などは予約経路を示す仮マークです。施術予約・準備・休憩の右端「↔」で15分刻みに調整。一番下の「自由枠／担当未決定」のお客様をタップするとスタッフへ付け回せます。どちらも確認後にのみ反映します（架空データのみ）。</p>
+<p class="schedule-help">スタッフ名は左に固定。予約枠内の小さな「HPB」「L」「HP」などは予約経路を示す仮マークです。施術予約・準備・休憩の右端「↔」で15分刻みに調整。 休憩は中央部分を左右に動かすと時間帯を移動できます。一番下の「自由枠／担当未決定」のお客様をタップするとスタッフへ付け回せます。どちらも確認後にのみ反映します（架空データのみ）。</p>
 <div id="prepFeedback" class="prep-feedback hidden" role="status" aria-live="polite"></div>
 <div class="schedule-scroll" tabindex="0" role="region" aria-label="スタッフ別の予約表。左右にスクロールして時間を確認できます"><div id="staffSchedule" class="staff-schedule"></div></div>
 <div class="schedule-foot">表示日：2026年10月26日（架空）。自由枠のカードは未確定であり、担当スタッフと設備を決めてから予約確定になります。<strong id="unassignedCount"></strong> 予約の取消は「☰ 管理メニュー」から行えます。</div>
@@ -167,7 +173,7 @@
 <section id="page-waitlist" class="page hidden"><div class="page-title"><div><div class="eyebrow blue">WAITLIST</div><h2>キャンセル枠を埋める体験</h2><p>通知先は架空です。案内は「未送信」のまま、承諾後の模擬予約だけ実行します。</p></div></div><div class="card"><h3>1. キャンセルを発生させる</h3><p class="muted">確定中の架空予約を取り消すと、回収候補を探す対象になります。</p><div id="cancelList"></div></div><div class="card"><h3>2. 空き枠の候補を案内する</h3><div id="releaseList"></div></div><div class="card"><h3>3. 案内の返答を処理する</h3><div id="offerList"></div><p class="muted">顧客の承諾を模擬確認してから確定。二重確定は拒否し、空き状況を再チェックします。</p></div></section>
 <section id="page-customer" class="page hidden" aria-label="お客様向け予約"><div class="page-title"><div><div class="eyebrow blue">CUSTOMER BOOKING · DEMO</div><h2>架空・青空リラクゼーションのご予約</h2><p>コースと担当者を選ぶと、ご予約可能な時間だけが表示されます。</p></div><span class="datepill">架空の体験日 · 2026年10月26日</span></div><div class="card"><div class="fields"><label>ご希望のコース<select id="cMenu"><option value="m60">もみほぐし60分（5,000円）</option><option value="m90">個室ケア90分（9,000円）</option></select></label><label>担当者のご希望<select id="cStaff"><option value="any">指名なし（空いている担当者）</option><option value="s1">佐藤</option><option value="s2">田中</option></select></label></div><h3>予約できる開始時刻</h3><p class="muted">空き枠は15分刻みで表示します。設備や休憩などの内部条件は自動判定します。</p><div id="cTimes" class="customer-times" aria-live="polite"></div><div id="cSummary" class="customer-summary" aria-live="polite"></div><div class="buttonrow"><button id="cBook" class="primary" disabled>この内容で模擬予約する</button></div><p class="muted">体験用の予約です。氏名や電話番号は入力しないでください。実際の予約・決済・通知は発生しません。</p></div><div class="card subdued"><h3>空きが見つからない場合</h3><p>担当者を「指名なし」にすると、ご案内できる時間が増える場合があります。実店舗版ではキャンセル待ち登録も用意します。</p></div></section>
 <section id="page-connect" class="page hidden"><div class="page-title"><div><div class="eyebrow blue">INTEGRATIONS</div><h2>外部サービス連携のガイド</h2><p>LINE公式・Googleを使わなくても基本予約機能を体験できます。</p></div></div><div class="card"><h3>各サービスは任意で追加</h3><div id="connectList"></div><div class="statusbox soft">「手順を見る」は説明を表示するだけです。ログイン、OAuth、API接続、送信などは行いません。</div></div></section>
-<div class="footer"><span>v0.31 操作体験専用｜データは画面内のメモリのみ</span><button class="textbtn" id="resetBottom">体験をリセット</button></div></div></main><script>/* v0.22 independent fictional demo. In-memory only. No network, no personal data. */
+<div class="footer"><span>v0.32 操作体験専用｜データは画面内のメモリのみ</span><button class="textbtn" id="resetBottom">体験をリセット</button></div></div></main><script>/* v0.22 independent fictional demo. In-memory only. No network, no personal data. */
 (function (root) {
   'use strict';
   const DATE='2026-10-26';
@@ -224,6 +230,20 @@
     model.breaks[staffId].duration=minutes;
     model.events.push(staff.name+'の休憩 '+original.duration+'分→'+minutes+'分');
     return minutes;
+  }
+  function moveBreak(model,staffId,newStart){
+    const staff=model.staff.find(s=>s.id===staffId);
+    const old=breakFor(model,staffId);
+    assert(staff&&old,'移動対象の休憩が見つかりません');
+    assert(Number.isInteger(newStart)&&newStart%15===0&&newStart>=540&&newStart+old.duration<=1080,'休憩は営業時間内で15分刻みに移動してください');
+    if(old.start===newStart)return newStart;
+    for(const booking of model.bookings.filter(b=>b.status==='CONFIRMED'&&b.staff===staffId)){
+      const occupied=resourceWindow(model,booking);
+      assert(!intersects(newStart,newStart+old.duration,occupied.start,occupied.staffEnd),'既存予約または施術後の準備時間と重なるため、休憩を移動できません');
+    }
+    model.breaks[staffId].start=newStart;
+    model.events.push(staff.name+'の休憩を'+clock(old.start)+'〜'+clock(old.end)+'から'+clock(newStart)+'〜'+clock(newStart+old.duration)+'へ移動');
+    return newStart;
   }
   function canBook(model,request,excludeBookingId=null){
     const m=model.menus.find(x=>x.id===request.menu), s=model.staff.find(x=>x.id===request.staff),b=model.beds.find(x=>x.id===request.bed);
@@ -352,7 +372,7 @@
     model.events.push('架空の空き枠を1件回収');return id;
   }
   function quote(model){return {total:model.bookings.filter(x=>x.status==='CONFIRMED').length,waiting:model.waiters.filter(x=>x.status==='ACTIVE').length,recovered:model.releases.filter(x=>x.recovered).length,notified:0};}
-  root.DemoCore={initial,mins,clock,canBook,book,cancel,candidates,offer,decline,accept,quote,clone,DATE,prepFor,changePrep,serviceFor,changeService,breakFor,changeBreak,canQueue,queueUnassigned,assignUnassigned};
+  root.DemoCore={initial,mins,clock,canBook,book,cancel,candidates,offer,decline,accept,quote,clone,DATE,prepFor,changePrep,serviceFor,changeService,breakFor,changeBreak,moveBreak,canQueue,queueUnassigned,assignUnassigned};
 })(typeof module==='object'&&module.exports?module.exports:window);
 </script>
 <script>/* DOM-only controller for the fictional, memory-only demonstration. */
@@ -394,7 +414,7 @@ function summary(){const counts=Core.quote(model);$('kpiBookings').textContent=c
 function render(){summary();if(page==='setup')renderGuide();if(page==='booking')renderBooking();if(page==='waitlist')renderWaitlist();if(page==='connect')renderConnect();if(page==='customer')renderCustomer();}
 const guideSteps=[
  {heading:'1. お店の営業時間を確認しましょう', options:[['9:00〜18:00（試作予約の時間帯）','9時から18時まで。架空店舗の固定営業時間。'],['別の営業時間が必要','この簡易デモでは変更不可。製品版の設定ガイドで扱う予定。']]},
- {heading:'2. スタッフを確認しましょう', options:[['2人で開始','佐藤・田中。準備時間は佐藤15分・田中30分。30分の予約ごとの準備枠は、右端を動かして15分に調整できます。'],['あとからスタッフを追加したい','製品版は複数スタッフに対応。デモでは2人で体験。']]},
+ {heading:'2. スタッフを確認しましょう', options:[['2人で開始','佐藤・田中。準備時間は佐藤15分・田中30分。30分の予約ごとの準備枠は、右端で長さを調整、中央部分で休憩開始時刻を移動できます。'],['あとからスタッフを追加したい','製品版は複数スタッフに対応。デモでは2人で体験。']]},
  {heading:'3. 施術メニューを確認しましょう', options:[['60分・90分の2コース','もみほぐし60分／個室ケア90分。'],['コースを増やしたい','製品版の下書き編集で追加できます。デモは2種類を固定。']]},
  {heading:'4. ベッド・個室を確認しましょう', options:[['オープン2台と個室1台','個室必須コースは個室だけに割り当て。'],['設備を変更したい','この簡易デモでは固定。製品版の設定機能で変更可能。']]},
  {heading:'5. 外部サービスは使用しますか？', options:[['LINEもGoogleも使わない','予約とキャンセル枠回収の模擬体験は可能です。'],['あとでLINE・Googleも検討','店舗自身が契約し、接続手順を案内する構想です。']]}
@@ -423,7 +443,13 @@ function showPrepFeedback(message,invalid=false){
 }
 function prepareTimeChange(kind,id,target){
  let before,label,description,notice;
- if(kind==='break'){
+ if(kind==='breakMove'){
+  const staff=model.staff.find(s=>s.id===id),rest=Core.breakFor(model,id);
+  if(!staff||!rest)return;
+  before=rest.start;label='休憩の開始時刻';
+  description=staff.name+'の休憩 '+rest.duration+'分\n変更前：'+Core.clock(before)+'〜'+Core.clock(before+rest.duration)+'\n変更後：'+Core.clock(target)+'〜'+Core.clock(target+rest.duration);
+  notice='休憩の長さはそのままです。スタッフの予約・準備時間と重ならないか、確定時に再確認します。';
+ }else if(kind==='break'){
   const staff=model.staff.find(s=>s.id===id),rest=Core.breakFor(model,id);
   if(!staff||!rest)return;
   before=rest.duration;label='休憩時間';
@@ -453,15 +479,21 @@ function commitTimeChange(){
   if(proposal.kind==='prep')Core.changePrep(model,proposal.id,proposal.target);
   else if(proposal.kind==='service')Core.changeService(model,proposal.id,proposal.target);
   else if(proposal.kind==='break')Core.changeBreak(model,proposal.id,proposal.target);
+  else if(proposal.kind==='breakMove')Core.moveBreak(model,proposal.id,proposal.target);
   renderBooking();
-  const kindLabel=proposal.kind==='prep'?'準備時間':proposal.kind==='break'?'休憩時間':'予約枠';
-  showPrepFeedback(kindLabel+'を'+proposal.before+'分 → '+proposal.target+'分に変更しました。');
+  if(proposal.kind==='breakMove')showPrepFeedback('休憩の開始時刻を'+Core.clock(proposal.before)+' → '+Core.clock(proposal.target)+'に変更しました。');
+  else{
+   const kindLabel=proposal.kind==='prep'?'準備時間':proposal.kind==='break'?'休憩時間':'予約枠';
+   showPrepFeedback(kindLabel+'を'+proposal.before+'分 → '+proposal.target+'分に変更しました。');
+  }
  }catch(err){renderBooking();showPrepFeedback('変更できません：'+err.message,true)}
 }
 function chooseServiceDuration(bookingId){
  const booking=model.bookings.find(b=>b.id===bookingId&&b.status==='CONFIRMED');if(!booking)return;
  const current=Core.serviceFor(model,booking);
  $('durationChoiceTitle').textContent='予約時間を調整';
+ $('durationMinus').textContent='−15分 短くする';
+ $('durationPlus').textContent='＋15分 長くする';
  $('durationChoiceDetail').textContent=booking.customer+'：現在の予約枠 '+current+'分\n右端を左右にドラッグして変更することもできます。';
  $('durationMinus').disabled=current<=30;
  $('durationPlus').disabled=current>=180;
@@ -512,19 +544,64 @@ function chooseBreakDuration(staffId){
  const current=rest.duration;
  $('durationChoiceTitle').textContent='休憩時間を調整';
  $('durationChoiceDetail').textContent=staff.name+'：現在の休憩 '+current+'分（'+Core.clock(rest.start)+'開始）\n右端を左右にドラッグして変更することもできます。';
+ $('durationMinus').textContent='−15分 短くする';
+ $('durationPlus').textContent='＋15分 長くする';
  $('durationMinus').disabled=current<=15;
  $('durationPlus').disabled=current>=180;
  $('durationMinus').onclick=()=>{$('durationChoiceDialog').close();prepareTimeChange('break',staffId,current-15)};
  $('durationPlus').onclick=()=>{$('durationChoiceDialog').close();prepareTimeChange('break',staffId,current+15)};
  $('durationChoiceDialog').showModal();
 }
+function chooseBreakStart(staffId){
+ const rest=Core.breakFor(model,staffId),staff=model.staff.find(s=>s.id===staffId);if(!rest||!staff)return;
+ $('durationChoiceTitle').textContent='休憩を移動';
+ $('durationChoiceDetail').textContent=staff.name+'：'+Core.clock(rest.start)+'〜'+Core.clock(rest.end)+'（'+rest.duration+'分）\n休憩の中央を左右にドラッグすると、15分単位で開始時刻を移動できます。';
+ $('durationMinus').textContent='← 15分早く';
+ $('durationPlus').textContent='15分遅く →';
+ $('durationMinus').disabled=rest.start<=540;
+ $('durationPlus').disabled=rest.end>=1080;
+ $('durationMinus').onclick=()=>{$('durationChoiceDialog').close();prepareTimeChange('breakMove',staffId,rest.start-15)};
+ $('durationPlus').onclick=()=>{$('durationChoiceDialog').close();prepareTimeChange('breakMove',staffId,rest.start+15)};
+ $('durationChoiceDialog').showModal();
+}
 function editableBreak(lane,staff,positioned,q){
  const rest=Core.breakFor(model,staff.id);if(!rest)return;
  const current=rest.duration,start=rest.start;
- const el=positioned(lane,'schedule-break break-resizable',start,rest.end,['休憩'+current+'分',staff.name,'右端をドラッグまたはタップで調整']);
+ const el=positioned(lane,'schedule-break break-resizable',start,rest.end,['休憩'+current+'分',staff.name,'右端で長さ変更・中央で時刻移動']);
  if(!el)return;
  const short=minutes=>minutes<=15?'休':minutes===30?'休憩30':'休憩'+minutes+'分';
- const label=add(el,node('span','break-text',short(current)));
+ const label=add(el,node('button','break-text break-move',short(current)));
+ label.type='button';
+ label.title=staff.name+'の休憩 '+Core.clock(start)+'〜'+Core.clock(rest.end)+'：中央をドラッグして移動、タップで15分ずつ時刻変更';
+ label.setAttribute('aria-label',staff.name+'の休憩を移動。現在'+Core.clock(start)+'から'+Core.clock(rest.end)+'。左右にドラッグ、またはタップして開始時刻を変更');
+ let shift=null,ignoreMoveClick=false;
+ const previewShift=newStart=>{
+  el.style.left=((newStart-540)/15*q+2)+'px';
+  label.textContent=short(current);
+  el.classList.toggle('drag-preview',newStart!==start);
+  el.title=Core.clock(newStart)+'〜'+Core.clock(newStart+current)+'（変更前・未確定）';
+ };
+ label.addEventListener('pointerdown',ev=>{
+  if(ev.pointerType==='mouse'&&ev.button!==0)return;
+  shift={pointerId:ev.pointerId,x:ev.clientX,from:start,target:start};
+  label.setPointerCapture(ev.pointerId);ev.preventDefault();ev.stopPropagation();
+ });
+ label.addEventListener('pointermove',ev=>{
+  if(!shift||shift.pointerId!==ev.pointerId)return;
+  const wanted=shift.from+Math.round((ev.clientX-shift.x)/q)*15;
+  shift.target=Math.max(540,Math.min(1080-current,wanted));
+  previewShift(shift.target);
+ });
+ label.addEventListener('pointerup',ev=>{
+  if(!shift||shift.pointerId!==ev.pointerId)return;
+  const moved=Math.abs(ev.clientX-shift.x)>=q*.38,target=shift.target;
+  shift=null;previewShift(start);
+  if(moved&&target!==start){ignoreMoveClick=true;window.setTimeout(()=>{ignoreMoveClick=false},350);prepareTimeChange('breakMove',staff.id,target)}
+  ev.stopPropagation();
+ });
+ label.addEventListener('pointercancel',()=>{shift=null;previewShift(start)});
+ label.addEventListener('click',ev=>{ev.preventDefault();ev.stopPropagation();if(ignoreMoveClick){ignoreMoveClick=false;return;}chooseBreakStart(staff.id)});
+
  const grip=add(el,node('button','break-grip','↔'));
  grip.type='button';
  grip.title=staff.name+'の休憩'+current+'分：右端を左右へ動かすかタップして15分刻みで変更';
