@@ -8,7 +8,7 @@ import { runInNewContext } from 'node:vm';
 import { test } from 'node:test';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const html = readFileSync(resolve(root, 'preview/v0.39-register.html'), 'utf8');
+const html = readFileSync(resolve(root, 'preview/v0.40-register-period.html'), 'utf8');
 const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
 assert.equal(scripts.length, 2, 'Expected original booking engine and controller only');
 const controller = scripts[1][1];
@@ -46,6 +46,7 @@ function fixture(confirm = () => true) {
   const receipts = [], messages = [];
   const sandbox = {
     register, demoReceipts: receipts, REG_DENOMS: denoms,
+    CHECKOUT_METHODS: {cash:'現金',credit:'カード',qr:'QR',emoney:'電子マネー',voucher:'商品券',other:'その他'},
     $: id => { assert.ok(els[id], 'Missing mock element ' + id); return els[id]; },
     window: { confirm },
     model: { staff: [{ id:'s1', name:'佐藤' }] },
@@ -75,9 +76,15 @@ test('opening + cash receipt + cash addition + mid-count + recount + closing', (
   els.reg_1000.value = '1';
   api.registerReconcile('中締め');
   assert.equal(r.checks.at(-1).diff, 0);
+  assert.equal(r.checks.at(-1).period.receipts, 2);
+  assert.equal(r.checks.at(-1).period.methods.cash, 5000);
+  assert.equal(r.checks.at(-1).period.methods.credit, 2500);
+  assert.equal(r.checks.at(-1).period.movements, 1000);
   els.reg_1000.value = '0';
   api.registerReconcile('再計数');
   assert.equal(r.checks.at(-1).diff, -1000);
+  assert.equal(r.checks.at(-1).period.receipts, 0);
+  assert.equal(r.checks.at(-1).period.movements, 0);
   assert.equal(r.events.length, 4);
   api.registerReconcile('閉店');
   assert.equal(r.phase, 'CLOSED');
