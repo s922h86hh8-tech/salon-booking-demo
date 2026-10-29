@@ -58,12 +58,14 @@ function makeHitTest(html, width, scroll) {
   return { q, label, clip, cellLeft, drop };
 }
 
-test('existing booking core is identical between main and preview', () => {
-  const a = inlineScripts(sources[0].html);
-  const b = inlineScripts(sources[1].html);
-  assert.equal(a.length, 2);
-  assert.equal(b.length, 2);
-  assert.equal(a[0], b[0]);
+test('booking core remains identical across stable and all previews', () => {
+  const original = inlineScripts(sources[0].html);
+  assert.equal(original.length, 2);
+  for (const { path, html } of sources.slice(1)) {
+    const scripts = inlineScripts(html);
+    assert.equal(scripts.length, 2, path + ': unexpected number of scripts');
+    assert.equal(scripts[0], original[0], path + ': booking engine must not change');
+  }
 });
 
 test('the CSP hashes match actual inline CSS and JavaScript', () => {
