@@ -1,0 +1,38 @@
+name: Salon demo static regression tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'preview/**'
+      - 'tests/**'
+      - '.github/workflows/static-tests.yml'
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'preview/**'
+      - 'tests/**'
+      - '.github/workflows/static-tests.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  static-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out this repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check JavaScript syntax and regression tests
+        run: |
+          node --check tests/drag-geometry.test.mjs
+          node --check tests/register-flow.test.mjs
+          node --test tests/drag-geometry.test.mjs tests/register-flow.test.mjs
