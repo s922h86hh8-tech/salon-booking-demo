@@ -35,4 +35,5 @@ jobs:
         run: |
           node --check tests/drag-geometry.test.mjs
           node --check tests/register-flow.test.mjs
-          node --test tests/drag-geometry.test.mjs tests/register-flow.test.mjs
+          node --check tests/accounting-rules.test.mjs
+          node --test tests/*.test.mjs
