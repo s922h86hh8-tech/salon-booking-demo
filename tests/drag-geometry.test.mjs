@@ -1,5 +1,5 @@
 // Run locally after cloning: node --test tests/drag-geometry.test.mjs
-// Verifies the same drag-hit functions used by the v0.35 main demo and v0.36 phone preview.
+// Verifies drag-hit behavior across v0.36 stable and subsequent previews.
 // This file does not access customers, the network, or external services.
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -10,7 +10,7 @@ import { test } from 'node:test';
 import { runInNewContext } from 'node:vm';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const sourcePaths = ['index.html', 'preview/v0.36-mobile-drag.html'];
+const sourcePaths = ['index.html', 'preview/v0.36-mobile-drag.html', 'preview/v0.37-booking.html', 'preview/v0.38-accounting.html', 'preview/v0.39-register.html'];
 const read = path => readFileSync(resolve(root, path), 'utf8');
 const sources = sourcePaths.map(path => ({ path, html: read(path) }));
 
@@ -108,8 +108,10 @@ test('15-minute drop slot equals independent geometry for phone and wide screens
   console.log('Checked ' + count + ' simulated points across both variants.');
 });
 
-test('preview includes orientation-aware grid repaint without modifying main', () => {
-  assert.doesNotMatch(sources[0].html, /lastRenderedScheduleQ/);
-  assert.match(sources[1].html, /lastRenderedScheduleQ/);
-  assert.match(sources[1].html, /window\.addEventListener\('resize'/);
+test('v0.36 stable and later previews all retain the orientation-aware fix', () => {
+  for (const { path, html } of sources) {
+    assert.match(html, /lastRenderedScheduleQ/, path + ': missing orientation logic');
+    assert.match(html, /window\.addEventListener\('resize'/, path + ': missing resize handler');
+    assert.match(html, /const q=r\.width\/36/, path + ': missing actual cell-width calculation');
+  }
 });
