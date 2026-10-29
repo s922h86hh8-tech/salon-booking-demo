@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-hWeXtyftSPmqop/dmU1y6An7VHBrihl42y0U6Xr8FPg=' 'sha256-nAs/J5k1YWhf1knhSLb6SCbAvJeFpNku7wDHLXwKy7o='; style-src 'sha256-JjfkgwW48qYZeqTzjjbSCrW6lYdFMhUG8XNBEcnhtpc='; img-src data:; font-src 'none'; connect-src 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; upgrade-insecure-requests"><title>AI予約システム｜操作体験デモ v0.32</title><style>:root{--text:#1b2b43;--muted:#53657b;--border:#d7e2ee;--blue:#2165bb;--blue-dark:#164986;--blue-tint:#eaf2fc;--bg:#f6f8fc;--surface:#fff;--green:#186b46;--red:#ac3030;--yellow:#82510f;--radius:15px}
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-HyrBC/mtQ8S+TKdzyIcTM0d1Yp44OG6LAWyi0z14Hao=' 'sha256-KqFbA3Ky6TsfB2ICHIFEy7LFvwejW7ZKFvo1ZF0QANY='; style-src 'sha256-Hq4jDa+uvIFGISM3aw0EmKtVb+oDfa6qe1sfa0k2D8E='; img-src data:; font-src 'none'; connect-src 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; upgrade-insecure-requests"><title>AI予約システム｜操作体験デモ v0.33</title><style>:root{--text:#1b2b43;--muted:#53657b;--border:#d7e2ee;--blue:#2165bb;--blue-dark:#164986;--blue-tint:#eaf2fc;--bg:#f6f8fc;--surface:#fff;--green:#186b46;--red:#ac3030;--yellow:#82510f;--radius:15px}
 *{box-sizing:border-box}html{font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;color:var(--text);background:var(--bg)}body{margin:0}button,input,select{font:inherit}button{cursor:pointer;border:1px solid var(--border);border-radius:10px;padding:11px 15px;background:#fff;color:var(--text);font-weight:650}button:hover{background:#edf4fb}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #86b5fb;outline-offset:2px}button:disabled{cursor:not-allowed;opacity:.5}.primary{background:var(--blue);border-color:var(--blue);color:#fff}.primary:hover{background:var(--blue-dark)}.secondary{background:#fff}.textbtn{background:none;border:0;color:var(--blue)}.hidden{display:none!important}.top{background:#132945;color:#fff}.topinner{max-width:1400px;margin:auto;padding:24px 32px;display:flex;justify-content:space-between;align-items:center;gap:20px}.top h1{margin:2px 0 6px;font-size:25px}.top h1 span{color:#a5d1ff}.top p{color:#d8e5f5;margin:0;font-size:13px}.eyebrow{letter-spacing:1.8px;color:#a8ccf5;font-size:10px;font-weight:800}.eyebrow.blue{color:var(--blue)}.topactions{display:flex;align-items:center;gap:12px}.demo-tag{font-size:12px;padding:8px 12px;background:#314b68;border-radius:30px;white-space:nowrap}.notice{background:#fff5e5;border-bottom:1px solid #ead19f;padding:11px 24px;text-align:center;font-size:12px;color:#704d14}.layout{max-width:1400px;display:grid;grid-template-columns:252px minmax(0,1fr);gap:25px;margin:0 auto;padding:26px}.sidebar{background:#fff;border:1px solid var(--border);border-radius:var(--radius);min-height:620px;padding:17px;align-self:start;position:sticky;top:15px}.shop{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);padding-bottom:20px}.shop strong{font-size:13px}.shop small{color:var(--muted);font-size:11px;display:block;margin-top:4px}.logo{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#dceafa;color:var(--blue-dark);font-weight:800}.navigation{display:grid;gap:7px;margin-top:17px}.navigation button{border:0;text-align:left;background:transparent;display:flex;gap:12px;align-items:center;font-size:13px;font-weight:650;padding:13px 12px}.navigation button.active{background:var(--blue-tint);color:var(--blue-dark);box-shadow:inset 3px 0 var(--blue)}.sidefoot{margin-top:45px;border-top:1px solid var(--border);padding-top:18px;color:var(--muted);font-size:11px;line-height:1.8}.main{min-width:0}.page-title{display:flex;align-items:start;justify-content:space-between;gap:18px;margin:8px 0 22px}.page-title h2{font-size:25px;letter-spacing:-.4px;margin:7px 0}.page-title p{font-size:13px;color:var(--muted);line-height:1.8;margin:0}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin:0 0 18px;box-shadow:0 3px 13px rgba(19,41,69,.025)}.card h3{font-size:16px;margin:0 0 17px}.card p{line-height:1.75}.subdued{background:#eff5fc}.subdued p{font-size:12px;color:var(--muted)}.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:20px}.metric{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:19px}.metric small,.metric span{display:block;color:var(--muted);font-size:11px}.metric strong{font-size:31px;display:block;margin:9px 0}.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.tile{text-align:left;display:flex;flex-direction:column;gap:9px;min-height:176px;padding:20px;border-radius:12px}.tile strong{font-size:14px}.tile small{color:var(--muted);line-height:1.6}.tile .go{color:var(--blue);font-size:12px;margin-top:auto}.stepnum{font-size:11px;font-weight:800;color:var(--blue)}.progresslabel{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px}.progress{height:7px;border-radius:10px;background:#e7edf5;margin:13px 0 23px;overflow:hidden}.progress div{height:100%;background:var(--blue);transition:width .2s}.buttonrow{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-top:19px}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}label{font-size:12px;color:#38516b;font-weight:700;display:grid;gap:7px}select,input{width:100%;background:#fff;border:1px solid #b8c9dc;color:var(--text);border-radius:9px;padding:11px;min-width:0}.statusbox{padding:13px 14px;margin-top:14px;border-radius:10px;background:#edf3fb;color:#234b78;border:1px solid #d7e5f5;font-size:13px;line-height:1.7}.statusbox.bad{background:#fdecec;border-color:#f4c9c9;color:#8a2222}.statusbox.good{background:#e9f5ee;border-color:#bfe4ce;color:#176b45}.statusbox.soft{background:#f6f8fb;color:var(--muted)}.datepill{font-size:11px;color:#2b5e9d;background:#e6f0fc;padding:11px 12px;border-radius:30px;white-space:nowrap}.cardhead{display:flex;justify-content:space-between;align-items:center;gap:8px}.cardhead small,.muted{color:var(--muted);font-size:12px}.booking-row,.release-row,.offer-row,.connect-row{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--border);padding:13px 0}.booking-row strong,.release-row strong,.offer-row strong{font-size:13px}.booking-row small,.release-row small,.offer-row small,.connect-row small{color:var(--muted);font-size:11px;display:block;line-height:1.6;margin-top:3px}.booking-row button,.release-row button,.offer-row button{font-size:12px}.rowactions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.pill{display:inline-block;border-radius:20px;background:#e7f2ff;color:#16528b;padding:5px 10px;font-size:11px;font-weight:700}.pill.cancel{background:#fce9e9;color:#a32d2d}.pill.pending{background:#fff1da;color:#80510d}.pill.ok{background:#e0f3e8;color:#166a42}.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.pills button{color:var(--blue);border-color:#aecbee;background:#f3f8ff;font-size:12px}.question{font-size:19px;margin-bottom:20px;font-weight:750}.choices{display:grid;gap:10px}.choice{display:flex;gap:12px;align-items:center;text-align:left;padding:17px;white-space:normal}.choice.selected{background:var(--blue-tint);border-color:var(--blue)}.choice strong{font-size:13px}.choice small{font-size:11px;color:var(--muted)}.choice mark{margin-left:auto;background:var(--blue);color:#fff;padding:3px 8px;border-radius:20px;font-size:10px}.summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;font-size:12px}.summary div{background:#fff;border:1px solid var(--border);border-radius:9px;padding:12px}.summary strong{display:block;margin-bottom:7px}.connect-row>div:first-child{flex:1}.link-step{background:#f6f9fc;border:1px solid var(--border);border-radius:9px;padding:14px;margin:10px 0;font-size:12px;line-height:1.8}.footer{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:11px;color:var(--muted);padding:18px 5px}.flash{border:1px solid #b2d4bd;background:#e8f5ec;color:#17603d;border-radius:10px;padding:12px 17px;margin:0 0 20px;font-size:13px;line-height:1.6}.flash.bad{background:#fdeeee;border-color:#f4caca;color:#a52c2c}@media(max-width:850px){.layout{grid-template-columns:1fr;padding:15px;gap:12px}.sidebar{position:static;min-height:0;padding:12px}.shop,.sidefoot{display:none}.navigation{display:flex;overflow-x:auto;gap:7px;margin:0;scrollbar-width:thin}.navigation button{white-space:nowrap;background:#f4f7fb}.topinner{padding:19px 17px}.topactions{flex-direction:column;align-items:end}.top h1{font-size:19px}.tiles{grid-template-columns:1fr}.tile{min-height:0}.metrics{grid-template-columns:repeat(3,minmax(0,1fr))}.metric{padding:12px}.metric strong{font-size:26px}.card{padding:18px}.page-title h2{font-size:21px}}@media(max-width:550px){.topinner{display:block}.topactions{margin-top:14px;flex-direction:row;justify-content:space-between}.top p{line-height:1.5}.notice{text-align:left;padding:12px 16px}.fields{grid-template-columns:1fr}.page-title{display:block}.datepill{display:inline-block;margin-top:12px}.booking-row,.release-row,.offer-row,.connect-row{align-items:start;flex-wrap:wrap}.rowactions{width:100%}.rowactions button{flex:1}.summary{grid-template-columns:1fr}.metric small{font-size:10px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 /* Prevent intrinsic navigation width from expanding narrow phone viewports. */
 @media(max-width:850px){.layout{grid-template-columns:minmax(0,1fr)}.sidebar{min-width:0;max-width:100%}.navigation{min-width:0;max-width:100%;width:100%}.main{min-width:0;max-width:100%}}
@@ -135,34 +135,60 @@
 .schedule-queue-block .origin-badge{position:absolute;right:5px;top:4px;width:25px;height:20px;font-size:9px}
 @media(max-width:550px){.schedule-book .origin-badge{right:29px;width:23px;font-size:9px}.schedule-book .time{padding-right:26px}}
 
-/* v0.32: resizable, confirmation-gated staff breaks. */
+/* v0.33: resizable, confirmation-gated staff breaks. */
 .schedule-break.break-resizable{top:7px;height:91px;z-index:4;overflow:visible;display:flex;justify-content:space-between;align-items:center;padding:0;gap:0;box-shadow:0 1px 3px #26374d24}
 .break-text{min-width:0;flex:1;overflow:hidden;text-overflow:clip;white-space:nowrap;font-size:11px;line-height:1.2;text-align:center;font-weight:800;padding:0 1px}
 .break-grip{height:calc(100% + 2px);width:26px;min-width:26px;flex:none;display:flex;align-items:center;justify-content:center;padding:0;margin:-1px -1px -1px 0;border:1px solid #8397ac;border-radius:0 6px 6px 0;color:#34465a;background:#cfd9e5;font-size:15px;touch-action:none;user-select:none;-webkit-user-select:none;cursor:ew-resize}
 .break-grip:hover{background:#b9c9d9}
 .break-grip:focus-visible{outline:3px solid #2570c7;outline-offset:2px}
 .schedule-break.break-resizable.drag-preview{box-shadow:0 0 0 3px #9cadbf;border:2px solid #61798e}
-/* v0.32: center moves entire break; right grip changes break length. */
-.break-move{border:0;border-radius:5px 0 0 5px;appearance:none;background:transparent;color:inherit;height:100%;min-width:0;display:flex;align-items:center;justify-content:center;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
-.break-move:active{cursor:grabbing}
-.break-move:focus-visible{outline:3px solid #2570c7;outline-offset:0;z-index:1}
-.break-resizable .break-grip{cursor:ew-resize}
-.break-resizable .break-move:hover{background:#cbd9e8a8}
 @media(max-width:550px){.break-grip{width:24px;min-width:24px}.break-text{font-size:10px}}
+
+/* v0.33: drag break body to shift its start; right grip changes duration. */
+.schedule-break.break-draggable{cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+.schedule-break.break-draggable:active{cursor:grabbing}
+.schedule-break.break-draggable:focus-visible{outline:3px solid #2570c7;outline-offset:3px}
+.schedule-break.break-draggable.drag-preview{background:#dce9f7;border-color:#3d789e;box-shadow:0 0 0 3px #8fb4d5}
+.schedule-break.break-draggable .break-text{pointer-events:none}
+.schedule-help-detail{font-size:11px;color:#4f647a;margin:0 0 10px}.schedule-help-detail summary{cursor:pointer;color:#2464a5;padding:2px 0}.schedule-help-detail p{margin:8px 0;line-height:1.7}
+
+/* v0.33: accounting / cash register demo isolated from payment providers */
+.checkout-course{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:13px 14px;background:#f0f6fc;border-radius:10px;margin-top:10px;font-size:14px}
+.checkout-course strong{font-size:19px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.checkout-field{display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:650;margin:12px 0}
+.checkout-field select{min-height:44px;width:100%;max-width:620px;padding:10px;border:1px solid #becfe1;border-radius:8px;background:#fff}
+.checkout-check{display:flex;align-items:flex-start;gap:9px;line-height:1.55;font-size:14px;margin:13px 0;cursor:pointer}
+.checkout-check input{flex:none;width:18px;height:18px;accent-color:#2366bd;margin-top:2px}
+.checkout-total{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#eef5ff;border-radius:12px;padding:15px;margin:14px 0;color:#183e69}
+.checkout-total strong{font-size:26px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.checkout-payment-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.checkout-payment-grid label{display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:650}
+.checkout-payment-grid input{width:100%;min-height:44px;border:1px solid #becfe1;border-radius:8px;padding:10px;font-size:17px;font-variant-numeric:tabular-nums;background:#fff}
+.checkout-accounting{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:15px 0}
+.checkout-accounting>div{background:#f1f5fa;border-radius:9px;padding:10px 8px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.checkout-accounting span{font-size:11px;color:#5b6b80}
+.checkout-accounting strong{font-size:17px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.checkout-receipts{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.checkout-receipt{border:1px solid #d9e4ef;border-radius:10px;padding:12px;font-size:12px;line-height:1.7}
+.checkout-receipt strong{font-size:14px}
+.checkout-report{display:flex;flex-wrap:wrap;gap:8px}
+.checkout-report span{font-size:12px;background:#eef3fa;border:1px solid #dae4ee;border-radius:8px;padding:6px 8px}
+@media(max-width:620px){.checkout-payment-grid{grid-template-columns:1fr 1fr}.checkout-accounting{grid-template-columns:1fr 1fr}.checkout-accounting>div:last-child{grid-column:1/-1}.checkout-total strong{font-size:22px}}
+@media(max-width:360px){.checkout-payment-grid{grid-template-columns:1fr}}
 </style></head>
 <body>
-<header class="top"><div class="topinner"><div><div class="eyebrow">SMALL SALON · EXPERIENCE</div><h1>店舗予約システム <span>体験デモ</span></h1><p>店舗スタッフは予約表から操作。その他の機能は管理メニューにまとめました。</p></div><div class="topactions"><span class="demo-tag">v0.32 · 架空データ専用</span><button class="secondary" id="resetTop">↻ 最初から</button></div></div></header>
+<header class="top"><div class="topinner"><div><div class="eyebrow">SMALL SALON · EXPERIENCE</div><h1>店舗予約システム <span>体験デモ</span></h1><p>店舗スタッフは予約表から操作。その他の機能は管理メニューにまとめました。</p></div><div class="topactions"><span class="demo-tag">v0.33 · 架空データ専用</span><button class="secondary" id="resetTop">↻ 最初から</button></div></div></header>
 <div class="notice"><strong>安全な体験モード</strong>：実店舗・顧客情報・LINE・Google・決済・本番DBには接続しません。画面を閉じると操作内容は消えます。実際の予約は成立しません。</div>
 <div class="rolebar" aria-label="画面モード"><div class="roleinner"><button type="button" id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="adminMenu">☰ 管理メニュー</button><span class="role-caption">予約表がメイン画面です</span><div class="rolebuttons"><button type="button" id="viewAdmin" class="rolebutton active" aria-pressed="true">店舗管理者の画面</button><button type="button" id="viewCustomer" class="rolebutton" aria-pressed="false">お客様の予約画面</button></div></div></div>
-<button type="button" id="drawerShade" class="drawer-shade" hidden aria-label="管理メニューを閉じる"></button><main class="layout"><aside id="adminMenu" class="sidebar" aria-label="管理メニュー" aria-hidden="true"><div class="drawer-top"><strong>管理メニュー</strong><button type="button" id="menuClose" class="drawer-close" aria-label="管理メニューを閉じる">✕ 閉じる</button></div><div class="shop"><div class="logo">青</div><div><strong id="storeName">架空・青空リラクゼーション</strong><small>店舗管理者の体験</small></div></div><nav class="navigation" aria-label="管理画面の切り替え"><button data-page="booking" class="active">▦ <span>予約表と予約登録</span></button><button data-page="waitlist">◷ <span>キャンセル枠回収</span></button><button data-page="setup">▤ <span>店舗の初期設定</span></button><button data-page="connect">↗ <span>LINE・Google案内</span></button><button data-page="home">⌂ <span>使い方・ご案内</span></button></nav><div class="sidefoot">個人情報は入力しないでください。<br>データ保存・外部送信なし</div></aside><div class="main">
+<button type="button" id="drawerShade" class="drawer-shade" hidden aria-label="管理メニューを閉じる"></button><main class="layout"><aside id="adminMenu" class="sidebar" aria-label="管理メニュー" aria-hidden="true"><div class="drawer-top"><strong>管理メニュー</strong><button type="button" id="menuClose" class="drawer-close" aria-label="管理メニューを閉じる">✕ 閉じる</button></div><div class="shop"><div class="logo">青</div><div><strong id="storeName">架空・青空リラクゼーション</strong><small>店舗管理者の体験</small></div></div><nav class="navigation" aria-label="管理画面の切り替え"><button data-page="booking" class="active">▦ <span>予約表と予約登録</span></button><button data-page="checkout">¥ <span>会計・売上（体験）</span></button><button data-page="waitlist">◷ <span>キャンセル枠回収</span></button><button data-page="setup">▤ <span>店舗の初期設定</span></button><button data-page="connect">↗ <span>LINE・Google案内</span></button><button data-page="home">⌂ <span>使い方・ご案内</span></button></nav><div class="sidefoot">個人情報は入力しないでください。<br>データ保存・外部送信なし</div></aside><div class="main">
 <div id="flash" class="flash hidden" role="status" aria-live="polite"></div>
 <section id="page-home" class="page hidden"><div class="page-title"><div><div class="eyebrow blue">WELCOME</div><h2>店舗運営を、ひとつの画面で。</h2><p>導入時の初期設定から、予約・キャンセル枠の回収までを体験できます。</p></div></div>
 <div class="metrics"><div class="metric"><small>確定中の予約</small><strong id="kpiBookings">3</strong><span>架空データ</span></div><div class="metric"><small>キャンセル待ち</small><strong id="kpiWaiting">3</strong><span>通知送信なし</span></div><div class="metric"><small>回収した空き枠</small><strong id="kpiRecovered">0</strong><span>模擬確定</span></div></div>
 <div class="card"><h3>まずはこの3つを試してください</h3><div class="tiles"><button class="tile" data-go="setup"><span class="stepnum">01</span><strong>初期設定ガイド</strong><small>質問に答えるだけで構成を確認</small><span class="go">体験する →</span></button><button class="tile" data-go="booking"><span class="stepnum">02</span><strong>予約登録</strong><small>スタッフ・ベッド・休憩を自動確認</small><span class="go">体験する →</span></button><button class="tile" data-go="waitlist"><span class="stepnum">03</span><strong>空き枠回収</strong><small>取消 → 候補提案 → 模擬確定</small><span class="go">体験する →</span></button></div></div><div class="card subdued"><h3>このデモと開発本体の違い</h3><p>この画面は操作体験専用の独立したシミュレーターです。v0.21のPython予約エンジンやDBには書き込みません。実際の予約同時確定、本人認証、外部通知の安全性を証明するものではありません。</p></div></section>
 <section id="page-setup" class="page hidden"><div class="page-title"><div><div class="eyebrow blue">ONBOARDING</div><h2>店舗初期設定ガイド</h2><p>AIのように順番に案内する定型ガイドです。実際の生成AIには接続しません。</p></div></div><div class="card"><div class="progresslabel"><span id="guideCount">ステップ 1 / 5</span><span id="guideDone">設定プレビュー</span></div><div class="progress"><div id="guideProgress"></div></div><div id="guideBody"></div><div class="buttonrow"><button class="secondary" id="guidePrev">戻る</button><button class="primary" id="guideNext">次へ進む</button></div></div><div class="card subdued"><h3>すでに用意された架空の設定</h3><div id="setupSummary"></div><p class="muted">この体験での選択は画面上だけに反映されます。実予約台帳の設定変更はありません。</p></div></section>
-<section id="page-booking" class="page"><div class="page-title"><div><div class="eyebrow blue">RESERVATIONS</div><h2>スタッフ別予約表・予約登録</h2><p>スタッフごとの予約と予約経路を一目で確認できます。下部の担当未定の枠から付け回しも試せます。</p></div><span class="datepill">2026年10月26日 · 架空日付</span></div><div class="card"><div class="cardhead"><h3>スタッフ別・本日の予約表</h3><small>15分刻み・横にスクロールできます</small></div>
+<section id="page-booking" class="page"><div class="page-title"><div><div class="eyebrow blue">RESERVATIONS</div><h2>スタッフ別予約表・予約登録</h2><p>スタッフごとの予約と予約経路を一目で確認できます。下部の担当未定の枠から付け回しも試せます。</p></div><span class="datepill">2026年10月26日 · 架空日付</span></div><div class="card"><div class="cardhead"><h3>スタッフ別・本日の予約表</h3><small>15分区切り・横にスクロールできます</small></div>
 <div class="schedule-legend"><span><i class="legend-book"></i>施術</span><span><i class="legend-prep"></i>準備</span><span><i class="legend-break"></i>休憩</span><span><i class="legend-free"></i>空き</span><span><i class="legend-queue"></i>付け回し待ち（未確定）</span></div>
-<p class="schedule-help">スタッフ名は左に固定。予約枠内の小さな「HPB」「L」「HP」などは予約経路を示す仮マークです。施術予約・準備・休憩の右端「↔」で15分刻みに調整。 休憩は中央部分を左右に動かすと時間帯を移動できます。一番下の「自由枠／担当未決定」のお客様をタップするとスタッフへ付け回せます。どちらも確認後にのみ反映します（架空データのみ）。</p>
+<p class="schedule-help">休憩枠の中央を左右に動かすと開始時刻を変更。右端「↔」で休憩・予約・準備の長さを調整できます。変更は確認後に反映します。</p><details class="schedule-help-detail"><summary>操作方法・予約経路マークの説明</summary><p>スタッフ名は左に固定。小さな「HPB」「L」「HP」などの仮マークは予約経路を表します。一番下の担当未定枠からスタッフへ付け回せます。枠はタップ操作にも対応しています。架空データのみの体験です。</p></details>
 <div id="prepFeedback" class="prep-feedback hidden" role="status" aria-live="polite"></div>
 <div class="schedule-scroll" tabindex="0" role="region" aria-label="スタッフ別の予約表。左右にスクロールして時間を確認できます"><div id="staffSchedule" class="staff-schedule"></div></div>
 <div class="schedule-foot">表示日：2026年10月26日（架空）。自由枠のカードは未確定であり、担当スタッフと設備を決めてから予約確定になります。<strong id="unassignedCount"></strong> 予約の取消は「☰ 管理メニュー」から行えます。</div>
@@ -170,10 +196,51 @@
 <label>今回の予約経路<select id="bSource"><option value="phone">電話</option><option value="line">LINE</option><option value="hpb">ホットペッパービューティー</option><option value="website">自社ホームページ</option><option value="google">Google経由</option><option value="instore">店頭・次回予約</option><option value="other">その他</option><option value="unknown">不明</option></select></label>
 <label>お店を初めて知ったきっかけ（任意）<select id="bDiscovery"><option value="unknown">未入力・不明</option><option value="google">Google検索・マップ</option><option value="hpb">ホットペッパービューティー</option><option value="line">LINE</option><option value="referral">知人・家族の紹介</option><option value="sns">その他SNS</option><option value="storefront">店頭・通りがかり</option><option value="other">その他</option></select></label></div>
 <p class="origin-help">「予約経路」と「最初にお店を知ったきっかけ」は別情報です。分からなければ「不明」のままで大丈夫。公式サービスのロゴではなく、仮の識別マークを表示します。</p><div class="statusbox" id="bookingCheck" aria-live="polite"></div><div class="buttonrow"><button class="secondary" id="suggest">前後の候補を探す</button><button class="primary" id="bookNow">架空予約を確定</button></div><div id="suggestions" class="pills" aria-live="polite"></div><p class="muted">「担当未定」を選ぶと自由枠へ順番に追加します。これは仮受付であり、お客様の予約は確定しません。</p></div></section>
+
+<section id="page-checkout" class="page hidden" aria-label="架空の会計画面">
+ <div class="page-title"><div><div class="eyebrow blue">CHECKOUT · DEMO</div><h2>会計・売上の体験</h2><p>予約したコース料金、割引、支払い手段を分けて記録します。実際の決済やLINEポイントの消費は行いません。</p></div><span class="datepill">架空・保存なし</span></div>
+ <div class="card"><div class="cardhead"><h3>1. 予約とコースを選択</h3><small>予約表から引き継ぎ</small></div>
+  <label class="checkout-field">会計する予約<select id="checkoutBooking"></select></label>
+  <div class="checkout-course" id="checkoutCourse"></div>
+  <p class="muted">予約枠を伸縮しても、コース料金は自動では変わりません。コースと請求額を確認してください。</p>
+ </div>
+ <div class="card"><h3>2. 値引き・特典を適用</h3>
+  <label class="checkout-check"><input type="checkbox" id="checkoutCoupon"> 500円割引クーポン（体験）</label>
+  <label class="checkout-check"><input type="checkbox" id="checkoutLine"> LINEポイント特典・10ポイントで1,000円割引（体験）</label>
+  <p class="muted">このデモでは特典を消費せず、併用条件は未設定です。本番では使用条件・有効期限・二重利用防止を確認します。</p>
+  <div class="checkout-total"><span>割引後の請求額</span><strong id="checkoutDue">¥0</strong></div>
+ </div>
+ <div class="card"><h3>3. 支払い方法と金額を入力</h3>
+  <p class="muted">値引き券は上の「割引」、支払いに使う商品券はここで記録します。各支払い方法の合計が請求額と一致する必要があります。割引や予約を変更すると、支払い内訳は選択中の方法に全額再設定されます。</p>
+  <label class="checkout-field">選択した方法に全額を割り当てる<select id="checkoutPayPreset">
+   <option value="cash">現金</option><option value="credit">クレジットカード</option><option value="qr">QRコード決済</option><option value="emoney">電子マネー</option><option value="voucher">地域商品券・商品券</option><option value="other">その他の支払い</option>
+  </select></label>
+  <div class="checkout-payment-grid" id="checkoutPaymentGrid">
+   <label>現金 <input id="pay_cash" data-payment="cash" type="number" inputmode="numeric" min="0" step="1" value="0"></label>
+   <label>クレジットカード <input id="pay_credit" data-payment="credit" type="number" inputmode="numeric" min="0" step="1" value="0"></label>
+   <label>QRコード決済 <input id="pay_qr" data-payment="qr" type="number" inputmode="numeric" min="0" step="1" value="0"></label>
+   <label>電子マネー <input id="pay_emoney" data-payment="emoney" type="number" inputmode="numeric" min="0" step="1" value="0"></label>
+   <label>地域商品券・商品券 <input id="pay_voucher" data-payment="voucher" type="number" inputmode="numeric" min="0" step="1" value="0"></label>
+   <label>その他 <input id="pay_other" data-payment="other" type="number" inputmode="numeric" min="0" step="1" value="0"></label>
+  </div>
+  <div class="checkout-accounting"><div><span>請求額</span><strong id="checkoutExpected">¥0</strong></div><div><span>支払い入力合計</span><strong id="checkoutPaid">¥0</strong></div><div><span>差額（未精算額）</span><strong id="checkoutDifference">¥0</strong></div></div>
+  <div id="checkoutStatus" class="statusbox" role="status" aria-live="polite"></div>
+  <label class="checkout-field">会計操作担当者（仮選択）<select id="checkoutCashier"><option value="s1">佐藤</option><option value="s2">田中</option></select></label>
+  <label class="checkout-check"><input id="checkoutAcknowledged" type="checkbox"> 入力した金額と支払い方法を確認しました（模擬）</label>
+  <div class="buttonrow"><button id="checkoutSave" class="primary" disabled>内容を確認して模擬会計を記録</button></div>
+  <p class="muted">※ 支払い完了を決済サービスから取得していません。実際の取引・カード情報入力・請求書発行は行いません。</p>
+ </div>
+ <div class="card"><div class="cardhead"><h3>模擬会計の記録・集計</h3><small>今開いている画面内だけ</small></div>
+  <div class="checkout-total"><span>模擬会計額の合計</span><strong id="checkoutSales">¥0</strong></div>
+  <div id="checkoutReport" class="checkout-report"></div>
+  <div id="checkoutReceipts" class="checkout-receipts"></div>
+  <p class="muted">売上と入金の内訳は分けています。レジの開店・中締め・閉店・金種別実査は次段階で実装します。</p>
+ </div>
+</section>
 <section id="page-waitlist" class="page hidden"><div class="page-title"><div><div class="eyebrow blue">WAITLIST</div><h2>キャンセル枠を埋める体験</h2><p>通知先は架空です。案内は「未送信」のまま、承諾後の模擬予約だけ実行します。</p></div></div><div class="card"><h3>1. キャンセルを発生させる</h3><p class="muted">確定中の架空予約を取り消すと、回収候補を探す対象になります。</p><div id="cancelList"></div></div><div class="card"><h3>2. 空き枠の候補を案内する</h3><div id="releaseList"></div></div><div class="card"><h3>3. 案内の返答を処理する</h3><div id="offerList"></div><p class="muted">顧客の承諾を模擬確認してから確定。二重確定は拒否し、空き状況を再チェックします。</p></div></section>
 <section id="page-customer" class="page hidden" aria-label="お客様向け予約"><div class="page-title"><div><div class="eyebrow blue">CUSTOMER BOOKING · DEMO</div><h2>架空・青空リラクゼーションのご予約</h2><p>コースと担当者を選ぶと、ご予約可能な時間だけが表示されます。</p></div><span class="datepill">架空の体験日 · 2026年10月26日</span></div><div class="card"><div class="fields"><label>ご希望のコース<select id="cMenu"><option value="m60">もみほぐし60分（5,000円）</option><option value="m90">個室ケア90分（9,000円）</option></select></label><label>担当者のご希望<select id="cStaff"><option value="any">指名なし（空いている担当者）</option><option value="s1">佐藤</option><option value="s2">田中</option></select></label></div><h3>予約できる開始時刻</h3><p class="muted">空き枠は15分刻みで表示します。設備や休憩などの内部条件は自動判定します。</p><div id="cTimes" class="customer-times" aria-live="polite"></div><div id="cSummary" class="customer-summary" aria-live="polite"></div><div class="buttonrow"><button id="cBook" class="primary" disabled>この内容で模擬予約する</button></div><p class="muted">体験用の予約です。氏名や電話番号は入力しないでください。実際の予約・決済・通知は発生しません。</p></div><div class="card subdued"><h3>空きが見つからない場合</h3><p>担当者を「指名なし」にすると、ご案内できる時間が増える場合があります。実店舗版ではキャンセル待ち登録も用意します。</p></div></section>
 <section id="page-connect" class="page hidden"><div class="page-title"><div><div class="eyebrow blue">INTEGRATIONS</div><h2>外部サービス連携のガイド</h2><p>LINE公式・Googleを使わなくても基本予約機能を体験できます。</p></div></div><div class="card"><h3>各サービスは任意で追加</h3><div id="connectList"></div><div class="statusbox soft">「手順を見る」は説明を表示するだけです。ログイン、OAuth、API接続、送信などは行いません。</div></div></section>
-<div class="footer"><span>v0.32 操作体験専用｜データは画面内のメモリのみ</span><button class="textbtn" id="resetBottom">体験をリセット</button></div></div></main><script>/* v0.22 independent fictional demo. In-memory only. No network, no personal data. */
+<div class="footer"><span>v0.33 操作体験専用｜データは画面内のメモリのみ</span><button class="textbtn" id="resetBottom">体験をリセット</button></div></div></main><script>/* v0.22 independent fictional demo. In-memory only. No network, no personal data. */
 (function (root) {
   'use strict';
   const DATE='2026-10-26';
@@ -215,34 +282,36 @@
     if(!item)return null;
     return {start:item.start,end:item.start+item.duration,duration:item.duration};
   }
-  function changeBreak(model,staffId,minutes){
+  // Both moving and resizing a break use the same collision rules.
+  function validateBreakWindow(model,staffId,start,duration){
     const staff=model.staff.find(s=>s.id===staffId);
-    const original=breakFor(model,staffId);
-    assert(staff&&original,'変更対象の休憩が見つかりません');
-    assert(Number.isInteger(minutes)&&minutes%15===0&&minutes>=15&&minutes<=180,'休憩は15〜180分の15分刻みで指定してください');
-    if(original.duration===minutes)return minutes;
-    const newEnd=original.start+minutes;
-    assert(newEnd<=1080,'営業時間を超えて休憩を延長できません');
+    assert(staff&&breakFor(model,staffId),'変更対象の休憩が見つかりません');
+    assert(Number.isInteger(start)&&start%15===0&&start>=540,'休憩の開始は09:00以降・15分刻みです');
+    assert(Number.isInteger(duration)&&duration%15===0&&duration>=15&&duration<=180,'休憩は15〜180分の15分刻みで指定してください');
+    assert(start+duration<=1080,'営業時間を超えて休憩を設定できません');
     for(const b of model.bookings.filter(b=>b.status==='CONFIRMED'&&b.staff===staffId)){
       const occupied=resourceWindow(model,b);
-      assert(!intersects(original.start,newEnd,occupied.start,occupied.staffEnd),'予約や準備時間と重なるため変更できません');
+      assert(!intersects(start,start+duration,occupied.start,occupied.staffEnd),'予約や準備時間と重なるため変更できません');
     }
+    return staff;
+  }
+  function changeBreak(model,staffId,minutes){
+    const original=breakFor(model,staffId);
+    assert(original,'変更対象の休憩が見つかりません');
+    if(original.duration===minutes)return minutes;
+    const staff=validateBreakWindow(model,staffId,original.start,minutes);
     model.breaks[staffId].duration=minutes;
     model.events.push(staff.name+'の休憩 '+original.duration+'分→'+minutes+'分');
     return minutes;
   }
   function moveBreak(model,staffId,newStart){
-    const staff=model.staff.find(s=>s.id===staffId);
-    const old=breakFor(model,staffId);
-    assert(staff&&old,'移動対象の休憩が見つかりません');
-    assert(Number.isInteger(newStart)&&newStart%15===0&&newStart>=540&&newStart+old.duration<=1080,'休憩は営業時間内で15分刻みに移動してください');
-    if(old.start===newStart)return newStart;
-    for(const booking of model.bookings.filter(b=>b.status==='CONFIRMED'&&b.staff===staffId)){
-      const occupied=resourceWindow(model,booking);
-      assert(!intersects(newStart,newStart+old.duration,occupied.start,occupied.staffEnd),'既存予約または施術後の準備時間と重なるため、休憩を移動できません');
-    }
+    const original=breakFor(model,staffId);
+    assert(original,'変更対象の休憩が見つかりません');
+    // A no-op should still require a correctly snapped start.
+    const staff=validateBreakWindow(model,staffId,newStart,original.duration);
+    if(original.start===newStart)return newStart;
     model.breaks[staffId].start=newStart;
-    model.events.push(staff.name+'の休憩を'+clock(old.start)+'〜'+clock(old.end)+'から'+clock(newStart)+'〜'+clock(newStart+old.duration)+'へ移動');
+    model.events.push(staff.name+'の休憩を'+clock(original.start)+'〜'+clock(original.end)+'から'+clock(newStart)+'〜'+clock(newStart+original.duration)+'へ移動');
     return newStart;
   }
   function canBook(model,request,excludeBookingId=null){
@@ -377,7 +446,7 @@
 </script>
 <script>/* DOM-only controller for the fictional, memory-only demonstration. */
 (function(){'use strict';
-const Core=window.DemoCore;let model=Core.initial(),page='booking',mode='admin',chosenCustomer=null,undoPrep=null,pendingTimeChange=null,selectedUnassigned=null;
+const Core=window.DemoCore;let model=Core.initial(),page='booking',mode='admin',chosenCustomer=null,undoPrep=null,pendingTimeChange=null,selectedUnassigned=null;let demoReceipts=[],checkoutBookingId=null,checkoutNextNumber=1;
 const ORIGINS={hpb:{short:'HPB',label:'ホットペッパービューティー'},line:{short:'L',label:'LINE'},website:{short:'HP',label:'自社ホームページ'},google:{short:'G',label:'Google経由'},phone:{short:'☎',label:'電話'},instore:{short:'店',label:'店頭・次回予約'},other:{short:'他',label:'その他'},unknown:{short:'?',label:'予約経路不明'}};
 const DISCOVERIES={google:'Google検索・マップ',hpb:'ホットペッパービューティー',line:'LINE',referral:'紹介',sns:'SNS',storefront:'通りがかり',other:'その他',unknown:'未入力・不明'};
 function sourceBadge(source){const code=Object.prototype.hasOwnProperty.call(ORIGINS,source)?source:'unknown';const o=ORIGINS[code];const mark=node('span','origin-badge '+code,o.short);mark.title='予約経路：'+o.label;mark.setAttribute('aria-label','予約経路：'+o.label);return mark;}
@@ -406,15 +475,15 @@ function closeManagerMenu(restoreFocus=false){
  if(wasOpen&&restoreFocus&&mode==='admin')$('menuToggle').focus();
 }
 function go(next){page=next;closeManagerMenu();document.querySelectorAll('.page').forEach(x=>x.classList.toggle('hidden',x.id!=='page-'+page));document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===page));$('flash').classList.add('hidden');render();window.scrollTo({top:0,behavior:'instant'})}
-function reset(){model=Core.initial();chosenCustomer=null;undoPrep=null;selectedUnassigned=null;hidePrepFeedback();$('bMenu').value='m60';$('bStaff').value='s1';$('bBed').value='b1';$('bTime').value='10:00';$('bSource').value='phone';$('bDiscovery').value='unknown';go(mode==='customer'?'customer':'booking');info('架空の初期データに戻しました。実際の情報は保存していません。')}
+function reset(){model=Core.initial();chosenCustomer=null;undoPrep=null;selectedUnassigned=null;demoReceipts=[];checkoutBookingId=null;checkoutNextNumber=1;resetCheckoutForm();hidePrepFeedback();$('bMenu').value='m60';$('bStaff').value='s1';$('bBed').value='b1';$('bTime').value='10:00';$('bSource').value='phone';$('bDiscovery').value='unknown';go(mode==='customer'?'customer':'booking');info('架空の初期データに戻しました。実際の情報は保存していません。')}
 const line=(left,right)=>{const r=node('div','booking-row');add(r,left);if(right)add(r,right);return r};
 function actionsButton(label,fn,style='secondary'){const b=node('button',style,label);b.type='button';b.addEventListener('click',()=>attempt(fn));return b}
 function textBlock(title,description){const d=node('div');add(d,node('strong','',title));add(d,node('small','',description));return d}
 function summary(){const counts=Core.quote(model);$('kpiBookings').textContent=counts.total;$('kpiWaiting').textContent=counts.waiting;$('kpiRecovered').textContent=counts.recovered;}
-function render(){summary();if(page==='setup')renderGuide();if(page==='booking')renderBooking();if(page==='waitlist')renderWaitlist();if(page==='connect')renderConnect();if(page==='customer')renderCustomer();}
+function render(){summary();if(page==='setup')renderGuide();if(page==='booking')renderBooking();if(page==='waitlist')renderWaitlist();if(page==='connect')renderConnect();if(page==='checkout'){if(!$('checkoutBooking').options.length){const unpaid=checkoutUnpaid();checkoutBookingId=unpaid.length?String(unpaid[0].id):null;checkoutAssignFull();}renderCheckout();}if(page==='customer')renderCustomer();}
 const guideSteps=[
  {heading:'1. お店の営業時間を確認しましょう', options:[['9:00〜18:00（試作予約の時間帯）','9時から18時まで。架空店舗の固定営業時間。'],['別の営業時間が必要','この簡易デモでは変更不可。製品版の設定ガイドで扱う予定。']]},
- {heading:'2. スタッフを確認しましょう', options:[['2人で開始','佐藤・田中。準備時間は佐藤15分・田中30分。30分の予約ごとの準備枠は、右端で長さを調整、中央部分で休憩開始時刻を移動できます。'],['あとからスタッフを追加したい','製品版は複数スタッフに対応。デモでは2人で体験。']]},
+ {heading:'2. スタッフを確認しましょう', options:[['2人で開始','佐藤・田中。準備時間は佐藤15分・田中30分。30分の予約ごとの準備枠は、右端を動かして15分に調整できます。'],['あとからスタッフを追加したい','製品版は複数スタッフに対応。デモでは2人で体験。']]},
  {heading:'3. 施術メニューを確認しましょう', options:[['60分・90分の2コース','もみほぐし60分／個室ケア90分。'],['コースを増やしたい','製品版の下書き編集で追加できます。デモは2種類を固定。']]},
  {heading:'4. ベッド・個室を確認しましょう', options:[['オープン2台と個室1台','個室必須コースは個室だけに割り当て。'],['設備を変更したい','この簡易デモでは固定。製品版の設定機能で変更可能。']]},
  {heading:'5. 外部サービスは使用しますか？', options:[['LINEもGoogleも使わない','予約とキャンセル枠回収の模擬体験は可能です。'],['あとでLINE・Googleも検討','店舗自身が契約し、接続手順を案内する構想です。']]}
@@ -430,7 +499,7 @@ function renderBooking(){const req=bookingRequest(),pending=$('bStaff').value===
  renderStaffSchedule();
  const area=$('bookingList');area.replaceChildren();const active=[...model.bookings].sort((a,b)=>a.start-b.start);
  active.forEach(b=>{const m=model.menus.find(x=>x.id===b.menu),s=model.staff.find(x=>x.id===b.staff),bed=model.beds.find(x=>x.id===b.bed);
- let row=line(textBlock(Core.clock(b.start)+'〜'+Core.clock(b.start+Core.serviceFor(model,b))+'　'+m.name+'（予約枠'+Core.serviceFor(model,b)+'分）',`${s.name} · ${bed.name} · ${b.customer} · ${ORIGINS[b.source]?.label||ORIGINS.unknown.label}／初回来店のきっかけ：${DISCOVERIES[b.discovery]||DISCOVERIES.unknown}`));const labelBlock=row.firstChild;if(labelBlock)labelBlock.prepend(sourceBadge(b.source));let tag=add(row,node('span','pill'+(b.status==='CANCELLED'?' cancel':''),b.status==='CONFIRMED'?'確定（架空）':'取消済み'));add(area,row)});
+ let row=line(textBlock(Core.clock(b.start)+'〜'+Core.clock(b.start+Core.serviceFor(model,b))+'　'+m.name+'（予約枠'+Core.serviceFor(model,b)+'分）',`${s.name} · ${bed.name} · ${b.customer} · ${ORIGINS[b.source]?.label||ORIGINS.unknown.label}／初回来店のきっかけ：${DISCOVERIES[b.discovery]||DISCOVERIES.unknown}`));const labelBlock=row.firstChild;if(labelBlock)labelBlock.prepend(sourceBadge(b.source));let tag=add(row,node('span','pill'+(b.status==='CANCELLED'?' cancel':''),b.status==='CONFIRMED'?'確定（架空）':'取消済み'));if(b.status==='CONFIRMED'&&!demoReceipts.some(x=>x.bookingId===b.id))add(row,actionsButton('会計へ',()=>{checkoutBookingId=String(b.id);resetCheckoutForm();checkoutAssignFull();go('checkout')}));add(area,row)});
  const sums=$('bookingSourcesSummary');sums.replaceChildren();const counts={};for(const b of model.bookings.filter(b=>b.status==='CONFIRMED')){const code=ORIGINS[b.source]?b.source:'unknown';counts[code]=(counts[code]||0)+1;}
  for(const [code,count] of Object.entries(counts).sort((a,b)=>b[1]-a[1])){const cell=add(sums,node('span'));add(cell,sourceBadge(code));add(cell,node('span','',ORIGINS[code].label+'：'+count+'件'));}
  if(!Object.keys(counts).length)add(sums,node('span','muted','確定済み予約はありません'));
@@ -443,19 +512,19 @@ function showPrepFeedback(message,invalid=false){
 }
 function prepareTimeChange(kind,id,target){
  let before,label,description,notice;
- if(kind==='breakMove'){
-  const staff=model.staff.find(s=>s.id===id),rest=Core.breakFor(model,id);
-  if(!staff||!rest)return;
-  before=rest.start;label='休憩の開始時刻';
-  description=staff.name+'の休憩 '+rest.duration+'分\n変更前：'+Core.clock(before)+'〜'+Core.clock(before+rest.duration)+'\n変更後：'+Core.clock(target)+'〜'+Core.clock(target+rest.duration);
-  notice='休憩の長さはそのままです。スタッフの予約・準備時間と重ならないか、確定時に再確認します。';
- }else if(kind==='break'){
-  const staff=model.staff.find(s=>s.id===id),rest=Core.breakFor(model,id);
-  if(!staff||!rest)return;
-  before=rest.duration;label='休憩時間';
-  description=staff.name+'の休憩（'+Core.clock(rest.start)+'開始）\n'+label+'：'+before+'分 → '+target+'分';
-  notice='予約・準備と重ならないか確認します。確定するまでは変更されません。';
- }else{
+  if(kind==='break-move'){
+   const staff=model.staff.find(s=>s.id===id),rest=Core.breakFor(model,id);
+   if(!staff||!rest)return;
+   before=rest.start;label='休憩の時刻';
+   description=staff.name+'の休憩（'+rest.duration+'分）\n変更前：'+Core.clock(before)+'〜'+Core.clock(rest.end)+'\n変更後：'+Core.clock(target)+'〜'+Core.clock(target+rest.duration);
+   notice='開始時刻だけを移動し、休憩の長さは維持します。予約・準備との重複と営業時間を確認します。確定前は変更されません。';
+  }else if(kind==='break'){
+   const staff=model.staff.find(s=>s.id===id),rest=Core.breakFor(model,id);
+   if(!staff||!rest)return;
+   before=rest.duration;label='休憩時間';
+   description=staff.name+'の休憩（'+Core.clock(rest.start)+'開始）\n'+label+'：'+before+'分 → '+target+'分';
+   notice='予約・準備と重ならないか確認します。確定するまでは変更されません。';
+  }else{
   const booking=model.bookings.find(b=>b.id===id&&b.status==='CONFIRMED');if(!booking)return;
   before=kind==='prep'?Core.prepFor(model,booking):Core.serviceFor(model,booking);
   const menu=model.menus.find(m=>m.id===booking.menu);
@@ -479,9 +548,9 @@ function commitTimeChange(){
   if(proposal.kind==='prep')Core.changePrep(model,proposal.id,proposal.target);
   else if(proposal.kind==='service')Core.changeService(model,proposal.id,proposal.target);
   else if(proposal.kind==='break')Core.changeBreak(model,proposal.id,proposal.target);
-  else if(proposal.kind==='breakMove')Core.moveBreak(model,proposal.id,proposal.target);
+  else if(proposal.kind==='break-move')Core.moveBreak(model,proposal.id,proposal.target);
   renderBooking();
-  if(proposal.kind==='breakMove')showPrepFeedback('休憩の開始時刻を'+Core.clock(proposal.before)+' → '+Core.clock(proposal.target)+'に変更しました。');
+  if(proposal.kind==='break-move')showPrepFeedback('休憩を'+Core.clock(proposal.before)+'から'+Core.clock(proposal.target)+'開始へ移動しました（確認済み）。');
   else{
    const kindLabel=proposal.kind==='prep'?'準備時間':proposal.kind==='break'?'休憩時間':'予約枠';
    showPrepFeedback(kindLabel+'を'+proposal.before+'分 → '+proposal.target+'分に変更しました。');
@@ -492,8 +561,6 @@ function chooseServiceDuration(bookingId){
  const booking=model.bookings.find(b=>b.id===bookingId&&b.status==='CONFIRMED');if(!booking)return;
  const current=Core.serviceFor(model,booking);
  $('durationChoiceTitle').textContent='予約時間を調整';
- $('durationMinus').textContent='−15分 短くする';
- $('durationPlus').textContent='＋15分 長くする';
  $('durationChoiceDetail').textContent=booking.customer+'：現在の予約枠 '+current+'分\n右端を左右にドラッグして変更することもできます。';
  $('durationMinus').disabled=current<=30;
  $('durationPlus').disabled=current>=180;
@@ -544,95 +611,92 @@ function chooseBreakDuration(staffId){
  const current=rest.duration;
  $('durationChoiceTitle').textContent='休憩時間を調整';
  $('durationChoiceDetail').textContent=staff.name+'：現在の休憩 '+current+'分（'+Core.clock(rest.start)+'開始）\n右端を左右にドラッグして変更することもできます。';
- $('durationMinus').textContent='−15分 短くする';
- $('durationPlus').textContent='＋15分 長くする';
  $('durationMinus').disabled=current<=15;
  $('durationPlus').disabled=current>=180;
  $('durationMinus').onclick=()=>{$('durationChoiceDialog').close();prepareTimeChange('break',staffId,current-15)};
  $('durationPlus').onclick=()=>{$('durationChoiceDialog').close();prepareTimeChange('break',staffId,current+15)};
  $('durationChoiceDialog').showModal();
 }
-function chooseBreakStart(staffId){
+function chooseBreakPosition(staffId){
  const rest=Core.breakFor(model,staffId),staff=model.staff.find(s=>s.id===staffId);if(!rest||!staff)return;
+ const current=rest.start;
  $('durationChoiceTitle').textContent='休憩を移動';
- $('durationChoiceDetail').textContent=staff.name+'：'+Core.clock(rest.start)+'〜'+Core.clock(rest.end)+'（'+rest.duration+'分）\n休憩の中央を左右にドラッグすると、15分単位で開始時刻を移動できます。';
- $('durationMinus').textContent='← 15分早く';
- $('durationPlus').textContent='15分遅く →';
- $('durationMinus').disabled=rest.start<=540;
- $('durationPlus').disabled=rest.end>=1080;
- $('durationMinus').onclick=()=>{$('durationChoiceDialog').close();prepareTimeChange('breakMove',staffId,rest.start-15)};
- $('durationPlus').onclick=()=>{$('durationChoiceDialog').close();prepareTimeChange('breakMove',staffId,rest.start+15)};
+ $('durationChoiceDetail').textContent=staff.name+'：現在の休憩 '+Core.clock(rest.start)+'〜'+Core.clock(rest.end)+'（'+rest.duration+'分）\n休憩枠の中央を左右にドラッグすることもできます。右端「↔」は休憩の長さを調整します。';
+ $('durationMinus').textContent='← 15分早める';$('durationPlus').textContent='15分遅らせる →';
+ $('durationMinus').disabled=current<=540;
+ $('durationPlus').disabled=current+rest.duration>=1080;
+ $('durationMinus').onclick=()=>{$('durationChoiceDialog').close();prepareTimeChange('break-move',staffId,current-15)};
+ $('durationPlus').onclick=()=>{$('durationChoiceDialog').close();prepareTimeChange('break-move',staffId,current+15)};
  $('durationChoiceDialog').showModal();
 }
 function editableBreak(lane,staff,positioned,q){
  const rest=Core.breakFor(model,staff.id);if(!rest)return;
  const current=rest.duration,start=rest.start;
- const el=positioned(lane,'schedule-break break-resizable',start,rest.end,['休憩'+current+'分',staff.name,'右端で長さ変更・中央で時刻移動']);
+ const el=positioned(lane,'schedule-break break-resizable break-draggable',start,rest.end,['休憩'+current+'分',staff.name,'枠を左右に動かして休憩開始を移動・右端で長さを変更']);
  if(!el)return;
+ el.tabIndex=0;el.setAttribute('role','button');
+ el.setAttribute('aria-label',staff.name+'の休憩：'+Core.clock(start)+'から'+Core.clock(rest.end)+'。枠をドラッグして移動、タップして15分ずつ変更。右端で休憩の長さを変更');
  const short=minutes=>minutes<=15?'休':minutes===30?'休憩30':'休憩'+minutes+'分';
- const label=add(el,node('button','break-text break-move',short(current)));
- label.type='button';
- label.title=staff.name+'の休憩 '+Core.clock(start)+'〜'+Core.clock(rest.end)+'：中央をドラッグして移動、タップで15分ずつ時刻変更';
- label.setAttribute('aria-label',staff.name+'の休憩を移動。現在'+Core.clock(start)+'から'+Core.clock(rest.end)+'。左右にドラッグ、またはタップして開始時刻を変更');
- let shift=null,ignoreMoveClick=false;
- const previewShift=newStart=>{
-  el.style.left=((newStart-540)/15*q+2)+'px';
-  label.textContent=short(current);
-  el.classList.toggle('drag-preview',newStart!==start);
-  el.title=Core.clock(newStart)+'〜'+Core.clock(newStart+current)+'（変更前・未確定）';
- };
- label.addEventListener('pointerdown',ev=>{
-  if(ev.pointerType==='mouse'&&ev.button!==0)return;
-  shift={pointerId:ev.pointerId,x:ev.clientX,from:start,target:start};
-  label.setPointerCapture(ev.pointerId);ev.preventDefault();ev.stopPropagation();
- });
- label.addEventListener('pointermove',ev=>{
-  if(!shift||shift.pointerId!==ev.pointerId)return;
-  const wanted=shift.from+Math.round((ev.clientX-shift.x)/q)*15;
-  shift.target=Math.max(540,Math.min(1080-current,wanted));
-  previewShift(shift.target);
- });
- label.addEventListener('pointerup',ev=>{
-  if(!shift||shift.pointerId!==ev.pointerId)return;
-  const moved=Math.abs(ev.clientX-shift.x)>=q*.38,target=shift.target;
-  shift=null;previewShift(start);
-  if(moved&&target!==start){ignoreMoveClick=true;window.setTimeout(()=>{ignoreMoveClick=false},350);prepareTimeChange('breakMove',staff.id,target)}
-  ev.stopPropagation();
- });
- label.addEventListener('pointercancel',()=>{shift=null;previewShift(start)});
- label.addEventListener('click',ev=>{ev.preventDefault();ev.stopPropagation();if(ignoreMoveClick){ignoreMoveClick=false;return;}chooseBreakStart(staff.id)});
-
+ const label=add(el,node('span','break-text',short(current)));
  const grip=add(el,node('button','break-grip','↔'));
  grip.type='button';
  grip.title=staff.name+'の休憩'+current+'分：右端を左右へ動かすかタップして15分刻みで変更';
- grip.setAttribute('aria-label',staff.name+'の休憩'+current+'分。左右にドラッグ、またはタップして15分刻みに変更');
- let drag=null,ignoreClick=false;
- const preview=minutes=>{
+ grip.setAttribute('aria-label',staff.name+'の休憩'+current+'分。右端で長さを調整');
+ let sizeDrag=null,ignoreResizeClick=false,moveDrag=null,ignoreMoveClick=false;
+ const previewSize=minutes=>{
   const clipped=Math.max(0,Math.min(1080,start+minutes)-Math.max(540,start));
   el.style.width=(clipped/15*q-4)+'px';
   label.textContent=short(minutes);
   el.classList.toggle('drag-preview',minutes!==current);
  };
+ const previewMove=newStart=>{
+  el.style.left=((newStart-540)/15*q+2)+'px';
+  label.textContent=short(current)+(newStart===start?'':' · '+Core.clock(newStart));
+  el.classList.toggle('drag-preview',newStart!==start);
+ };
+ // Right-hand grip: changes only duration, not position.
  grip.addEventListener('pointerdown',ev=>{
   if(ev.pointerType==='mouse'&&ev.button!==0)return;
-  drag={pointerId:ev.pointerId,x:ev.clientX,from:current,target:current};
+  sizeDrag={pointerId:ev.pointerId,x:ev.clientX,from:current,target:current};
   grip.setPointerCapture(ev.pointerId);ev.preventDefault();ev.stopPropagation();
  });
  grip.addEventListener('pointermove',ev=>{
-  if(!drag||drag.pointerId!==ev.pointerId)return;
-  const wanted=drag.from+Math.round((ev.clientX-drag.x)/q)*15;
-  drag.target=Math.max(15,Math.min(180,Math.min(1080-start,wanted)));
-  preview(drag.target);
+  if(!sizeDrag||sizeDrag.pointerId!==ev.pointerId)return;
+  const wanted=sizeDrag.from+Math.round((ev.clientX-sizeDrag.x)/q)*15;
+  sizeDrag.target=Math.max(15,Math.min(180,Math.min(1080-start,wanted)));
+  previewSize(sizeDrag.target);ev.stopPropagation();
  });
  grip.addEventListener('pointerup',ev=>{
-  if(!drag||drag.pointerId!==ev.pointerId)return;
-  const moved=Math.abs(ev.clientX-drag.x)>=q*.38;
-  const target=drag.target;drag=null;preview(current);
-  if(moved&&target!==current){ignoreClick=true;window.setTimeout(()=>{ignoreClick=false},350);prepareTimeChange('break',staff.id,target)}
+  if(!sizeDrag||sizeDrag.pointerId!==ev.pointerId)return;
+  const moved=Math.abs(ev.clientX-sizeDrag.x)>=q*.38;
+  const target=sizeDrag.target;sizeDrag=null;previewSize(current);
+  if(moved){ignoreResizeClick=true;window.setTimeout(()=>{ignoreResizeClick=false},350);if(target!==current)prepareTimeChange('break',staff.id,target)}
   ev.stopPropagation();
  });
- grip.addEventListener('pointercancel',()=>{drag=null;preview(current)});
- grip.addEventListener('click',ev=>{ev.preventDefault();ev.stopPropagation();if(ignoreClick){ignoreClick=false;return;}chooseBreakDuration(staff.id)});
+ grip.addEventListener('pointercancel',ev=>{sizeDrag=null;previewSize(current);ev.stopPropagation()});
+ grip.addEventListener('click',ev=>{ev.preventDefault();ev.stopPropagation();if(ignoreResizeClick){ignoreResizeClick=false;return;}chooseBreakDuration(staff.id)});
+ // Main body: drags the whole block left/right without changing its length.
+ el.addEventListener('pointerdown',ev=>{
+  if(ev.target===grip||ev.pointerType==='mouse'&&ev.button!==0)return;
+  moveDrag={pointerId:ev.pointerId,x:ev.clientX,from:start,target:start};
+  el.setPointerCapture(ev.pointerId);ev.preventDefault();ev.stopPropagation();
+ });
+ el.addEventListener('pointermove',ev=>{
+  if(!moveDrag||moveDrag.pointerId!==ev.pointerId)return;
+  const wanted=moveDrag.from+Math.round((ev.clientX-moveDrag.x)/q)*15;
+  moveDrag.target=Math.max(540,Math.min(1080-current,wanted));
+  previewMove(moveDrag.target);ev.stopPropagation();
+ });
+ el.addEventListener('pointerup',ev=>{
+  if(!moveDrag||moveDrag.pointerId!==ev.pointerId)return;
+  const moved=Math.abs(ev.clientX-moveDrag.x)>=q*.38;
+  const target=moveDrag.target;moveDrag=null;previewMove(start);
+  if(moved){ignoreMoveClick=true;window.setTimeout(()=>{ignoreMoveClick=false},350);if(target!==start)prepareTimeChange('break-move',staff.id,target)}
+  ev.stopPropagation();
+ });
+ el.addEventListener('pointercancel',()=>{moveDrag=null;previewMove(start)});
+ el.addEventListener('click',ev=>{if(ev.target===grip)return;ev.preventDefault();if(ignoreMoveClick){ignoreMoveClick=false;return;}chooseBreakPosition(staff.id)});
+ el.addEventListener('keydown',ev=>{if(ev.target!==el)return;if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();chooseBreakPosition(staff.id)}});
 }
 function editablePrep(lane,booking,staff,end,positioned,q){
  const current=Core.prepFor(model,booking);
@@ -801,9 +865,91 @@ function finishAssignment(){
  catch(err){renderAssignment();$('assignmentCheck').textContent='確定できません：'+err.message;}
 }
 function bookingRequest(){return {menu:$('bMenu').value,staff:$('bStaff').value,bed:$('bBed').value,start:Core.mins($('bTime').value),source:$('bSource').value,discovery:$('bDiscovery').value};}
+
+// In-memory, fictional checkout; no financial gateway, network, card numbers, or persistent storage.
+const CHECKOUT_METHODS={cash:'現金',credit:'クレジットカード',qr:'QRコード決済',emoney:'電子マネー',voucher:'地域商品券・商品券',other:'その他'};
+const fmtYen=n=>'¥'+Number(n).toLocaleString('ja-JP');
+function checkoutUnpaid(){return model.bookings.filter(b=>b.status==='CONFIRMED'&&!demoReceipts.some(r=>r.bookingId===b.id));}
+function currentCheckout(){return model.bookings.find(b=>String(b.id)===String(checkoutBookingId)&&b.status==='CONFIRMED'&&!demoReceipts.some(r=>r.bookingId===b.id));}
+function checkoutMath(){
+ const booking=currentCheckout(),menu=booking&&model.menus.find(m=>m.id===booking.menu);
+ const full=menu?menu.price:0;
+ const discounts=( $('checkoutCoupon').checked?500:0)+($('checkoutLine').checked?1000:0);
+ const due=full-discounts;
+ let valid=true,sum=0,amounts={};
+ for(const id of Object.keys(CHECKOUT_METHODS)){
+  const raw=$('pay_'+id).value;
+  if(!/^\d+$/.test(raw)||!Number.isSafeInteger(Number(raw))||Number(raw)>1000000){valid=false;amounts[id]=0;continue;}
+  amounts[id]=Number(raw);sum+=amounts[id];
+ }
+ return {booking,menu,full,discounts,due,amounts,sum,valid};
+}
+function checkoutAssignFull(){
+ const bk=currentCheckout(),m=bk&&model.menus.find(x=>x.id===bk.menu);
+ const due=m?m.price-($('checkoutCoupon').checked?500:0)-($('checkoutLine').checked?1000:0):0;
+ const target=$('checkoutPayPreset').value;
+ for(const id of Object.keys(CHECKOUT_METHODS))$('pay_'+id).value=id===target?String(Math.max(0,due)):'0';
+ refreshCheckoutNumbers();
+}
+function resetCheckoutForm(){
+ $('checkoutCoupon').checked=false;$('checkoutLine').checked=false;$('checkoutAcknowledged').checked=false;
+ $('checkoutPayPreset').value='cash';for(const id of Object.keys(CHECKOUT_METHODS))$('pay_'+id).value='0';
+}
+function refreshCheckoutNumbers(){
+ const v=checkoutMath();
+ $('checkoutDue').textContent=fmtYen(Math.max(0,v.due));
+ $('checkoutExpected').textContent=fmtYen(Math.max(0,v.due));
+ $('checkoutPaid').textContent=fmtYen(v.sum);
+ $('checkoutDifference').textContent=(v.due-v.sum===0?'':v.due-v.sum>0?'+':'−')+fmtYen(Math.abs(v.due-v.sum));
+ const okay=!!v.booking&&!!v.menu&&v.valid&&v.due>=0&&v.sum===v.due;
+ const status=$('checkoutStatus');status.className='statusbox '+(okay?'good':'bad');
+ status.textContent=!v.booking?'会計可能な予約がありません':!v.valid?'金額は0以上の整数で入力してください':v.due<0?'割引額がコース料金を超えています':v.sum!==v.due?'請求額と支払い内訳の金額が一致していません':'✓ 金額が一致しています。最後に確認して模擬記録できます。';
+ $('checkoutSave').disabled=!okay||!$('checkoutAcknowledged').checked;
+}
+function renderCheckout(){
+ const selector=$('checkoutBooking'),unpaid=checkoutUnpaid();
+ if(!unpaid.some(b=>String(b.id)===String(checkoutBookingId))){checkoutBookingId=unpaid.length?String(unpaid[0].id):null;resetCheckoutForm();}
+ selector.replaceChildren();
+ if(!unpaid.length){const option=node('option','','会計できる予約はありません');option.value='';add(selector,option);selector.disabled=true;}
+ else {selector.disabled=false;for(const b of unpaid){const m=model.menus.find(x=>x.id===b.menu);const opt=node('option','',Core.clock(b.start)+' '+b.customer+'｜'+(m?.name||'不明'));opt.value=String(b.id);add(selector,opt)}selector.value=String(checkoutBookingId);}
+ const v=checkoutMath(),area=$('checkoutCourse');area.replaceChildren();
+ if(v.menu){add(area,node('span','',v.menu.name));add(area,node('strong','',fmtYen(v.full)));}
+ else add(area,node('span','','対象の予約を選んでください'));
+ refreshCheckoutNumbers();renderCheckoutLedger();
+}
+function renderCheckoutLedger(){
+ const total=demoReceipts.reduce((n,x)=>n+x.due,0);$('checkoutSales').textContent=fmtYen(total);
+ const area=$('checkoutReceipts');area.replaceChildren();
+ if(!demoReceipts.length)add(area,node('p','muted','模擬会計はまだありません。予約を選んで体験してください。'));
+ for(const r of [...demoReceipts].reverse()){
+  const entry=add(area,node('div','checkout-receipt'));
+  add(entry,node('strong','',`模擬記録 ${r.number}｜${r.customer}｜${fmtYen(r.due)}`));
+  add(entry,node('div','',`${r.menuName}　通常${fmtYen(r.full)}　割引${fmtYen(r.discounts)}　担当${r.cashier}`));
+  add(entry,node('div','',`支払い内訳：${Object.entries(r.amounts).filter(([k,v])=>v>0).map(([k,v])=>CHECKOUT_METHODS[k]+fmtYen(v)).join(' ／ ')||'0円'}`));
+  add(entry,node('div','muted',`予約経路：${ORIGINS[r.source]?.label||'不明'} ／ 初認知：${DISCOVERIES[r.discovery]||'未入力・不明'}　※実際の支払い完了を意味しません`));
+ }
+ const report=$('checkoutReport');report.replaceChildren();
+ for(const [key,label] of Object.entries(CHECKOUT_METHODS)){
+  const amount=demoReceipts.reduce((n,x)=>n+(x.amounts[key]||0),0);if(amount)add(report,node('span','',label+'：'+fmtYen(amount)));
+ }
+ const totalDiscount=demoReceipts.reduce((n,x)=>n+x.discounts,0);
+ add(report,node('span','',`値引き：${fmtYen(totalDiscount)}`));
+}
+function recordCheckout(){
+ const v=checkoutMath();
+ if(!v.booking||!v.menu||!v.valid||v.due<0||v.sum!==v.due||!$('checkoutAcknowledged').checked)throw Error('会計内容を再確認してください。');
+ const cashier=model.staff.find(x=>x.id===$('checkoutCashier').value)?.name||'未選択';
+ const summary=`${v.booking.customer}｜${v.menu.name}\n通常料金 ${fmtYen(v.full)} ／ 値引き ${fmtYen(v.discounts)}\n請求額 ${fmtYen(v.due)}\n${Object.entries(v.amounts).filter(([k,a])=>a).map(([k,a])=>CHECKOUT_METHODS[k]+' '+fmtYen(a)).join('、')||'支払い0円'}\n\n模擬会計として記録しますか？（実際の決済・保存はしません）`;
+ if(!window.confirm(summary))return;
+ // Validate again immediately before the record, refusing a duplicate checkout.
+ if(!currentCheckout()||demoReceipts.some(x=>x.bookingId===v.booking.id))throw Error('既に会計済み、または予約が変更されています。');
+ demoReceipts.push({number:checkoutNextNumber++,bookingId:v.booking.id,customer:v.booking.customer,menuName:v.menu.name,full:v.full,discounts:v.discounts,due:v.due,amounts:{...v.amounts},source:v.booking.source,discovery:v.booking.discovery,cashier});
+ resetCheckoutForm();checkoutBookingId=null;const next=checkoutUnpaid();checkoutBookingId=next.length?String(next[0].id):null;checkoutAssignFull();renderCheckout();info('架空の模擬会計を記録しました。決済処理やデータ送信は行っていません。');
+}
+
 function renderWaitlist(){const cancel=$('cancelList'),release=$('releaseList'),offer=$('offerList');cancel.replaceChildren();release.replaceChildren();offer.replaceChildren();
  const active=model.bookings.filter(x=>x.status==='CONFIRMED').sort((a,b)=>a.start-b.start);if(!active.length)add(cancel,node('p','muted','取消可能な予約はありません。最初からやり直すか、予約を追加してください。'));
- active.forEach(b=>{const menu=model.menus.find(x=>x.id===b.menu),staff=model.staff.find(x=>x.id===b.staff);let row=line(textBlock(Core.clock(b.start)+'　'+menu.name,staff.name+' · '+b.customer));let group=add(row,node('div','rowactions'));add(group,actionsButton('この予約を取消',()=>{Core.cancel(model,b.id);undoPrep=null;hidePrepFeedback();info('空き枠が発生しました。次に候補を確認してください。')},'secondary'));add(cancel,row)});
+ active.forEach(b=>{const menu=model.menus.find(x=>x.id===b.menu),staff=model.staff.find(x=>x.id===b.staff);let row=line(textBlock(Core.clock(b.start)+'　'+menu.name,staff.name+' · '+b.customer));let group=add(row,node('div','rowactions'));add(group,actionsButton(demoReceipts.some(r=>r.bookingId===b.id)?'模擬会計済み（取消は別途）':'この予約を取消',()=>{if(demoReceipts.some(r=>r.bookingId===b.id))throw Error('模擬会計の記録がある予約は、この簡易取消では処理できません。返品・返金の専用フローが必要です。');Core.cancel(model,b.id);undoPrep=null;hidePrepFeedback();info('空き枠が発生しました。次に候補を確認してください。')},'secondary'));add(cancel,row)});
  if(!model.releases.length)add(release,node('p','muted','まだキャンセル枠はありません。上の予約を1件取り消してみてください。'));
  model.releases.forEach(r=>{const b=model.bookings.find(x=>x.id===r.booking),menu=model.menus.find(x=>x.id===b.menu),candidates=Core.candidates(model,r.id);let row=line(textBlock(Core.clock(b.start)+'　'+menu.name+'（'+(r.recovered?'回収済':'未回収')+'）',r.recovered?'確定した架空予約に置き換わりました':`条件に合う架空希望者 ${candidates.length} 件`));const group=add(row,node('div','rowactions'));
  if(r.recovered)add(group,node('span','pill ok','回収済'));else if(r.offer)add(group,node('span','pill pending','案内中 · 未送信'));else add(group,actionsButton('候補へ模擬案内',()=>{Core.offer(model,r.id);info('架空の希望者へ模擬案内を作成しました。実送信はありません。')},'primary'));add(release,row)});
@@ -863,6 +1009,12 @@ function setup(){ $('timeDialogCancel').addEventListener('click',()=>{$('timeCon
  $('durationChoiceDialog').addEventListener('click',e=>{if(e.target===$('durationChoiceDialog'))$('durationChoiceDialog').close();});
 for(let t=540;t<=1020;t+=15){const option=node('option','',Core.clock(t));option.value=Core.clock(t);$('bTime').append(option)}$('bTime').value='10:00';
  $('adminMenu').inert=true;
+ $('checkoutBooking').addEventListener('change',()=>{checkoutBookingId=$('checkoutBooking').value;resetCheckoutForm();checkoutAssignFull();renderCheckout()});
+ ['checkoutCoupon','checkoutLine'].forEach(id=>$(id).addEventListener('change',()=>{checkoutAssignFull()}));
+ $('checkoutPayPreset').addEventListener('change',checkoutAssignFull);
+ document.querySelectorAll('[data-payment]').forEach(input=>input.addEventListener('input',refreshCheckoutNumbers));
+ $('checkoutAcknowledged').addEventListener('change',refreshCheckoutNumbers);
+ $('checkoutSave').addEventListener('click',()=>attempt(recordCheckout));
  $('menuToggle').addEventListener('click',()=>document.body.classList.contains('menu-open')?closeManagerMenu(true):openManagerMenu());
  $('menuClose').addEventListener('click',()=>closeManagerMenu(true));
  $('drawerShade').addEventListener('click',()=>closeManagerMenu(true));
