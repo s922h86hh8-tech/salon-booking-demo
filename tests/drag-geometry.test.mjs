@@ -10,7 +10,7 @@ import { test } from 'node:test';
 import { runInNewContext } from 'node:vm';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const sourcePaths = ['index.html', 'preview/v0.36-mobile-drag.html', 'preview/v0.37-booking.html', 'preview/v0.38-accounting.html', 'preview/v0.39-register.html', 'preview/v0.40-register-period.html'];
+const sourcePaths = ['index.html', 'preview/v0.36-mobile-drag.html', 'preview/v0.37-booking.html', 'preview/v0.38-accounting.html', 'preview/v0.39-register.html', 'preview/v0.40-register-period.html', 'preview/v0.41-clarity.html'];
 const read = path => readFileSync(resolve(root, path), 'utf8');
 const sources = sourcePaths.map(path => ({ path, html: read(path) }));
 
