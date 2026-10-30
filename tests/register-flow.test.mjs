@@ -8,7 +8,7 @@ import { runInNewContext } from 'node:vm';
 import { test } from 'node:test';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const html = readFileSync(resolve(root, 'preview/v0.40-register-period.html'), 'utf8');
+const html = readFileSync(resolve(root, 'preview/v0.41-clarity.html'), 'utf8');
 const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
 assert.equal(scripts.length, 2, 'Expected original booking engine and controller only');
 const controller = scripts[1][1];
@@ -31,7 +31,8 @@ function makeElement() {
 function fixture(confirm = () => true) {
   const els = {};
   for (const id of ['regStatus','regLate','regCount','regOpen','regMid','regRecount',
-    'regClose','regMove','regHistory','regStaff','regKind','regAmount','regReason']) {
+    'regClose','regMove','regHistory','regStaff','regKind','regAmount','regReason',
+    'regPhaseLabel','regExpectedPrimary','regLastCount','regLastDiff','regNextAction']) {
     els[id] = makeElement();
   }
   for (const d of denoms) {
@@ -76,6 +77,9 @@ test('opening + cash receipt + cash addition + mid-count + recount + closing', (
   els.reg_1000.value = '1';
   api.registerReconcile('中締め');
   assert.equal(r.checks.at(-1).diff, 0);
+  assert.equal(els.regExpectedPrimary.textContent, '¥16,000');
+  assert.equal(els.regLastCount.textContent, '¥16,000');
+  assert.equal(els.regLastDiff.textContent, '¥0');
   assert.equal(r.checks.at(-1).period.receipts, 2);
   assert.equal(r.checks.at(-1).period.methods.cash, 5000);
   assert.equal(r.checks.at(-1).period.methods.credit, 2500);
@@ -83,6 +87,8 @@ test('opening + cash receipt + cash addition + mid-count + recount + closing', (
   els.reg_1000.value = '0';
   api.registerReconcile('再計数');
   assert.equal(r.checks.at(-1).diff, -1000);
+  assert.equal(els.regLastDiff.textContent, '−¥1,000');
+  assert.equal(els.regLastDiff.classList.flags['reg-diff'], true);
   assert.equal(r.checks.at(-1).period.receipts, 0);
   assert.equal(r.checks.at(-1).period.movements, 0);
   assert.equal(r.events.length, 4);
