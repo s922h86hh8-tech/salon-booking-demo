@@ -299,11 +299,11 @@
  <div class="page-title"><div><h2>レジ管理</h2><p>開店 → 現金確認 → 中締め → 閉店</p></div><span class="datepill">実決済なし</span></div>
  <div class="card reg-overview">
  <div class="reg-top"><h3>現金の確認</h3><span class="reg-phase" id="regPhaseLabel">未開店</span></div>
- <div class="reg-primary"><span>予定現金</span><strong id="regExpectedPrimary">—</strong></div>
- <div class="reg-kpis"><div><span>直近の実査</span><strong id="regLastCount">—</strong></div><div><span>直近の過不足</span><strong id="regLastDiff">—</strong></div></div>
+ <div class="reg-primary"><span>あるはずの現金</span><strong id="regExpectedPrimary">—</strong></div>
+ <div class="reg-kpis"><div><span>前回数えた現金</span><strong id="regLastCount">—</strong></div><div><span>現金の差額</span><strong id="regLastDiff">—</strong></div></div>
  <p class="reg-next" id="regNextAction">次の操作：開店金を登録</p>
  <p id="regLate" class="statusbox hidden"></p>
- <details class="reg-more"><summary>集計の内訳と注意</summary><div id="regStatus" class="statusbox"></div><p class="muted">カード・QR決済・商品券は現金に含めません。開店前の会計も対象外。実査と過不足は最後に数えた時点の数字です。</p></details>
+ <details class="reg-more"><summary>集計の内訳と注意</summary><div id="regStatus" class="statusbox"></div><p class="muted">カード・QR決済・商品券は現金に含めません。開店前の会計も対象外。数えた現金と差額は最後の確認時点の記録です。</p></details>
  </div>
  <div class="card"><h3>現金を数える</h3><label>確認担当<select id="regStaff"></select></label>
  <details class="reg-more" open><summary>金種を入力</summary><div id="regDenoms" class="reg-denoms"></div></details><div class="checkout-total"><span>数えた現金</span><strong id="regCount">¥0</strong></div>
