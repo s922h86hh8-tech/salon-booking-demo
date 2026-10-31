@@ -8,7 +8,7 @@ import { runInNewContext } from 'node:vm';
 import { test } from 'node:test';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const html = readFileSync(resolve(root, 'preview/v0.43-full-redesign.html'), 'utf8');
+const html = readFileSync(resolve(root, 'preview/v0.44-booking-to-checkout.html'), 'utf8');
 const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
 assert.equal(scripts.length, 2, 'Existing booking core and UI controller must be kept');
 const controller = scripts[1][1];
