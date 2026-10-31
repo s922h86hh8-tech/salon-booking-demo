@@ -8,7 +8,7 @@ import { runInNewContext } from 'node:vm';
 import { test } from 'node:test';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const html = readFileSync(resolve(root, 'preview/v0.45-cancel-and-sync-alerts.html'), 'utf8');
+const html = readFileSync(resolve(root, 'preview/v0.46-unified-alerts.html'), 'utf8');
 const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
 assert.equal(scripts.length, 2, 'Expected original booking engine and controller only');
 const controller = scripts[1][1];
