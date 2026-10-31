@@ -8,7 +8,7 @@ import { runInNewContext } from 'node:vm';
 import { test } from 'node:test';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const html = readFileSync(resolve(root, 'preview/v0.47-date-navigation.html'), 'utf8');
+const html = readFileSync(resolve(root, 'preview/v0.48-booking-move-tray.html'), 'utf8');
 const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
 assert.equal(scripts.length, 2, 'Booking engine and controller scripts only');
 const controller = scripts[1][1];
@@ -30,6 +30,8 @@ function element(tag = 'div', cls = '', text = '') {
 }
 function fixture() {
   const els = {
+    scheduleCustomerCheckout: Object.assign(element(),{dataset:{},hidden:false}),
+    scheduleCustomerRecorded: Object.assign(element(),{hidden:false}),
     scheduleCustomerDetails: element(),
     scheduleCustomerDialog: Object.assign(element(), {
       opened: 0,
@@ -46,6 +48,8 @@ function fixture() {
   };
   const sandbox = {
     model,
+    demoReceipts:[],
+    wireBookingMoveHandle: (button,booking)=>{button.addEventListener('click',()=>{});},
     Core: {serviceFor: (m,b) => m.menus.find(menu=>menu.id===b.menu).duration,
       clock: n => String(Math.floor(n/60)).padStart(2,'0') + ':' + String(n%60).padStart(2,'0') },
     displayDemoDay: d => '2026年10月26日（月）',
@@ -92,6 +96,8 @@ test('card shows course beside customer, and customer button opens details only'
   assert.equal(customer.textContent,'お客様A');
   assert.equal(customer.tag,'button');
   assert.ok(customer.events.click,'Customer button must have a click handler');
+  const move=block.children.find(x=>x.cls==='booking-move-handle');
+  assert.ok(move && move.events.click, 'Staging move control must remain accessible');
   const grip=block.children.find(x=>x.cls==='booking-grip');
   assert.ok(grip && grip.events.pointermove, 'Original duration grip remains');
   let stopped=false;
