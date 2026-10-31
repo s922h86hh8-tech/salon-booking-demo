@@ -8,7 +8,7 @@ import { runInNewContext } from 'node:vm';
 import { test } from 'node:test';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
-const html=readFileSync(resolve(root,'preview/v0.47-date-navigation.html'),'utf8');
+const html=readFileSync(resolve(root,'preview/v0.48-booking-move-tray.html'),'utf8');
 const scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m=>m[1]);
 assert.equal(scripts.length,2);
 const ctrl=scripts[1],begin=ctrl.indexOf('const DEMO_TARGETS={'),end=ctrl.indexOf('function setMode(next){',begin);
