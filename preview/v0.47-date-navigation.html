@@ -336,7 +336,7 @@
 <div class="rolebar" aria-label="画面モード"><div class="roleinner"><button type="button" id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="adminMenu">☰ 管理メニュー</button><span class="role-caption">予約表がメイン画面です</span><div class="rolebuttons"><button type="button" id="viewAdmin" class="rolebutton active" aria-pressed="true">店舗管理者の画面</button><button type="button" id="viewCustomer" class="rolebutton" aria-pressed="false">お客様の予約画面</button></div></div></div>
 <button type="button" id="drawerShade" class="drawer-shade" hidden aria-label="管理メニューを閉じる"></button><main class="layout"><aside id="adminMenu" class="sidebar" aria-label="管理メニュー" aria-hidden="true"><div class="drawer-top"><strong>管理メニュー</strong><button type="button" id="menuClose" class="drawer-close" aria-label="管理メニューを閉じる">✕ 閉じる</button></div><div class="shop"><div class="logo">青</div><div><strong id="storeName">架空・青空リラクゼーション</strong><small>店舗管理者の体験</small></div></div><nav class="navigation v43-navigation" aria-label="管理画面の切り替え">
  <span class="v43-nav-title">毎日の業務</span>
- <button data-page="booking" class="active">▦ <span>今日の予約</span></button>
+ <button data-page="booking" class="active">▦ <span>予約表</span></button>
  <button data-page="checkout">¥ <span>会計</span></button>
  <button data-page="register">▣ <span>レジ管理</span></button>
  <details class="v43-more-menu">
@@ -356,10 +356,10 @@
 <div class="metrics"><div class="metric"><small>確定中の予約</small><strong id="kpiBookings">3</strong><span>架空データ</span></div><div class="metric"><small>キャンセル待ち</small><strong id="kpiWaiting">3</strong><span>通知送信なし</span></div><div class="metric"><small>回収した空き枠</small><strong id="kpiRecovered">0</strong><span>模擬確定</span></div></div>
 <div class="card"><h3>まずはこの3つを試してください</h3><div class="tiles"><button class="tile" data-go="setup"><span class="stepnum">01</span><strong>初期設定ガイド</strong><small>質問に答えるだけで構成を確認</small><span class="go">体験する →</span></button><button class="tile" data-go="booking"><span class="stepnum">02</span><strong>予約登録</strong><small>スタッフ・ベッド・休憩を自動確認</small><span class="go">体験する →</span></button><button class="tile" data-go="waitlist"><span class="stepnum">03</span><strong>空き枠回収</strong><small>取消 → 候補提案 → 模擬確定</small><span class="go">体験する →</span></button></div></div><div class="card subdued"><h3>このデモと開発本体の違い</h3><p>この画面は操作体験専用の独立したシミュレーターです。v0.21のPython予約エンジンやDBには書き込みません。実際の予約同時確定、本人認証、外部通知の安全性を証明するものではありません。</p></div></section>
 <section id="page-setup" class="page hidden"><div class="page-title"><div><div class="eyebrow blue">ONBOARDING</div><h2>店舗初期設定ガイド</h2><p>AIのように順番に案内する定型ガイドです。実際の生成AIには接続しません。</p></div></div><div class="card"><div class="progresslabel"><span id="guideCount">ステップ 1 / 5</span><span id="guideDone">設定プレビュー</span></div><div class="progress"><div id="guideProgress"></div></div><div id="guideBody"></div><div class="buttonrow"><button class="secondary" id="guidePrev">戻る</button><button class="primary" id="guideNext">次へ進む</button></div></div><div class="card subdued"><h3>すでに用意された架空の設定</h3><div id="setupSummary"></div><p class="muted">この体験での選択は画面上だけに反映されます。実予約台帳の設定変更はありません。</p></div></section>
-<section id="page-booking" class="page"><div class="page-title"><div><div class="eyebrow blue">TODAY · DEMO</div><h2>今日の予約</h2><p>コースを選んで、空き時間へ。</p></div><span class="datepill">架空データ専用</span></div>
+<section id="page-booking" class="page"><div class="page-title"><div><div class="eyebrow blue">TODAY · DEMO</div><h2>予約表</h2><p>日付を選んで、予約を確認。</p></div><span class="datepill">架空データ専用</span></div>
 
  <div class="v43-overview" aria-label="今日の業務状況・架空データ">
-  <div class="v43-overview-main"><span class="v43-overview-eyebrow">今日の状況（架空）</span>
+  <div class="v43-overview-main"><span class="v43-overview-eyebrow">選んだ日の状況（架空）</span>
    <div class="v43-stats"><div><small>確定予約</small><strong id="flowBooked">3</strong><small>件</small></div>
     <div><small>担当未定</small><strong id="flowUnassigned">2</strong><small>件</small></div>
     <div><small>会計待ち</small><strong id="flowUnpaid">3</strong><small>件</small></div></div>
