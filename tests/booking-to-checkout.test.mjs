@@ -7,7 +7,7 @@ import {fileURLToPath} from 'node:url';
 import {runInNewContext} from 'node:vm';
 import {test} from 'node:test';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
-const src=readFileSync(resolve(root,'preview/v0.44-booking-to-checkout.html'),'utf8');
+const src=readFileSync(resolve(root,'preview/v0.45-cancel-and-sync-alerts.html'),'utf8');
 const scripts=[...src.matchAll(/<script>([\s\S]*?)<\/script>/g)];
 assert.equal(scripts.length,2);
 const ctrl=scripts[1][1];
