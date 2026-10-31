@@ -357,16 +357,7 @@
 <div class="card"><h3>まずはこの3つを試してください</h3><div class="tiles"><button class="tile" data-go="setup"><span class="stepnum">01</span><strong>初期設定ガイド</strong><small>質問に答えるだけで構成を確認</small><span class="go">体験する →</span></button><button class="tile" data-go="booking"><span class="stepnum">02</span><strong>予約登録</strong><small>スタッフ・ベッド・休憩を自動確認</small><span class="go">体験する →</span></button><button class="tile" data-go="waitlist"><span class="stepnum">03</span><strong>空き枠回収</strong><small>取消 → 候補提案 → 模擬確定</small><span class="go">体験する →</span></button></div></div><div class="card subdued"><h3>このデモと開発本体の違い</h3><p>この画面は操作体験専用の独立したシミュレーターです。v0.21のPython予約エンジンやDBには書き込みません。実際の予約同時確定、本人認証、外部通知の安全性を証明するものではありません。</p></div></section>
 <section id="page-setup" class="page hidden"><div class="page-title"><div><div class="eyebrow blue">ONBOARDING</div><h2>店舗初期設定ガイド</h2><p>AIのように順番に案内する定型ガイドです。実際の生成AIには接続しません。</p></div></div><div class="card"><div class="progresslabel"><span id="guideCount">ステップ 1 / 5</span><span id="guideDone">設定プレビュー</span></div><div class="progress"><div id="guideProgress"></div></div><div id="guideBody"></div><div class="buttonrow"><button class="secondary" id="guidePrev">戻る</button><button class="primary" id="guideNext">次へ進む</button></div></div><div class="card subdued"><h3>すでに用意された架空の設定</h3><div id="setupSummary"></div><p class="muted">この体験での選択は画面上だけに反映されます。実予約台帳の設定変更はありません。</p></div></section>
 <section id="page-booking" class="page"><div class="page-title"><div><div class="eyebrow blue">TODAY · DEMO</div><h2>今日の予約</h2><p>コースを選んで、空き時間へ。</p></div><span class="datepill">架空データ専用</span></div>
-<div class="demo-datebar" aria-label="予約表の日付切り替え">
- <button id="demoPrevDay" class="secondary" type="button" aria-label="前日の予約表へ">〈 前日</button>
- <label class="demo-date-label" for="demoDatePicker">
-  <strong id="demoDateLabel">2026年10月26日</strong>
-  <input id="demoDatePicker" type="date" min="2000-01-01" max="2100-12-31" value="2026-10-26" aria-label="予約日を選ぶ">
- </label>
- <button id="demoNextDay" class="secondary" type="button" aria-label="翌日の予約表へ">翌日 〉</button>
- <button id="demoBaseDay" class="demo-return" type="button">初期日に戻る</button>
- <span id="demoDayHint" class="demo-date-hint">初期日の架空予約を表示中</span>
-</div>
+
  <div class="v43-overview" aria-label="今日の業務状況・架空データ">
   <div class="v43-overview-main"><span class="v43-overview-eyebrow">今日の状況（架空）</span>
    <div class="v43-stats"><div><small>確定予約</small><strong id="flowBooked">3</strong><small>件</small></div>
@@ -378,6 +369,16 @@
   </div>
  </div>
  <div class="card v43-schedule"><div class="cardhead"><h3>スタッフ別の予約状況</h3><small>15分区切り・左右に移動</small></div>
+<div class="demo-datebar" aria-label="予約表の日付切り替え">
+ <button id="demoPrevDay" class="secondary" type="button" aria-label="前日の予約表へ">〈 前日</button>
+ <label class="demo-date-label" for="demoDatePicker">
+  <strong id="demoDateLabel">2026年10月26日</strong>
+  <input id="demoDatePicker" type="date" min="2000-01-01" max="2100-12-31" value="2026-10-26" aria-label="予約日を選ぶ">
+ </label>
+ <button id="demoNextDay" class="secondary" type="button" aria-label="翌日の予約表へ">翌日 〉</button>
+ <button id="demoBaseDay" class="demo-return" type="button">初期日に戻る</button>
+ <span id="demoDayHint" class="demo-date-hint">初期日の架空予約を表示中</span>
+</div>
 <div class="schedule-legend"><span><i class="legend-book"></i>予約中</span><span><i class="legend-cancel"></i>取消済み</span><span><i class="legend-prep"></i>準備</span><span><i class="legend-break"></i>休憩</span><span><i class="legend-free"></i>空き</span><span><i class="legend-queue"></i>付け回し待ち（未確定）</span></div>
 <p class="schedule-help">予約を取り消すと薄く残り、時間枠は再利用できます。お客様名を押すと予約詳細が開きます。</p><details class="schedule-help-detail"><summary>操作のヒント</summary><p>スタッフ名は左に固定。小さな「HPB」「L」「HP」などの仮マークは予約経路を表します。一番下の担当未定枠からスタッフへ付け回せます。枠はタップ操作にも対応しています。架空データのみの体験です。</p></details>
 <details class="schedule-help-detail" id="quickOrderSettings"><summary>コースの並び順</summary><div id="quickOrderControls" class="quick-order-controls"></div></details>
