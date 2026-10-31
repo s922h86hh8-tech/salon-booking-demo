@@ -43,6 +43,7 @@ test('cancelled bookings render as noninteractive faded history beneath active b
  };
  const node=(tag,cls='',value='')=>({tag,cls,textContent:value,children:[],appendChild(n){this.children.push(n)}});
  const bkg=runInNewContext(cancelledSource+'\ndrawCancelledBooking;',{
+   model:{},
    Core:{serviceFor:()=>60,clock:t=>String(Math.floor(t/60)).padStart(2,'0')+':00'},
    add:(parent,child)=>{parent.appendChild(child);return child;},
    node,
