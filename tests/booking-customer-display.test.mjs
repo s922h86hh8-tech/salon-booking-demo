@@ -8,7 +8,7 @@ import { runInNewContext } from 'node:vm';
 import { test } from 'node:test';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const html = readFileSync(resolve(root, 'preview/v0.46-unified-alerts.html'), 'utf8');
+const html = readFileSync(resolve(root, 'preview/v0.47-date-navigation.html'), 'utf8');
 const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
 assert.equal(scripts.length, 2, 'Booking engine and controller scripts only');
 const controller = scripts[1][1];
@@ -48,7 +48,9 @@ function fixture() {
     model,
     Core: {serviceFor: (m,b) => m.menus.find(menu=>menu.id===b.menu).duration,
       clock: n => String(Math.floor(n/60)).padStart(2,'0') + ':' + String(n%60).padStart(2,'0') },
-    ORIGINS: {hpb: {label:'ホットペッパービューティー'}},
+    displayDemoDay: d => '2026年10月26日（月）',
+    selectedDemoDay: '2026-10-26',
+    ORIGINS: {hpb: {label:'ホットペッパービューティー'}}, 
     DISCOVERIES: {google:'Google検索・マップ'},
     $: id => { assert.ok(els[id]); return els[id]; },
     node: element,
@@ -72,7 +74,7 @@ test('course and fictional customer labels are concise but details keep full nam
   const entries=els.scheduleCustomerDetails.children;
   const values=entries.map(row=>row.children[1].textContent);
   assert.deepEqual([...values],[
-    '架空のお客様A','もみほぐし60分','10:00〜11:00','佐藤',
+    '架空のお客様A','2026年10月26日（月）','もみほぐし60分','10:00〜11:00','佐藤',
     'オープン1','ホットペッパービューティー','Google検索・マップ'
   ]);
 });
