@@ -163,7 +163,7 @@ function renderDemoContractForm(){
  $('masterContractBasis').value=rule.basis;
  $('masterContractRate').value=String(rule.rate);
  $('masterContractEffective').value=rule.effective;
- $('masterContractVersion').textContent='ルール版 '+rule.version+'（明細確定機能は未実装）';
+ $('masterContractVersion').textContent='試算ルール版 '+rule.version+'（旧版保存・明細確定は未実装）';
 }
 function saveDemoContract(){
  const st=demoMaster.staff.find(s=>s.id===$('masterContractStaff').value);
