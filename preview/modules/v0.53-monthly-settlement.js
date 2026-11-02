@@ -84,6 +84,7 @@ function v53Pay(closingId,amount,paidDate,method){
  if(!closing)throw Error('締め済みの報酬を選んでください');
  if(!Number.isSafeInteger(amount)||amount<=0)throw Error('支払記録額は1円以上の整数で入力してください');
  if(!validDemoDay(paidDate)||paidDate<closing.periodStart)throw Error('記録する支払日を確認してください');
+ if(paidDate<closing.closedAt.slice(0,10))throw Error('締めより前の日付には支払記録を追加できません');
  if(!['bank-demo','cash-demo','other-demo'].includes(method))throw Error('支払方法を選んでください');
  const remaining=v53State(closing).remaining;
  if(amount>remaining)throw Error('未払い額を超えて支払済みとして記録できません');
@@ -132,6 +133,7 @@ function v53Render(){
  $('v53SourceAmount').textContent=total.toLocaleString('ja-JP')+'円';
  $('v53PendingCount').textContent=String(pending.length);
  $('v53CloseStatus').textContent=close?
+  (pending.length?'締め後に未処理の確定予約が'+pending.length+'件あります。訂正処理が必要です。 ／ ':'')+
   '締め済み（模擬） ／ '+close.sourceCount+'件 ／ '+close.total.toLocaleString('ja-JP')+'円'+
    ' ／ '+v53State(close).label :
   pending.length?'未処理の確定予約があります。月次締め前に確認してください。':
