@@ -41,7 +41,7 @@ function fixture({kind='contract-store',withPayment=true}={}){
   moduleCode,
   '({complete:v52Complete,draft:v52Draft,render:v52Render,status:v52Status,',
   'ledger:()=>v52Ledger,completions:()=>v52Completed,reset:v52Reset,',
-  'switchDay:(next,dayModel,rs)=>{selectedDemoDay=next;model=dayModel;demoReceipts=rs;}});'
+  'switchDay:(next,dayModel,rs)=>{selectedDemoDay=next;model=dayModel;demoReceipts=rs;},model:()=>model});'
  ].join('\n');
  const api=runInNewContext(init,{Core,startingReceipts:firstReceipts,demoDayContexts:contexts,
   validDemoDay:x=>/^\d{4}-\d{2}-\d{2}$/.test(x),
@@ -91,8 +91,8 @@ test('invalid receipts and canceled bookings never produce a valid provisional r
  assert.throws(()=>api.draft('2026-10-27',1),/複数の会計/);
  const {api:secondApi}=fixture();
  secondApi.complete('2026-10-26',1);
- // Fresh demo has a separate model; accessing its returned context is unnecessary.
- assert.throws(()=>secondApi.draft('2026-10-26',2),/施術完了/);
+ secondApi.model().bookings.find(x=>x.id===1).status='CANCELLED';
+ assert.throws(()=>secondApi.draft('2026-10-26',1),/取消・変更/);
 });
 test('a personal-sales contractor quote does not add to store payable total',()=>{
  const {api,fields}=fixture({kind:'contract-personal'});
