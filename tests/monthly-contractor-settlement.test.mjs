@@ -19,6 +19,7 @@ const start=scripts[1].indexOf('const v52Completed=new Map();');
 const end=scripts[1].indexOf('function masterContexts(){',start);
 assert.ok(start>=0&&end>start);
 const source=scripts[1].slice(start,end);
+const testPaymentDay=new Date(Date.now()+86400000).toISOString().slice(0,10);
 function uiElement(tag='',cls='',text=''){
  return {tag,cls,textContent:text,value:'',children:[],disabled:false,
   replaceChildren(){this.children=[]},appendChild(c){this.children.push(c)},addEventListener(){}};
@@ -32,7 +33,7 @@ function fixture({kind='contract-store',rate=60,withReceipt=true}={}){
   'v53ClosingDetail','v53PayButton','v53ClosingList','v53PaymentList','v53PayAmount',
   'v53PaidDate','v53PayMethod'].map(id=>[id,uiElement()]));
  fields.v53Month.value='2026-10';fields.v53Staff.value='s1';
- fields.v53DueDate.value='2026-11-30';fields.v53PaidDate.value='2026-11-30';
+ fields.v53DueDate.value='2026-11-30';fields.v53PaidDate.value=testPaymentDay;
  fields.v53PayMethod.value='bank-demo';
  const events=[];
  const receipt={number:1,bookingId:1,full:5000,discounts:1000,due:4000,menuName:'もみほぐし60分',serviceStaff:'佐藤'};
@@ -82,17 +83,17 @@ test('partial payments and outstanding totals never exceed a frozen monthly clos
  const {api}=fixture();
  api.complete('2026-10-26',1);api.draft('2026-10-26',1);
  const closed=api.close('2026-10','s1','2026-11-30');
- const p=api.pay(closed.id,1000,'2026-11-30','bank-demo');
+ const p=api.pay(closed.id,1000,testPaymentDay,'bank-demo');
  assert.equal(p.amount,1000);
  assert.equal(api.state(closed).paid,1000);
  assert.equal(api.state(closed).remaining,1400);
  assert.match(api.state(closed).label,/一部支払/);
- assert.throws(()=>api.pay(closed.id,2000,'2026-11-30','bank-demo'),/未払い額を超え/);
- api.pay(closed.id,1400,'2026-11-30','cash-demo');
+ assert.throws(()=>api.pay(closed.id,2000,testPaymentDay,'bank-demo'),/未払い額を超え/);
+ api.pay(closed.id,1400,testPaymentDay,'cash-demo');
  assert.equal(api.state(closed).remaining,0);
  assert.match(api.state(closed).label,/支払済み/);
- assert.throws(()=>api.pay(closed.id,1,'2026-11-30','bank-demo'),/未払い額を超え/);
- assert.throws(()=>api.pay(closed.id,0,'2026-11-30','bank-demo'),/1円以上/);
+ assert.throws(()=>api.pay(closed.id,1,testPaymentDay,'bank-demo'),/未払い額を超え/);
+ assert.throws(()=>api.pay(closed.id,0,testPaymentDay,'bank-demo'),/1円以上/);
 });
 test('after close, additional services cannot silently create new payable lines',()=>{
  const {api,fields}=fixture();
