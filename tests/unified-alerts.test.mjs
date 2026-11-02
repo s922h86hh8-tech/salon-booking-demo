@@ -26,6 +26,7 @@ function element(tag='div',cls='',text=''){
  };
 }
 function fixture(){
+ const operations=[];
  const fields=Object.fromEntries(
   ['integrationAlert','integrationAlertTitle','integrationAlertText',
    'noticeOpenCount','connectList','noticeHistory'].map(id=>[id,element()])
@@ -33,12 +34,14 @@ function fixture(){
  const sandbox={
   $:id=>{assert.ok(fields[id],'Missing UI field '+id);return fields[id]},
   node:element,
-  add:(parent,child)=>{parent.appendChild(child);return child}
+  add:(parent,child)=>{parent.appendChild(child);return child},
+  // Shared operation history is outside the extracted alert-center fragment.
+  recordOperation:(category,details,day)=>operations.push({category,details,day})
  };
  const source='const demoAlertActive={};const demoAlertHistory=[];let demoAlertNext=1;let page="connect";\n'+fragment+
   '\n({DEMO_TARGETS,activeDemoAlerts,showDemoAlert,dismissDemoAlert,renderConnect,renderIntegrationAlert,getHistory:()=>demoAlertHistory});';
  const api=runInNewContext(source,sandbox);
- return {fields,api};
+ return {fields,api,operations};
 }
 test('nine illustrative sources share two groups and are not connected by default',()=>{
  const {api,fields}=fixture();
@@ -52,7 +55,7 @@ test('nine illustrative sources share two groups and are not connected by defaul
  assert.equal(cards[0].children[0].children[1].textContent,'未接続');
 });
 test('external and internal examples have one count, next action and history',()=>{
- const {api,fields}=fixture();
+ const {api,fields,operations}=fixture();
  api.renderConnect();
  assert.equal(api.showDemoAlert('line','auth'),true);
  assert.equal(api.showDemoAlert('payment','result'),true);
@@ -63,6 +66,7 @@ test('external and internal examples have one count, next action and history',()
  assert.match(fields.integrationAlertText.textContent,/決済/);
  assert.match(fields.integrationAlertText.textContent,/ほか1件/);
  assert.equal(fields.noticeHistory.children.length,3);
+ assert.equal(operations.filter(x=>x.category==='連携通知').length,3, 'Alert actions must reach the shared operation ledger boundary');
  assert.equal(api.showDemoAlert('payment','auth'),false);
 });
 test('closing the example does not claim reconnection or resolution',()=>{
