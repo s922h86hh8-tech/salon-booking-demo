@@ -44,7 +44,7 @@ function fixture(confirm = () => true) {
   els.regAmount.value = '1000';
   const register = { phase: 'NEW', opening: null, start: 0, end: null,
     events: [], checks: [], moves: [] };
-  const receipts = [], messages = [];
+  const receipts = [], messages = [], operations = [];
   const sandbox = {
     register, demoReceipts: receipts, REG_DENOMS: denoms,
     CHECKOUT_METHODS: {cash:'現金',credit:'カード',qr:'QR',emoney:'電子マネー',voucher:'商品券',other:'その他'},
@@ -55,11 +55,14 @@ function fixture(confirm = () => true) {
     node: (tag, css, label) => Object.assign(makeElement(),
       { tag, className: css, textContent: label || '' }),
     add: (parent, child) => { parent.appendChild(child); return child; },
-    info: text => messages.push(text)
+    info: text => messages.push(text),
+    // This fixture extracts register functions from the full page. The shared
+    // operation ledger lives outside that slice, so model its boundary here.
+    recordOperation: (category, details, day) => operations.push({category, details, day})
   };
   const api = runInNewContext(registerFunctions +
     '\n({registerSales,registerNet,registerExpected,registerCount,registerReconcile,registerMove,renderRegister})', sandbox);
-  return { els, register, receipts, messages, api };
+  return { els, register, receipts, messages, operations, api };
 }
 
 test('opening + cash receipt + cash addition + mid-count + recount + closing', () => {
@@ -69,6 +72,7 @@ test('opening + cash receipt + cash addition + mid-count + recount + closing', (
   assert.equal(r.phase, 'OPEN');
   assert.equal(r.opening.amount, 10000);
   assert.equal(r.checks.length, 1);
+  assert.ok(f.operations.some(x => x.category === 'レジ'), 'Register action must reach the operation ledger boundary');
   api.registerMove();
   receipts.push({ amounts: { cash: 5000, credit: 0 } }, { amounts: { cash: 0, credit: 2500 } });
   assert.equal(api.registerSales(), 5000, 'Non-cash must never enter the drawer');
