@@ -3,7 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {request as httpRequest} from 'node:http';
 import {randomBytes} from 'node:crypto';
-import {openLocalPrototype} from '../server-design/v0.59-local-transaction-store.mjs';
+import {openLocalPrototype} from '../server-design/v0.60-local-transaction-store.mjs';
 import {createLoopbackApi} from '../server-design/v0.60-loopback-api.mjs';
 
 async function fixture(t){
@@ -28,7 +28,8 @@ async function fixture(t){
   db.prepare('INSERT INTO stores(store_id,store_name) VALUES(?,?)').run(id,name);
  for(const [userId,active] of [
   ['alice',1],['bob',1],['staff-user',1],['other',1],['inactive',0],['desk',1]
- ])db.prepare('INSERT INTO users(user_id,active) VALUES(?,?)').run(userId,active);
+ ])db.prepare('INSERT INTO users(user_id,display_name,active) VALUES(?,?,?)')
+   .run(userId,'架空担当 '+userId,active);
  for(const [storeId,userId,role,staffId,active] of [
   ['A','alice','manager',null,1],
   ['A','bob','owner',null,1],
@@ -150,6 +151,9 @@ test('request then different-person approval runs through HTTP and writes atomic
  assert.equal(history.status,200);
  assert.equal(history.json.data.length,2);
  assert.deepEqual(history.json.data.map(x=>x.actor_user_id),['alice','bob']);
+ assert.deepEqual(history.json.data.map(x=>x.actor_name_snapshot),
+  ['架空担当 alice','架空担当 bob']);
+ assert.ok(history.json.data[0].event_seq<history.json.data[1].event_seq);
  assert.ok(history.json.data.every(x=>x.occurred_at==='2026-11-03T07:10:11.000Z'));
  assert.equal(f.count('correction_adjustments'),1);
 });
@@ -229,4 +233,21 @@ test('HTTP response disables caching and generic storage errors never leak inter
  assert.equal(r.headers['x-content-type-options'],'nosniff');
  assert.equal(r.headers['x-frame-options'],'DENY');
  assert.ok(!JSON.stringify(r.json).includes('token'));
+});
+
+test('server-side actor name snapshot is immutable after later account display-name edits',async(t)=>{
+ const f=await fixture(t),endpoint='/v0.60/stores/A/correction-requests';
+ const initial=await f.send('POST',endpoint,'maker',f.postBody);
+ assert.equal(initial.status,201);
+ f.db.prepare('UPDATE users SET display_name=? WHERE user_id=?')
+  .run('変更された架空名','alice');
+ const approved=await f.send('POST',endpoint+'/'+initial.json.data.requestId+'/decision',
+  'checker',{decision:'APPROVE'});
+ assert.equal(approved.status,200);
+ const history=await f.send('GET','/v0.60/stores/A/audit-events?requestId='+
+  initial.json.data.requestId,'checker');
+ assert.equal(history.status,200);
+ assert.equal(history.json.data[0].actor_name_snapshot,'架空担当 alice');
+ assert.equal(history.json.data[1].actor_name_snapshot,'架空担当 bob');
+ assert.equal(history.json.data[0].occurred_at,'2026-11-03T07:10:11.000Z');
 });
