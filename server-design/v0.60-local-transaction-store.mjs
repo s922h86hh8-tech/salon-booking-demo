@@ -42,6 +42,13 @@ export function openLocalPrototype({
  const db=new DatabaseSync(path);
  try{
   db.exec(readFileSync(new URL('./v0.60-local-sqlite-schema.sql',import.meta.url),'utf8'));
+  // A prior v0.59 file cannot be silently treated as migrated: reject it.
+  // This prototype has no schema migration tooling.
+  const userCols=new Set(db.prepare("PRAGMA table_info('users')").all().map(x=>x.name));
+  const auditCols=new Set(db.prepare("PRAGMA table_info('audit_events')").all().map(x=>x.name));
+  if(!userCols.has('display_name')||
+     !auditCols.has('actor_name_snapshot')||!auditCols.has('event_seq'))
+   throw error('SCHEMA_MISMATCH_V060');
  }catch(e){db.close();throw e;}
  function authorize(handle,storeId,action,extras={}){
   if(!id(storeId))throw error('INVALID_STORE_ID');
