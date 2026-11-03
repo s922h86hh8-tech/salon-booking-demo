@@ -217,8 +217,8 @@ export function openLocalPrototype({
  function audit({sessionHandle,storeId,requestId=null}={}){
   authorize(sessionHandle,storeId,'audit.read');
   const sql=requestId?
-   'SELECT * FROM audit_events WHERE store_id=? AND request_id=? ORDER BY occurred_at,event_id':
-   'SELECT * FROM audit_events WHERE store_id=? ORDER BY occurred_at,event_id';
+   'SELECT * FROM audit_events WHERE store_id=? AND request_id=? ORDER BY event_seq':
+   'SELECT * FROM audit_events WHERE store_id=? ORDER BY event_seq';
   return db.prepare(sql).all(...(requestId?[storeId,requestId]:[storeId])).map(asPlain);
  }
  return Object.freeze({
