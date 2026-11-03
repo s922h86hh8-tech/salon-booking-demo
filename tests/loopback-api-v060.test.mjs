@@ -174,7 +174,8 @@ test('rejected and stale approvals do not change money',async(t)=>{
  const original=await f.send('POST',endpoint,'maker',f.postBody);
  const shortReason=await f.send('POST',endpoint+'/'+original.json.data.requestId+'/decision',
   'checker',{decision:'REJECT',reason:'短'});
- assert.equal(shortReason.status,500); // v0.59 error-map currently generic; never leaks SQL details
+ assert.equal(shortReason.status,400);
+ assert.equal(shortReason.json.error.code,'REJECTION_REASON_REQUIRED');
  const rejection=await f.send('POST',endpoint+'/'+original.json.data.requestId+'/decision',
   'checker',{decision:'REJECT',reason:'架空の根拠確認ができません'});
  assert.equal(rejection.status,200);
