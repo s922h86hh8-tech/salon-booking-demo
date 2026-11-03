@@ -185,3 +185,29 @@ test('authorization module never imports browser, network, or storage providers'
  assert.doesNotMatch(code,/\bfetch\s*\(|\blocalStorage\b|\bindexedDB\b|\bXMLHttpRequest\b/);
  assert.doesNotMatch(code,/\b(import\s|require\s*\()/);
 });
+
+test('oversized adjustment and invalid version cannot be approved',()=>{
+ for(const changed of [
+  {request:request({delta:-1000001})},
+  {request:request({expectedVersion:-1})},
+  {current:snapshot({version:-1})},
+  {current:snapshot({version:Number.MAX_SAFE_INTEGER})}
+ ]){
+  assert.throws(()=>decision(changed),{code:'INVALID_SNAPSHOT'});
+ }
+});
+test('audit rejects nonexistent calendar dates, excessive reasons and noncanonical UTC stamps',()=>{
+ const base={eventId:'evt-2',storeId:'store-A',principal:principal(),
+  action:'correction.approved',subjectId:'close-1',requestId:'req-1',
+  occurredAt:'2026-11-03T04:30:00.000Z',
+  before:2400,after:2000,reason:'証憑を確認したうえで訂正しました'};
+ for(const changed of [
+  {occurredAt:'2026-02-31T04:30:00.000Z'},
+  {occurredAt:'2026-11-03T04:30:00Z'},
+  {occurredAt:'2026-11-03T04:30:00.000+00:00'},
+  {reason:'長'.repeat(201)}
+ ]){
+  assert.throws(()=>makeAuditPayload({...base,...changed}),
+   {code:'INVALID_AUDIT_PAYLOAD'});
+ }
+});
