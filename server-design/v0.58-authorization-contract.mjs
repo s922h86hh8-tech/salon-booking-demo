@@ -102,8 +102,10 @@ export function evaluateCorrectionDecision({
  if(!request||!current||!validId(request.closingId)||
    !validId(request.sourceId)||request.closingId!==current.closingId||
    request.sourceId!==current.sourceId||current.storeId!==resource.storeId||
-   !isInt(request.delta)||request.delta===0||
-   !isInt(request.expectedVersion)||!isInt(current.version)||
+   !isInt(request.delta)||request.delta===0||Math.abs(request.delta)>1000000||
+   !isInt(request.expectedVersion)||request.expectedVersion<0||
+   !isInt(current.version)||current.version<0||
+   !isInt(current.version+1)||
    !isInt(request.sourceBefore)||!isInt(request.monthBefore)||
    !isInt(request.paidBefore)||
    !isInt(current.sourceNet)||!isInt(current.monthNet)||
@@ -140,9 +142,10 @@ export function makeAuditPayload({
 }={}){
  if(!validId(eventId)||!validId(storeId)||!validId(principal?.userId)||
    !validId(action)||!validId(subjectId)||!validId(requestId)||
-   typeof reason!=='string'||reason.trim().length<5||
-   !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?Z$/.test(occurredAt||'')||
+   typeof reason!=='string'||reason.trim().length<5||reason.trim().length>200||
+   !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(occurredAt||'')||
    !Number.isFinite(Date.parse(occurredAt))||
+   new Date(occurredAt).toISOString()!==occurredAt||
    !Number.isSafeInteger(before)||!Number.isSafeInteger(after)){
   const err=new Error('Invalid audit payload');err.code='INVALID_AUDIT_PAYLOAD';throw err;
  }
