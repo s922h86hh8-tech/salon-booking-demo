@@ -6,12 +6,14 @@ on:
     paths:
       - 'index.html'
       - 'preview/**'
+      - 'server-design/**'
       - 'tests/**'
       - '.github/workflows/static-tests.yml'
   pull_request:
     paths:
       - 'index.html'
       - 'preview/**'
+      - 'server-design/**'
       - 'tests/**'
       - '.github/workflows/static-tests.yml'
 
