@@ -2,8 +2,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {openLocalPrototype} from '../server-design/v0.59-local-transaction-store.mjs';
+import {mkdtempSync,rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
 
-function fixture(){
+function fixture(dbPath=':memory:'){
  const sessions=Object.freeze({
   maker:{userId:'alice',authenticated:true},
   checker:{userId:'bob',authenticated:true},
@@ -15,6 +18,7 @@ function fixture(){
  });
  let counter=0;
  const app=openLocalPrototype({
+  path:dbPath,
   resolveSession:(handle)=>Object.hasOwn(sessions,handle)?sessions[handle]:null,
   clock:()=>new Date(Date.UTC(2026,10,3,5,1,counter++%59))
  });
@@ -276,5 +280,55 @@ test('invalid adjustment and source never create request or audit',()=>{
  }
  assert.equal(count('correction_requests'),0);
  assert.equal(count('audit_events'),0);
+ app.close();
+});
+
+test('fictional on-disk SQLite adjustments survive close/reopen without duplicate writes',()=>{
+ const folder=mkdtempSync(join(tmpdir(),'salon-v059-'));
+ const dbPath=join(folder,'prototype.sqlite');
+ try{
+  const {app,req,review}=fixture(dbPath);
+  const item=req();
+  const reviewed=review(item.requestId);
+  assert.equal(reviewed.status,'APPROVED');
+  app.close();
+  const persistent=openLocalPrototype({
+   path:dbPath,
+   resolveSession:handle=>({
+    maker:{userId:'alice',authenticated:true},
+    checker:{userId:'bob',authenticated:true},
+    therapist:{userId:'t1',authenticated:true}
+   })[handle]||null
+  });
+  const stored=persistent.statement({sessionHandle:'therapist',storeId:'A',staffId:'staff-1'});
+  assert.equal(stored.length,1);
+  assert.equal(stored[0].originalTotal,2400);
+  assert.equal(stored[0].effectiveTotal,2000);
+  assert.equal(stored[0].version,1);
+  const history=persistent.audit({sessionHandle:'checker',storeId:'A'});
+  assert.equal(history.length,2);
+  assert.equal(history.find(x=>x.action==='correction.approved').actor_user_id,'bob');
+  assert.throws(()=>persistent.reviewCorrection({
+   sessionHandle:'checker',storeId:'A',requestId:item.requestId,decision:'APPROVE'
+  }),{code:'ALREADY_REVIEWED'});
+  persistent.close();
+ }finally{
+  rmSync(folder,{recursive:true,force:true});
+ }
+});
+test('SQL-level trigger prohibits self-review even when database accessed directly',()=>{
+ const {app,req,db,count}=fixture();
+ const item=req();
+ assert.throws(()=>db.prepare(
+  'INSERT INTO correction_decisions(store_id,request_id,status,reviewed_by_user_id,reviewed_at,reason) VALUES(?,?,?,?,?,?)'
+ ).run('A',item.requestId,'APPROVED','alice','2026-11-03T05:05:00.000Z',
+  '架空の不正な自己承認'),/self-approval is forbidden/);
+ assert.equal(count('correction_decisions'),0);
+ assert.throws(()=>db.prepare(
+  'INSERT INTO correction_adjustments(store_id,adjustment_id,request_id,closing_id,source_id,delta,source_before,source_after,month_before,month_after,created_at) VALUES(?,?,?,?,?,?,?,?,?,?,?)'
+ ).run('A','unapproved-adjustment',item.requestId,'same-close','same-source',-400,
+  2400,2000,2400,2000,'2026-11-03T05:05:00.000Z'),
+ /adjustment requires approved decision/);
+ assert.equal(count('correction_adjustments'),0);
  app.close();
 });
