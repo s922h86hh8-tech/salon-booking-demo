@@ -48,7 +48,8 @@ function mapError(error){
  };
  if(CONFLICT_CODES.has(error?.code))return {status:409,code:error.code};
  if(NOT_FOUND_CODES.has(error?.code))return {status:404,code:'RESOURCE_NOT_FOUND'};
- if(error?.code==='INVALID_TARGET'||error?.code==='INVALID_STORE_ID'||
+ if(error?.code==='INVALID_DECISION'||error?.code==='REJECTION_REASON_REQUIRED'||
+   error?.code==='INVALID_TARGET'||error?.code==='INVALID_STORE_ID'||
    error?.code==='INVALID_IDEMPOTENCY_KEY'||error?.code==='INVALID_REASON')
   return {status:400,code:error.code};
  // Never disclose SQL details, tokens, stack traces or filesystem paths.
@@ -59,7 +60,8 @@ function parseRoute(req,port){
  if(path.hostname!=='127.0.0.1'||path.port&&path.port!==String(port))
   fail(400,'INVALID_TARGET');
  const parts=path.pathname.split('/').filter(Boolean).map(decodeURIComponent);
- if(parts.some(part=>!SAFE_SEGMENT.test(part)))fail(400,'INVALID_PATH');
+ if(parts.some((part,i)=>!(i===0&&part==='v0.60')&&!SAFE_SEGMENT.test(part)))
+  fail(400,'INVALID_PATH');
  if(parts[0]!=='v0.60'||parts[1]!=='stores'||!parts[2])fail(404,'NOT_FOUND');
  const storeId=parts[2];
  if(path.searchParams.size&&
