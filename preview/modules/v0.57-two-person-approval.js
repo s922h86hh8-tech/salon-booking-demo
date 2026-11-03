@@ -281,6 +281,7 @@ function v57ReviewFromUI(id,decision){
 }
 function v57Render(){
  v55Render();
+ $('v56Operator').value=v57Actor().name+' ／ 本人未確認（役割模擬）';
  const mode=$('v57Mode');mode.value=v57Role;
  const actor=v57Actor(), root=$('v57RequestList');root.replaceChildren();
  $('v57CurrentActor').textContent=actor.name+'（役割を切り替えられる架空の操作。本人認証なし）';
