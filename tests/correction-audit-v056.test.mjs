@@ -80,12 +80,12 @@ test('v0.56 preserves v0.55 booking engine, no-network CSP and readonly auto fie
  assert.match(html,/id="v56Operator"[^>]*readonly/);
  assert.match(html,/id="v56LastRecorded"[^>]*readonly/);
  assert.match(html,/本人認証はありません/);
- for(const [_,tag,src] of html.matchAll(/<(script|style)>([\\s\\S]*?)<\\/\\1>/g)){
+ for(const [_,tag,src] of html.matchAll(/<(script|style)>([\s\S]*?)<\/\1>/g)){
   const hash=createHash('sha256').update(src,'utf8').digest('base64');
   assert.ok(html.includes("'sha256-"+hash+"'"),'CSP mismatch for '+tag);
  }
  assert.match(html,/connect-src 'none'/);
- assert.doesNotMatch(html,/\\bfetch\\s*\\(|\\bXMLHttpRequest\\b|\\blocalStorage\\b|\\bindexedDB\\b/);
+ assert.doesNotMatch(html,/\bfetch\s*\(|\bXMLHttpRequest\b|\blocalStorage\b|\bindexedDB\b/);
 });
 test('financial correction auto-captures actor, UTC timestamp, target and before-after snapshots',()=>{
  const {api,close,logs}=fixture(),{closing,line}=close();
@@ -104,7 +104,7 @@ test('financial correction auto-captures actor, UTC timestamp, target and before
  assert.equal(audit.monthBefore,2400);
  assert.equal(audit.monthAfter,2000);
  assert.ok(Date.parse(audit.createdAt)>=start&&Date.parse(audit.createdAt)<=end);
- assert.match(audit.createdAt,/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/);
+ assert.match(audit.createdAt,/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/);
  assert.ok(Object.isFrozen(audit));
  assert.equal(JSON.stringify(closing),before);
  assert.match(logs.at(-1).details,/訂正担当：デモ管理者/);
