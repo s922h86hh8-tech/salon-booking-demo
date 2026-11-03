@@ -59,7 +59,9 @@ function parseRoute(req,port){
  const path=new URL(req.url||'/', 'http://127.0.0.1');
  if(path.hostname!=='127.0.0.1'||path.port&&path.port!==String(port))
   fail(400,'INVALID_TARGET');
- const parts=path.pathname.split('/').filter(Boolean).map(decodeURIComponent);
+ let parts;
+ try{parts=path.pathname.split('/').filter(Boolean).map(decodeURIComponent);}
+ catch{fail(400,'INVALID_PATH');}
  if(parts.some((part,i)=>!(i===0&&part==='v0.60')&&!SAFE_SEGMENT.test(part)))
   fail(400,'INVALID_PATH');
  if(parts[0]!=='v0.60'||parts[1]!=='stores'||!parts[2])fail(404,'NOT_FOUND');
