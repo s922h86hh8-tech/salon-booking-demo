@@ -65,10 +65,10 @@ function fixture(){
   'oldState:v53State,state:v55State,adjust:v55Adjust,sourceNet:v55SourceNet,'+
   'entries:v55Entries,adjustments:()=>v55Adjustments,closings:()=>v53Closings,'+
   'paymentRecords:()=>v53Payments,rows:v54Rows,summary:v54Summary,csv:v54Csv,'+
-  'render:v57Render,renderAnnual:v54Render,resetAdjustments:v55Reset,actor:v57Actor,formatJst:v56Jst,
-  request:v57Request,review:v57Review,switchRole:v57SelectRole,
-  status:v57RequestStatus,requests:()=>v57Requests,reviewRecords:()=>v57ReviewRecords,
-  resetApproval:v57Reset});';
+  'render:v57Render,renderAnnual:v54Render,resetAdjustments:v55Reset,actor:v57Actor,formatJst:v56Jst,'+
+  'request:v57Request,review:v57Review,switchRole:v57SelectRole,'+
+  'status:v57RequestStatus,requests:()=>v57Requests,reviewRecords:()=>v57ReviewRecords,'+
+  'resetApproval:v57Reset});';
  const api=runInNewContext(program,sandbox);
  const close=()=>{
   api.complete('2026-10-26',1);const line=api.draft('2026-10-26',1);
