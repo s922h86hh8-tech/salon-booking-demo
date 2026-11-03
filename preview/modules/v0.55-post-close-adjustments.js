@@ -35,6 +35,10 @@ function v55Adjust(closingId,sourceId,kind,delta,reason){
  if(kind==='refund'&&delta>=0)throw Error('返金に伴う報酬減額はマイナス金額で入力してください');
  if(typeof reason!=='string'||reason.trim().length<5||reason.trim().length>200)
   throw Error('理由を5〜200文字で入力してください');
+ const normalizedReason=reason.trim();
+ if(v55Adjustments.some(x=>x.closingId===closing.id&&x.sourceId===sourceId&&
+  x.kind===kind&&x.delta===delta&&x.reason===normalizedReason))
+  throw Error('同じ内容の調整履歴はすでに登録されています。二重計上を防止しました');
  const source=v55FindSource(closing,sourceId);
  if(v55SourceNet(closing,sourceId)+delta<0)throw Error('原票単位の調整後額はマイナスにできません');
  const sum=v55State(closing);
