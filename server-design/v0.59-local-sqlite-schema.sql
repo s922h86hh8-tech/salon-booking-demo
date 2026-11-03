@@ -119,7 +119,8 @@ CREATE TABLE IF NOT EXISTS correction_adjustments (
 ) STRICT;
 
 CREATE TABLE IF NOT EXISTS audit_events (
-  event_id TEXT PRIMARY KEY NOT NULL,
+  event_seq INTEGER PRIMARY KEY AUTOINCREMENT,
+  event_id TEXT NOT NULL UNIQUE,
   store_id TEXT NOT NULL,
   request_id TEXT NOT NULL,
   action TEXT NOT NULL,
