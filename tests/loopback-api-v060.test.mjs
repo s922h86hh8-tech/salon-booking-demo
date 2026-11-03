@@ -5,6 +5,10 @@ import {request as httpRequest} from 'node:http';
 import {randomBytes} from 'node:crypto';
 import {openLocalPrototype} from '../server-design/v0.60-local-transaction-store.mjs';
 import {createLoopbackApi} from '../server-design/v0.60-loopback-api.mjs';
+import {DatabaseSync} from 'node:sqlite';
+import {readFileSync,mkdtempSync,rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
 
 async function fixture(t){
  const sessions={
@@ -250,4 +254,48 @@ test('server-side actor name snapshot is immutable after later account display-n
  assert.equal(history.json.data[0].actor_name_snapshot,'架空担当 alice');
  assert.equal(history.json.data[1].actor_name_snapshot,'架空担当 bob');
  assert.equal(history.json.data[0].occurred_at,'2026-11-03T07:10:11.000Z');
+});
+
+test('v0.60 explicitly rejects a v0.59 database without a reviewed migration',()=>{
+ const folder=mkdtempSync(join(tmpdir(),'salon-v060-compat-'));
+ const path=join(folder,'old-database.sqlite');
+ try{
+  const old=new DatabaseSync(path);
+  old.exec(readFileSync(new URL('../server-design/v0.59-local-sqlite-schema.sql',
+   import.meta.url),'utf8'));
+  old.close();
+  assert.throws(()=>openLocalPrototype({
+   path,resolveSession:()=>null
+  }),{code:'SCHEMA_MISMATCH_V060'});
+ }finally{
+  rmSync(folder,{recursive:true,force:true});
+ }
+});
+test('membership revocation takes effect immediately even for an existing test token',async(t)=>{
+ const f=await fixture(t);
+ const resource='/v0.60/stores/A/staff/staff-A/statements';
+ assert.equal((await f.send('GET',resource,'therapist')).status,200);
+ f.db.prepare('UPDATE store_memberships SET active=0 WHERE store_id=? AND user_id=?')
+  .run('A','staff-user');
+ const revoked=await f.send('GET',resource,'therapist');
+ assert.equal(revoked.status,403);
+ assert.equal(revoked.json.error.code,'INACTIVE_MEMBERSHIP');
+});
+test('HTTP reports generic failure and rolls back all correction writes when audit insert fails',async(t)=>{
+ const f=await fixture(t),endpoint='/v0.60/stores/A/correction-requests';
+ const request=await f.send('POST',endpoint,'maker',f.postBody);
+ assert.equal(request.status,201);
+ f.db.exec("CREATE TRIGGER audit_fail_v060 BEFORE INSERT ON audit_events WHEN NEW.action='correction.approved' BEGIN SELECT RAISE(ABORT,'secret diagnostic text must not leave server'); END;");
+ const failed=await f.send('POST',endpoint+'/'+request.json.data.requestId+'/decision',
+  'checker',{decision:'APPROVE'});
+ assert.equal(failed.status,500);
+ assert.equal(failed.json.error.code,'INTERNAL_FAILURE');
+ assert.ok(!JSON.stringify(failed.json).includes('secret diagnostic'));
+ const state=f.dbApp.statement({sessionHandle:'therapist',storeId:'A',staffId:'staff-A'});
+ assert.equal(state[0].effectiveTotal,2400);
+ assert.equal(f.count('correction_adjustments'),0);
+ assert.equal(f.count('correction_decisions'),0);
+ f.db.exec('DROP TRIGGER audit_fail_v060');
+ assert.equal((await f.send('POST',endpoint+'/'+request.json.data.requestId+'/decision',
+  'checker',{decision:'APPROVE'})).status,200);
 });
