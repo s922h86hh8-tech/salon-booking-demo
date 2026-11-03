@@ -72,12 +72,14 @@ CREATE TABLE IF NOT EXISTS correction_requests (
   delta INTEGER NOT NULL CHECK (delta<>0 AND delta BETWEEN -1000000 AND 1000000),
   reason TEXT NOT NULL CHECK (length(trim(reason)) BETWEEN 5 AND 200),
   requested_by_user_id TEXT NOT NULL,
+  idempotency_key TEXT NOT NULL CHECK (length(idempotency_key) BETWEEN 8 AND 128),
   requested_at TEXT NOT NULL,
   expected_version INTEGER NOT NULL CHECK (expected_version>=0),
   source_before INTEGER NOT NULL CHECK (source_before>=0),
   month_before INTEGER NOT NULL CHECK (month_before>=0),
   paid_before INTEGER NOT NULL CHECK (paid_before>=0),
   PRIMARY KEY (store_id,request_id),
+  UNIQUE (store_id,requested_by_user_id,idempotency_key),
   FOREIGN KEY (store_id,closing_id,source_id)
     REFERENCES earnings_source_lines(store_id,closing_id,source_id),
   FOREIGN KEY (requested_by_user_id) REFERENCES users(user_id)
@@ -153,6 +155,15 @@ WHEN COALESCE((
 BEGIN
   SELECT RAISE(ABORT,'adjustment requires approved decision');
 END;
+
+-- Even direct SQL must not allow approval by the same user who requested.
+CREATE TRIGGER IF NOT EXISTS reject_self_decisions
+BEFORE INSERT ON correction_decisions
+WHEN NEW.reviewed_by_user_id = (
+ SELECT requested_by_user_id FROM correction_requests
+ WHERE store_id=NEW.store_id AND request_id=NEW.request_id
+)
+BEGIN SELECT RAISE(ABORT,'self-approval is forbidden'); END;
 
 -- Test prototype: originals, decisions, movements and audit events are append-only.
 CREATE TRIGGER IF NOT EXISTS protect_closings_update BEFORE UPDATE ON monthly_closings
