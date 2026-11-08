@@ -93,6 +93,9 @@ async function jsonBody(req){
  if(!obj||typeof obj!=='object'||Array.isArray(obj))fail(400,'JSON_OBJECT_REQUIRED');
  return obj;
 }
+function onlyFields(obj,allowed){
+ if(Object.keys(obj).some(key=>!allowed.includes(key)))fail(400,'UNEXPECTED_FIELD');
+}
 function bearer(req,resolveOpaqueToken){
  const header=req.headers.authorization;
  if(typeof header!=='string'||!/^Bearer [A-Za-z0-9_-]{20,200}$/.test(header))
@@ -121,13 +124,15 @@ export function createLocalBookingApi({
    let result,status=200;
    if(r.type==='reserve'){
     const body=await jsonBody(req);
-    result=bookingStore.reserve({sessionHandle:handle,storeId:r.storeId,...body});
+    onlyFields(body,['serviceDate','menuId','staffId','bedId','startMinute',
+     'idempotencyKey','source','discovery']);
+    result=bookingStore.reserve({...body,sessionHandle:handle,storeId:r.storeId});
     status=result.replayed?200:201;
    }else if(r.type==='cancel'){
     const body=await jsonBody(req);
+    onlyFields(body,['idempotencyKey']);
     result=bookingStore.cancel({
-     sessionHandle:handle,storeId:r.storeId,
-     bookingId:r.bookingId,...body
+     ...body,sessionHandle:handle,storeId:r.storeId,bookingId:r.bookingId
     });
    }else if(r.type==='list'){
     result=bookingStore.list({
