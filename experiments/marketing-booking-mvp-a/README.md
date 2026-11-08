@@ -43,7 +43,7 @@
 - 正式版`/index.html` v0.36：変更しない。
 - 過去の`preview/v0.36〜v0.57`：変更しない。
 - 報酬／認証／SQLite試作v0.58〜v0.60：変更・接続しない。
-- 新規作成は`experiments/marketing-booking-mvp-a/`と新規テストファイルのみ。
+- 新規作成は`experiments/marketing-booking-mvp-a/`と新規テストファイル。加えて既存CI設定の監視対象にこの実験フォルダを追加し、ファイル変更時も回帰テストが走るようにした。正式版・従来の検証HTMLは変更していない。
 - 実行方法：`node --test tests/marketing-booking-mvp-a.test.mjs`、全体は`node --test tests/*.test.mjs`。
 - GitHub Actionsのテストで**148件中148件合格／失敗0件**（2026-11-08）。**iPhone Safari実機操作は未確認**。GitHub Pagesのビルド結果と、ブラウザ画面が実際に使えることは分けて判定する。
 
