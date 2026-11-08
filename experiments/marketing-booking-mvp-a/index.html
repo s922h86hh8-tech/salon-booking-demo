@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src data:; font-src 'none'; connect-src 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<title>自店集客 → 予約 → 店舗管理｜MVP-A 架空デモ</title>
+<link rel="stylesheet" href="./style.css">
+<script src="./core-v057.js" defer></script>
+<script src="./app.js" defer></script>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">
+      <span class="mark" aria-hidden="true">◎</span>
+      <div><small>独立検証版 MVP-A / 2026.11.08</small><h1>自店集客から予約管理へ</h1></div>
+    </div>
+    <span class="demo-pill">架空データ専用</span>
+  </div>
+</header>
+<main class="container">
+  <div class="warning" role="note"><strong>操作体験専用です。</strong> 本物の店舗ページや予約受付ではありません。実在する氏名・電話番号・住所などは入力しないでください。入力・予約はこの画面内の一時的な架空データで、再読み込みすると消えます。外部送信・通知・決済・保存はしません。</div>
+  <nav class="tabs" aria-label="3つの体験画面" role="tablist">
+    <button type="button" class="tab is-active" data-tab="settings" role="tab" aria-selected="true" aria-controls="panel-settings"><span class="tab-number">01</span>店舗ページ設定</button>
+    <button type="button" class="tab" data-tab="guest" role="tab" aria-selected="false" aria-controls="panel-guest"><span class="tab-number">02</span>お客様向け予約</button>
+    <button type="button" class="tab" data-tab="desk" role="tab" aria-selected="false" aria-controls="panel-desk"><span class="tab-number">03</span>店舗の予約管理</button>
+  </nav>
+  <div class="notice" id="notice" role="status" aria-live="polite">まず店舗の紹介内容を確認し、続いてお客様向け予約を試してください。</div>
+
+  <section id="panel-settings" class="panel" role="tabpanel" aria-label="店舗ページ設定">
+    <div class="section-title"><div><span class="eyebrow">01 · OWNER PREVIEW</span><h2>店舗ページを整える</h2><p>公開前に、お店の魅力とコースを確認する画面です。</p></div><span class="stamp">公開・保存なし</span></div>
+    <div class="columns">
+      <div class="card">
+        <h3>紹介文の編集（架空情報）</h3>
+        <form id="storeForm" autocomplete="off">
+          <label>架空の店舗名<input id="storeName" maxlength="40" required></label>
+          <label>短いキャッチコピー<input id="storeTagline" maxlength="65" required></label>
+          <label>エリアの説明（架空）<input id="storeArea" maxlength="55" required></label>
+          <label>店舗の紹介文<textarea id="storeIntro" maxlength="260" rows="5" required></textarea></label>
+          <div class="form-actions"><button class="primary" type="submit">プレビューに反映</button><button class="subtle" id="resetDemo" type="button">架空データに戻す</button></div>
+        </form>
+        <p class="helper">公開、独自ドメイン設定、Googleへの登録は行いません。写真は後の段階で追加する想定です。</p>
+      </div>
+      <div class="card">
+        <h3>ページの見え方</h3>
+        <div class="page-preview">
+          <div class="preview-decoration" aria-hidden="true"><div class="preview-symbol">✦</div></div>
+          <div class="preview-content">
+            <div class="preview-area" id="previewArea">架空の地域</div>
+            <h4 id="previewName">架空の店舗</h4>
+            <p class="preview-tagline" id="previewTagline"></p>
+            <p id="previewIntro"></p>
+            <div class="preview-foot"><span>コース・料金を明示</span><span>予約画面につながる</span></div>
+          </div>
+        </div>
+        <button type="button" class="primary wide" id="toGuest">お客様の見え方を確認する</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>コース・スタッフ・設備は既存予約エンジンを参照</h3>
+      <div class="menu-cards" id="settingsMenus"></div>
+      <p class="helper">コースと価格の編集、写真アップロード、曜日別営業時間はこの最小試作では未実装。既存の架空コース・スタッフ・休憩・準備時間を利用します。</p>
+    </div>
+  </section>
+
+  <section id="panel-guest" class="panel" role="tabpanel" aria-label="お客様向けページ" hidden>
+    <div class="section-title"><div><span class="eyebrow">02 · CUSTOMER PREVIEW</span><h2>お客様から見えるページ</h2><p>予約の入口を体験します。架空の日付でのみ動作します。</p></div><span class="stamp">実予約・通知なし</span></div>
+    <div class="hero">
+      <div class="hero-art" aria-hidden="true"><div class="hero-symbol">✦</div></div>
+      <div class="hero-copy"><span class="eyebrow light">PRIVATE SALON · DEMO</span><p class="hero-area" id="guestArea"></p><h3 id="guestName"></h3><p class="hero-tagline" id="guestTagline"></p><p id="guestIntro"></p></div>
+    </div>
+    <div class="card booking-card">
+      <div class="card-heading"><div><h3>コース・日時を選ぶ</h3><p class="helper">日付：2026年10月26日（月）・架空の体験日</p></div><span class="stepchip">15分刻み</span></div>
+      <div class="fields">
+        <label>ご希望のコース<select id="guestMenu"></select></label>
+        <label>担当者の希望<select id="guestStaff"></select></label>
+      </div>
+      <h4 class="small-heading">空き時間（スタッフ・ベッド・休憩を考慮）</h4>
+      <div class="times" id="guestTimes" aria-live="polite"></div>
+      <label class="discovery-label">この架空の店を知ったきっかけ<select id="guestDiscovery"><option value="unknown">不明／回答しない</option><option value="google">Google検索・マップ</option><option value="sns">SNS</option><option value="referral">紹介</option><option value="hpb">外部集客媒体</option><option value="other">その他</option></select></label>
+      <div class="booking-summary" id="guestSummary">コースと時間を選択してください。</div>
+      <button type="button" class="primary wide" id="guestBook" disabled>この内容で模擬予約する</button>
+      <p class="helper">氏名・電話番号は入力せず、架空の予約番号のみを発行します。このブラウザ内の店舗予約表に反映します。</p>
+    </div>
+  </section>
+
+  <section id="panel-desk" class="panel" role="tabpanel" aria-label="店舗の予約管理" hidden>
+    <div class="section-title"><div><span class="eyebrow">03 · STORE OPERATIONS</span><h2>一つの予約表で確認</h2><p>Web予約、電話・店頭・外部媒体の手入力を共通の架空台帳に表示。</p></div><span class="stamp">画面内の共通データ</span></div>
+    <div class="metrics" id="metrics" aria-label="模擬の予約数と経路"></div>
+    <div class="card">
+      <div class="card-heading"><div><h3>電話・店頭などの模擬予約を追加</h3><p class="helper">外部媒体の自動取得・同期ではありません。手入力の動作確認です。</p></div></div>
+      <div class="fields three">
+        <label>予約経路<select id="manualSource"><option value="phone">電話</option><option value="instore">店頭</option><option value="hpb">外部予約媒体（手入力）</option><option value="line">LINE（手入力）</option><option value="other">その他</option></select></label>
+        <label>コース<select id="manualMenu"></select></label>
+        <label>担当者<select id="manualStaff"></select></label>
+        <label>空き時間<select id="manualTime"></select></label>
+        <label>初めて知ったきっかけ<select id="manualDiscovery"><option value="unknown">不明</option><option value="google">Google検索・マップ</option><option value="sns">SNS</option><option value="referral">紹介</option><option value="hpb">外部集客媒体</option><option value="other">その他</option></select></label>
+      </div>
+      <button class="primary" id="manualBook" type="button">手入力の模擬予約を登録</button>
+    </div>
+    <div class="card">
+      <div class="card-heading"><div><h3>スタッフごとの予約一覧</h3><p class="helper">2026年10月26日（月）の架空の予約だけです。</p></div><button class="subtle" type="button" id="toGuestFromDesk">お客様の空き時間を見る</button></div>
+      <div class="staff-lanes" id="staffLanes"></div>
+    </div>
+    <div class="card">
+      <h3>予約経路・認知経路の区別</h3>
+      <div id="bookingLedger" class="booking-ledger"></div>
+      <p class="helper">「予約数」は売上・実来店・新規獲得の実績ではありません。キャンセル枠に再度予約が入っても、その機能による純増とは判定しません。</p>
+    </div>
+  </section>
+  <footer class="footer"><p>MVP-A｜既存v0.57の予約エンジンを独立複製して利用。v0.36正式版・従来の検証版・v0.60認証APIは変更・接続していません。</p><p>これは公開中の架空デモです。実店舗名、個人情報、実際の予約を入力しないでください。</p></footer>
+</main>
+</body>
+</html>
