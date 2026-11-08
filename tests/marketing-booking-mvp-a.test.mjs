@@ -82,7 +82,7 @@ test('all three screens are independent, noindex, offline-only and explicitly fa
  assert.match(html,/noindex,nofollow/);
  assert.match(html,/connect-src 'none'/);
  assert.match(html,/script-src 'self'/);
- assert.match(html,/実際の予約・決済・通知/);
+ assert.match(html,/外部送信・通知・決済・保存はしません/);
  assert.match(html,/実在する氏名・電話番号・住所などは入力しないでください/);
  assert.match(html,/core-v057\.js/);
  assert.doesNotMatch(html,/<script>(?!\s*<\/script>)/);
@@ -113,7 +113,7 @@ test('customer sees valid slots and selected reservation appears in shared desk 
  e.guestDiscovery.value='google';
  f.click(e.guestTimes.children[0]);
  assert.equal(e.guestBook.disabled,false);
- assert.match(e.guestSummary.textContent,/架空/);
+ assert.match(e.guestSummary.textContent,/実際の予約ではありません/);
  f.click(e.guestBook);
  assert.equal(e['panel-desk'].hidden,false);
  assert.match(e.notice.textContent,/自店Web予約 #4/);
@@ -128,7 +128,7 @@ test('manual phone/instore reservations use the same clock and ledger',()=>{
  e.manualSource.value='instore';
  e.manualDiscovery.value='unknown';
  f.click(e.manualBook);
- assert.match(e.notice.textContent,/模擬/);
+ assert.match(e.notice.textContent,/架空の店頭予約/);
  assert.match(f.textTree(e.bookingLedger),/予約経路：店頭/);
  assert.match(f.textTree(e.bookingLedger),/認知経路：不明/);
  assert.match(f.textTree(e.metrics),/模擬の確定予約 4件/);
@@ -150,7 +150,7 @@ test('cancelling booking releases its slot and does not count as new sales',()=>
 });
 test('v0.57 Core.canBook rejects duplicates including preparation/resource conflicts',()=>{
  const f=fixture(),m=f.Core.initial();
- const req={menu:'m60',staff:'s1',bed:'b1',start:540};
+ const req={menu:'m60',staff:'s2',bed:'b3',start:540};
  assert.equal(f.Core.canBook(m,req).ok,true);
  f.Core.book(m,{...req,source:'website',discovery:'unknown',customer:'架空'});
  assert.equal(f.Core.canBook(m,req).ok,false);
