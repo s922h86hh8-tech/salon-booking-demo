@@ -5,6 +5,7 @@ import {mkdtempSync,rmSync,readFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {runInNewContext} from 'node:vm';
+import {Worker} from 'node:worker_threads';
 import {openLocalBookingPrototype} from '../server-design/v0.63-local-booking-store.mjs';
 
 const source=readFileSync(new URL('../experiments/marketing-booking-mvp-a/core-v057.js',import.meta.url),'utf8');
@@ -216,4 +217,59 @@ test('v0.63 rejects older v0.61 SQLite schema without a migration',async()=>{
   const old=oldOpen({path,resolveSession:()=>null});old.close();
   assert.throws(()=>open(path),{code:'SCHEMA_MISMATCH_V063'});
  }finally{rmSync(dir,{recursive:true,force:true});}
+});
+
+test('two independent worker threads moving different bookings to one target succeed exactly once',async()=>{
+ const dir=mkdtempSync(join(tmpdir(),'salon-v063-race-'));
+ const path=join(dir,'move.sqlite');
+ const workers=[];
+ try{
+  const f=fixture(path);
+  const fromA=f.reserve();
+  const fromB=f.reserve({
+   sessionHandle:'bob',staffId:'s1',bedId:'b1',startMinute:540,
+   idempotencyKey:'book-bob-for-move-1'
+  });
+  f.app.close();
+  const file=new URL('./helpers/booking-move-race-worker-v063.cjs',import.meta.url);
+  const moduleUrl=new URL('../server-design/v0.63-local-booking-store.mjs',import.meta.url).href;
+  for(const [index,bookingId] of [fromA.bookingId,fromB.bookingId].entries()){
+   workers.push(new Worker(file,{workerData:{
+    path,moduleUrl,bookingId,key:'simultaneous-move-key-'+index
+   }}));
+  }
+  const ready=workers.map(w=>new Promise((resolve,reject)=>{
+   const listener=msg=>{
+    if(msg.type==='ready'){w.off('message',listener);resolve();}
+    if(msg.type==='done'){w.off('message',listener);reject(new Error(msg.outcome));}
+   };
+   w.on('message',listener);
+   w.once('error',reject);
+  }));
+  await Promise.all(ready);
+  const done=workers.map(w=>new Promise((resolve,reject)=>{
+   const listener=msg=>{
+    if(msg.type==='done'){w.off('message',listener);resolve(msg);}
+   };
+   w.on('message',listener);w.once('error',reject);
+  }));
+  workers.forEach(w=>w.postMessage('go'));
+  const outcomes=await Promise.all(done);
+  assert.deepEqual(outcomes.map(x=>x.outcome).sort(),['SLOT_UNAVAILABLE','moved']);
+  const reopened=open(path);
+  const rows=reopened.list({
+   sessionHandle:'staffA',storeId:'A',serviceDate:'2026-10-26'
+  });
+  assert.equal(rows.length,3);
+  assert.equal(rows.filter(x=>x.canceled===1).length,1);
+  assert.equal(rows.filter(x=>x.canceled===0).length,2);
+  assert.equal(rows.filter(x=>x.start_minute===630&&x.canceled===0).length,1);
+  const d=reopened.unsafeDbForTests;
+  assert.equal(d.prepare('SELECT COUNT(*) n FROM booking_moves').get().n,1);
+  assert.equal(d.prepare('SELECT COUNT(*) n FROM booking_audit_events').get().n,4);
+  reopened.close();
+ }finally{
+  await Promise.all(workers.map(w=>w.terminate()));
+  rmSync(dir,{recursive:true,force:true});
+ }
 });
