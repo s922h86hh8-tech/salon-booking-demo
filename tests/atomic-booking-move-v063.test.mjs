@@ -206,7 +206,7 @@ test('move and links persist across database close and open',()=>{
   reopened.close();
  }finally{rmSync(dir,{recursive:true,force:true});}
 });
-test('v0.63 rejects older v0.61 SQLite schema without a migration',()=>{
+test('v0.63 rejects older v0.61 SQLite schema without a migration',async()=>{
  const {openLocalBookingPrototype:oldOpen}=await import(
   '../server-design/v0.61-local-booking-store.mjs'
  );
