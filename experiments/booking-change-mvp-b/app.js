@@ -28,7 +28,7 @@
   el.textContent=String(txt);
   return el;
  }
- const append=(parent,item)=>parent.appendChild(item);
+ const append=(parent,item)=>{parent.appendChild(item);return item;};
  function clear(el){el.replaceChildren();}
  function text(id,value){$(id).textContent=String(value);}
  function notice(value,error=false){
