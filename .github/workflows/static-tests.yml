@@ -8,6 +8,7 @@ on:
       - 'preview/**'
       - 'server-design/**'
       - 'experiments/marketing-booking-mvp-a/**'
+      - 'experiments/booking-change-mvp-b/**'
       - 'tests/**'
       - '.github/workflows/static-tests.yml'
   pull_request:
@@ -16,6 +17,7 @@ on:
       - 'preview/**'
       - 'server-design/**'
       - 'experiments/marketing-booking-mvp-a/**'
+      - 'experiments/booking-change-mvp-b/**'
       - 'tests/**'
       - '.github/workflows/static-tests.yml'
 
