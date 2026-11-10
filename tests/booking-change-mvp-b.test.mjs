@@ -153,7 +153,7 @@ test('cross-day in-memory change creates a link while preserving both day record
 test('occupied requested slot does not cancel or overwrite the old booking',()=>{
  const {Core,Change}=vmEngine(),state=startModels(Core);
  Core.book(state.models['2026-10-26'],{
-  menu:'m60',staff:'s2',bed:'b3',start:900,
+  menu:'m60',staff:'s2',bed:'b3',start:960,
   customer:'架空・競合',source:'website',discovery:'unknown'
  });
  const count=state.models['2026-10-26'].bookings.length;
