@@ -36,7 +36,7 @@ function moveParams(Core,models,ref,target,history=[]){
  return Change.move({Core,models,ref,target,history});
 }
 function target(overrides={}){
- return {day:'2026-10-26',menu:'m60',staff:'s2',bed:'b3',start:900,...overrides};
+ return {day:'2026-10-26',menu:'m60',staff:'s2',bed:'b3',start:960,...overrides};
 }
 function fakeNode(tag){
  const node={
@@ -116,7 +116,7 @@ test('change options derive from original Core.canBook with only original ID exc
  assert.ok(options.length>0);
  assert.ok(options.every(x=>x.day==='2026-10-26'&&x.menu==='m60'&&x.staff==='s2'));
  assert.ok(options.every(x=>x.start!==540)); // Avoid invisible bed-only change.
- assert.ok(options.some(x=>x.start===900));
+ assert.ok(options.some(x=>x.start===960));
 });
 test('atomic same-day booking change preserves old data and acquires new slot',()=>{
  const {Core,Change}=vmEngine(),state=startModels(Core);
