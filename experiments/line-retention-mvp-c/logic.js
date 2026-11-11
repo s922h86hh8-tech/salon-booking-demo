@@ -111,6 +111,8 @@ function cancelForWaitlist(s,Core){
 function prepareWaitlist(s,Core){
  return result(s,Core,n=>{
   if(n.canceledRelease===null)reject('NO_RELEASE','先に架空のキャンセル枠を発生させてください。');
+  if(activeBooking(n,requireCustomer(n,'c4')))
+   reject('ALREADY_BOOKED','確定予約があるお客様にはキャンセル待ちを重ねて案内しません。');
   const list=Core.candidates(n.model,n.canceledRelease);
   const allowed=list.find(w=>w.id==='w1'&&customer(n,'c4')?.waitlistConsent);
   if(!allowed)reject('NO_CANDIDATE','条件に合う同意済みの希望者がいません。');
@@ -160,6 +162,10 @@ function simulateDelivery(s,Core,id){
   if(!d||d.status!=='APPROVED')reject('NOT_APPROVED','店舗の承認が必要です。');
   const c=requireCustomer(n,d.customerId);
   if(!consentFor(c,d.type))reject('NO_CONSENT','配信同意がありません。');
+  if((d.type==='return'||d.type==='waitlist')&&activeBooking(n,c))
+   reject('ALREADY_BOOKED','すでに確定予約があるため案内を停止しました。');
+  if(d.type==='reminder'&&!activeBooking(n,c))
+   reject('NO_UPCOMING_BOOKING','対象予約がなくなったためリマインドを停止しました。');
   if(d.type==='return'){
    const sent=n.drafts.some(x=>x.id!==id&&x.type==='return'&&
      x.customerId===d.customerId&&x.status==='SIMULATED_SENT'&&
@@ -185,6 +191,7 @@ function acceptInvitation(s,Core,id){
    d.convertedBooking=bid;
    n.conversions.push({draftId:id,bookingId:bid,kind:'REVISIT_SIMULATION'});
   }else if(d.type==='waitlist'){
+   if(activeBooking(n,c))reject('ALREADY_BOOKED','すでに確定予約があります。');
    const offer=n.model.offers.find(x=>x.id===d.details.offerId);
    if(!offer||offer.status!=='PENDING')reject('NOT_PENDING','空き枠の案内が有効ではありません。');
    if(!c.waitlistConsent)reject('NO_CONSENT','キャンセル待ち案内の同意がありません。');
