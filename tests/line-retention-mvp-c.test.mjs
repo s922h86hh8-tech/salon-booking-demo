@@ -215,7 +215,7 @@ test('consented return invitation can become a booking without a false arrival c
  assert.equal(metrics.bookings,1);
  assert.equal(metrics.actualVisits,null);
  assert.equal(metrics.actualRevenue,null);
- assertCode(transition(f,'prepare','return','c4'),'DUPLICATE');
+ assertCode(transition(f,'prepare','return','c4'),'ALREADY_BOOKED');
 });
 test('reminder cannot be mislabeled as a newly acquired booking',()=>{
  const f=fixture();
