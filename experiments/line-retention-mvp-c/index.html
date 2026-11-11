@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none';script-src 'self';style-src 'self';img-src data:;connect-src 'none';form-action 'none';frame-src 'none';object-src 'none';base-uri 'none'">
+<title>LINE案内・再来店・キャンセル枠｜MVP-C 架空デモ</title>
+<link rel="stylesheet" href="./style.css">
+<script src="./core-v057.js" defer></script>
+<script src="./logic.js" defer></script>
+<script src="./app.js" defer></script>
+</head>
+<body>
+<header class="header"><div class="wrap header-inner">
+ <div><span class="eyebrow inverse">INDEPENDENT PROTOTYPE · MVP-C</span><h1>次の予約につながるご案内</h1></div>
+ <span class="tag-header">LINE実送信なし</span>
+</div></header>
+<main class="wrap">
+<div class="warning" role="note"><strong>すべて架空の動作体験です。</strong> LINEへの送信、実予約、通知、会計、顧客情報の保存は一切行いません。実際のお客様や店舗の情報を入力しないでください。画面は公開閲覧可能な試作品で、再読み込みすると初期状態に戻ります。</div>
+<nav class="tabs" role="tablist" aria-label="画面の切り替え">
+ <button type="button" data-tab="home" class="tab is-active" role="tab" aria-controls="panel-home" aria-selected="true">提案を準備</button>
+ <button type="button" data-tab="drafts" class="tab" role="tab" aria-controls="panel-drafts" aria-selected="false">案内・予約状況</button>
+ <button type="button" data-tab="settings" class="tab" role="tab" aria-controls="panel-settings" aria-selected="false">通知の同意・設定</button>
+</nav>
+<div id="notice" class="notice" role="status" aria-live="polite">まず架空の案内候補を作成してください。承認するまで送信扱いにもなりません。</div>
+<section id="panel-home" role="tabpanel" class="panel">
+ <div class="heading"><span class="eyebrow">01 · PREPARE</span><h2>予約につなげる案内を準備</h2><p>店舗オーナーが内容を確認し、承認する手順を検証します。</p></div>
+ <div class="grid">
+  <article class="card">
+   <div class="card-icon">01</div><h3>予約前日のリマインド</h3>
+   <p>翌日11月13日の架空予約を確認し、対象のお客様へ通知文を準備します。</p>
+   <p class="detail">対象例：架空のお客様B（通知同意あり）</p>
+   <button id="prepareReminder" type="button" class="primary wide">前日の案内文を作る</button>
+  </article>
+  <article class="card">
+   <div class="card-icon">02</div><h3>来店周期から再予約提案</h3>
+   <p>過去の来店間隔から次回来店の目安を算出します。予測の確実性は保証しません。</p>
+   <p class="detail">対象例：架空のお客様D（28日間隔）</p>
+   <button id="prepareReturn" type="button" class="primary wide">再来店案内文を作る</button>
+  </article>
+  <article class="card">
+   <div class="card-icon">03</div><h3>キャンセル枠を再案内</h3>
+   <p>予約取消で空いた枠と、同意済みのキャンセル待ち希望を照合します。</p>
+   <p class="detail">対象例：11月13日 10:30／60分</p>
+   <button id="createCancellation" type="button" class="subtle wide">架空予約 #2 を取消</button>
+   <button id="prepareWaitlist" type="button" class="primary wide">キャンセル待ち候補を作る</button>
+  </article>
+ </div>
+ <article class="card muted">
+  <h3>LINE予約・予約変更・取消との関係</h3>
+  <p>案内で興味を持ったお客様は、店の独自予約ページで空き時間を選ぶ想定です。現段階では独立試作品同士で、予約情報を自動同期していません。</p>
+  <div class="quick-links">
+   <a href="../marketing-booking-mvp-a/" rel="noreferrer">予約受付の既存試作（MVP-A）を見る</a>
+   <a href="../booking-change-mvp-b/" rel="noreferrer">予約変更の既存試作（MVP-B）を見る</a>
+  </div>
+ </article>
+</section>
+<section id="panel-drafts" role="tabpanel" class="panel" hidden>
+ <div class="heading"><span class="eyebrow">02 · OWNER APPROVAL</span><h2>案内の承認と予約につなぐ操作</h2>
+ <p>①下書き → ②店舗で承認 → ③模擬配信記録 → ④架空予約。この画面からLINEへの送信はできません。</p></div>
+ <div id="metrics" class="metrics"></div>
+ <div id="draftList" class="draft-list"></div>
+ <article class="card"><h3>架空の予約状況</h3><div id="bookingList"></div><p class="helper">予約件数は新規集客人数・実来店・売上を示しません。再予約・キャンセル枠の回収も架空値です。</p></article>
+ <article class="card"><h3>操作履歴（画面内のみ）</h3><div id="auditLog"></div></article>
+</section>
+<section id="panel-settings" role="tabpanel" class="panel" hidden>
+ <div class="heading"><span class="eyebrow">03 · CONSENT</span><h2>お客様ごとの案内同意</h2>
+ <p>再来店案内・予約リマインド・キャンセル待ち案内はそれぞれ別の同意項目です。停止した場合、未送信の候補を無効にします。</p></div>
+ <div id="customers"></div>
+ <article class="card muted"><h3>実用化に必要な条件</h3>
+  <p>本当の本人確認、LINE連携権限、配信同意と配信停止、送信回数・料金管理、メッセージ配信失敗時の再試行、枠の安全な確定、実来店・会計との照合が必要です。</p>
+ </article>
+ <button id="resetDemo" type="button" class="subtle wide">架空データを初期状態に戻す</button>
+</section>
+<footer class="footer">MVP-C｜固定の架空評価日：2026年11月12日。お客様の情報はすべて架空です。実LINE・実予約・実個人情報は扱いません。既存の正式版・検証版は変更していません。</footer>
+</main></body></html>
