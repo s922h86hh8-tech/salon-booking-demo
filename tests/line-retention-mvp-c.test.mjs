@@ -252,3 +252,40 @@ test('UI reset clears drafts and restores fictional initial booking counts',()=>
  assert.match(f.content(e.draftList),/下書きはまだありません/);
  assert.match(f.content(e.metrics),/模擬予約成立 0件/);
 });
+
+
+test('scheduled revisit draft cannot be simulated as sent after another booking is confirmed',()=>{
+ const f=fixture();
+ transition(f,'prepare','return','c4');
+ const id=f.state.drafts[0].id;
+ transition(f,'approve',id);
+ f.Core.book(f.state.model,{menu:'m60',staff:'s2',bed:'b3',start:960,
+  customer:'架空のお客様D',source:'website',discovery:'unknown'});
+ assertCode(transition(f,'simulateDelivery',id),'ALREADY_BOOKED');
+ assert.equal(f.state.drafts[0].status,'APPROVED');
+ assert.equal(f.Logic.numbers(f.state).simulated,0);
+});
+test('reminder draft cannot be marked delivered after its booking is canceled',()=>{
+ const f=fixture();
+ transition(f,'prepare','reminder','c2');
+ const id=f.state.drafts[0].id;
+ transition(f,'approve',id);
+ f.Core.cancel(f.state.model,2);
+ assertCode(transition(f,'simulateDelivery',id),'NO_UPCOMING_BOOKING');
+ assert.equal(f.Logic.numbers(f.state).simulated,0);
+});
+test('waitlist proposal and acceptance cannot double-book a customer who already booked',()=>{
+ const f=fixture();
+ transition(f,'cancelForWaitlist');
+ f.Core.book(f.state.model,{menu:'m60',staff:'s2',bed:'b3',start:960,
+  customer:'架空のお客様D',source:'website',discovery:'unknown'});
+ assertCode(transition(f,'prepareWaitlist'),'ALREADY_BOOKED');
+ const g=fixture();
+ transition(g,'cancelForWaitlist');transition(g,'prepareWaitlist');
+ const id=g.state.drafts[0].id;
+ transition(g,'approve',id);transition(g,'simulateDelivery',id);
+ g.Core.book(g.state.model,{menu:'m60',staff:'s2',bed:'b3',start:960,
+  customer:'架空のお客様D',source:'website',discovery:'unknown'});
+ assertCode(transition(g,'acceptInvitation',id),'ALREADY_BOOKED');
+ assert.equal(g.Logic.numbers(g.state).recovered,0);
+});
