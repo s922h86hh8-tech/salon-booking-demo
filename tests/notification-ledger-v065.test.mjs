@@ -191,8 +191,8 @@ test('opt out after approval blocks dispatch and leaves no simulated delivery ev
   sessionHandle:'staffA',storeId:'A',draftId:d.draftId
  }),'NO_CONSENT');
  assert.equal(f.addon.list({sessionHandle:'staffA',storeId:'A'})[0].status,
-  'OWNER_APPROVED');
- assert.equal(count(f,'notification_events'),2);
+  'SUPPRESSED');
+ assert.equal(count(f,'notification_events'),3);
  f.bookingStore.close();
 });
 test('canceled booking prevents approved reminder from being dispatched',()=>{
@@ -418,5 +418,25 @@ test('invalid identities, dates, purposes and injected fields fail without write
   customerId:'alice',purpose:'return',idempotencyKey:'draft-something-001',
   impersonate:'bob'}),'INVALID_FIELDS');
  assert.equal(count(f,'notification_drafts'),0);
+ f.bookingStore.close();
+});
+
+
+test('consent revocation suppresses both draft and owner-approved notifications',()=>{
+ const f=fixture();
+ const a=reserve(f,'alice',540);
+ const b=reserve(f,'alice',960,{idempotencyKey:'second-reminder-booking-01'});
+ opt(f,'alice','reminder');
+ const first=draft(f,'alice','reminder',a.bookingId,'first-reminder-001');
+ const second=draft(f,'alice','reminder',b.bookingId,'second-reminder-001');
+ f.addon.approve({sessionHandle:'staffA',storeId:'A',draftId:first.draftId});
+ opt(f,'alice','reminder',false);
+ const rows=f.addon.list({sessionHandle:'staffA',storeId:'A'});
+ assert.equal(rows.length,2);
+ assert.ok(rows.every(x=>x.status==='SUPPRESSED'));
+ assert.equal(count(f,'notification_consent_events'),2);
+ assert.equal(count(f,'notification_events'),5);
+ opt(f,'alice','reminder',true);
+ assert.equal(f.addon.list({sessionHandle:'staffA',storeId:'A'}).every(x=>x.status==='SUPPRESSED'),true);
  f.bookingStore.close();
 });
