@@ -100,6 +100,7 @@ function renderFacts(item){
  fact(root,'案内の種類',Demo.purposes[item.purpose]);
  fact(root,'お客様',item.customer);
  fact(root,'通知保留の発生日時',fmt(item.startedAt));
+ fact(root,'保留理由',item.state==='OUTCOME_UNKNOWN'? '外部受付結果を確認できない想定（架空）':'模擬調査結果を記録済み');
  fact(root,'対象予約番号',item.booking?item.booking.id:'なし（再来店案内）');
  fact(root,'予約日時',item.booking?item.booking.serviceDate+' '+item.booking.start:'対象の確定予約なし');
  fact(root,'予約状態',item.booking?item.booking.status:'なし');
