@@ -10,6 +10,7 @@ on:
       - 'experiments/marketing-booking-mvp-a/**'
       - 'experiments/booking-change-mvp-b/**'
       - 'experiments/line-retention-mvp-c/**'
+      - 'experiments/notification-review-mvp-d/**'
       - 'tests/**'
       - '.github/workflows/static-tests.yml'
   pull_request:
@@ -20,6 +21,7 @@ on:
       - 'experiments/marketing-booking-mvp-a/**'
       - 'experiments/booking-change-mvp-b/**'
       - 'experiments/line-retention-mvp-c/**'
+      - 'experiments/notification-review-mvp-d/**'
       - 'tests/**'
       - '.github/workflows/static-tests.yml'
 
