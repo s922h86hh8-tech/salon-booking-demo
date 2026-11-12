@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none';script-src 'self';style-src 'self';img-src data:;connect-src 'none';form-action 'none';frame-src 'none';object-src 'none';base-uri 'none'">
+<title>通知結果不明の管理｜MVP-D 独立架空デモ</title>
+<link rel="stylesheet" href="./style.css">
+<script src="./model.js" defer></script>
+<script src="./app.js" defer></script>
+</head>
+<body>
+<header class="top"><div class="wrap top-inner">
+ <div><span class="overline">STORE ADMIN · FICTIONAL MVP-D</span><h1>通知の保留・確認</h1></div>
+ <span class="demo-pill">架空データ／実送信なし</span>
+</div></header>
+<main class="wrap">
+ <div class="warning" role="note"><strong>試作画面です。</strong> 結果不明の通知を管理する操作を、架空データで確認します。LINEの実際の配信状況を取得・照合する機能はありません。実店舗・実顧客情報は入力しないでください。画面操作は本当の予約・通知・課金へ影響しません。</div>
+ <div class="notice" id="notice" role="status" aria-live="polite">保留中の模擬通知を選ぶと、確認内容と判断操作を表示します。</div>
+ <section class="overview" aria-label="通知状況">
+  <div class="metric"><small>結果不明・保留</small><strong id="metricUnknown">—</strong><span>自動再送しません</span></div>
+  <div class="metric"><small>判断済み・終了</small><strong id="metricResolved">—</strong><span>架空の判断結果</span></div>
+  <div class="metric"><small>模擬再試行の許可</small><strong id="metricRetry">—</strong><span>実際の送信なし</span></div>
+ </section>
+ <div class="toolbar">
+  <div><span class="overline">01 / INCIDENT LIST</span><h2>確認する案内を選ぶ</h2></div>
+  <label class="filter">表示<select id="statusFilter" aria-label="通知の絞り込み">
+   <option value="unknown">結果不明のみ</option>
+   <option value="resolved">判断済みのみ</option>
+   <option value="all">すべて</option>
+  </select></label>
+ </div>
+ <div class="layout">
+ <section class="list-pane" aria-label="模擬通知の一覧">
+  <div id="incidentList" class="incident-list"></div>
+  <p class="micro">試験用の日付・顧客・予約番号です。実際のLINEアカウントや送信ログではありません。</p>
+ </section>
+ <section id="detailPanel" class="detail-pane" aria-label="案内詳細">
+  <div class="detail-top"><span class="overline">02 / REVIEW DETAILS</span><span id="statusBadge" class="status-badge">結果不明</span></div>
+  <h2 id="caseHeading">対象を選んでください</h2>
+  <p id="caseSub" class="sub"></p>
+  <div id="caseDetails" class="facts"></div>
+  <div class="check-card">
+   <h3>判断前の確認事項</h3>
+   <div id="eligibility" class="check-lines"></div>
+   <p class="micro">この試作では模擬判定のみです。実運用での本人確認、通知先照合、予約台帳への再照会、LINEの配信受付証跡はまだありません。</p>
+  </div>
+  <div class="history-card"><h3>確認・操作履歴</h3><div id="eventHistory" class="events"></div></div>
+  <div id="decisionPanel" class="decision">
+   <h3>模擬調査結果を記録</h3>
+   <p class="sub"><strong>この操作はLINEの受付事実を証明しません。</strong> 模擬受付済みと判断した場合も再送せず、模擬未受付の場合も原則停止します。</p>
+   <fieldset id="findingFields" class="choices"><legend>調査結果（架空）</legend>
+    <label><input type="radio" name="finding" value="MOCK_ACCEPTED"> 模擬受付済みとして記録（再送なし）</label>
+    <label><input type="radio" name="finding" value="MOCK_NOT_ACCEPTED"> 模擬未受付として記録（原則停止）</label>
+   </fieldset>
+   <label class="checkbox-line" id="retryArea"><input id="retryToggle" type="checkbox" disabled> 模擬未受付で、条件が合えば再試行を明示的に許可する</label>
+   <p class="micro" id="retryHelp">先に模擬調査結果を選んでください。</p>
+   <label class="checkbox-line required"><input id="acknowledge" type="checkbox"> 架空の操作試験であり、LINEの実際の配信確認ではないことを理解しました</label>
+   <div class="buttons">
+    <button type="button" id="recordDecision" class="primary" disabled>模擬判断を記録する</button>
+    <button type="button" id="clearDecision" class="outline">選択を戻す</button>
+   </div>
+  </div>
+  <div id="closedPanel" class="closed" hidden>
+   <h3>判断の記録を確認できます</h3>
+   <p>この案件は模擬的に判断済みです。同じ案件を再送・再決定する操作はありません。</p>
+  </div>
+ </section>
+ </div>
+ <div class="bottom-actions"><button id="resetDemo" type="button" class="outline">架空データを初期状態に戻す</button></div>
+ <footer class="footer">MVP-Dはブラウザ内メモリだけの操作試作です。v0.67 SQLite・HTTP APIとの接続はありません。真正な店舗ログイン・LINE照合・証拠確認・通知送信は未実装です。再読み込みすると試作状態が初期化されます。</footer>
+</main></body></html>
