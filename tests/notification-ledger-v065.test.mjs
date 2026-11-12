@@ -189,7 +189,7 @@ test('opt out after approval blocks dispatch and leaves no simulated delivery ev
  opt(f,'alice','reminder',false);
  check(()=>f.addon.simulateDispatch({
   sessionHandle:'staffA',storeId:'A',draftId:d.draftId
- }),'NO_CONSENT');
+ }),'NOT_APPROVED');
  assert.equal(f.addon.list({sessionHandle:'staffA',storeId:'A'})[0].status,
   'SUPPRESSED');
  assert.equal(count(f,'notification_events'),3);
