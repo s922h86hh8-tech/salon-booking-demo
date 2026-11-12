@@ -76,7 +76,7 @@ test('MVP-D is a dedicated offline noindex, no real data and no provider interfa
 });
 test('unknown cases are held and visible first, not automatically sent',()=>{
  const {Demo,s}=state();
- assert.deepEqual(Demo.counts(s),{unknown:3,resolved:1,retry:0,actualSent:0});
+ assert.deepEqual({...Demo.counts(s)},{unknown:3,resolved:1,retry:0,actualSent:0});
  assert.equal(Demo.visible(s).length,3);
  assert.equal(Demo.visible(s,'all').length,4);
  assert.equal(Demo.visible(s,'resolved').length,1);
