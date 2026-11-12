@@ -65,6 +65,15 @@ export function openFictionalNotificationQueue({
  if(existing.length===1)fail('PARTIAL_QUEUE_SCHEMA');
  if(existing.length===0)
   db.exec(readFileSync(new URL('./v0.67-notification-queue-schema.sql',import.meta.url),'utf8'));
+ else{
+  // Do not silently treat a v0.66 queue as a v0.67 queue.
+  // An explicit, separately reviewed migration would be necessary.
+  const columns=db.prepare('PRAGMA table_info(notification_queue_jobs)').all()
+   .map(row=>row.name);
+  for(const required of ['last_handoff_id','last_handoff_at','last_handoff_outcome']){
+   if(!columns.includes(required))fail('REQUIRES_V067_QUEUE_SCHEMA');
+  }
+ }
 
  function principal(handle,store){
   if(!validId(store))fail('INVALID_STORE');
