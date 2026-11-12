@@ -370,7 +370,8 @@ test('job state and events survive reopening a shared SQLite DB file',()=>{
 test('queue event history cannot be silently edited or deleted',()=>{
  const f=fixture(),d=prepReminder(f);
  enqueue(f,d.draftId);
- rejected(()=>f.db.exec('DELETE FROM notification_queue_events'),'SQLITE_CONSTRAINT_TRIGGER');
+ assert.throws(()=>f.db.exec('DELETE FROM notification_queue_events'),/queue event immutable/);
+ assert.throws(()=>f.db.exec("UPDATE notification_queue_events SET action='DEAD'"),/queue event immutable/);
  f.bookingStore.close();
 });
 test('invalid schedule, worker token and input fields reject without writes',()=>{
