@@ -288,9 +288,15 @@ test('a later opt-out does not rewrite the historical simulated accepted finding
  const out=begin(f,d.draftId,claim(f));
  f.addon.consent({sessionHandle:'alice',storeId:'A',purpose:'reminder',allowed:false});
  // It could already have been accepted before consent was withdrawn;
- // a verified historical event is recorded, not delivered again.
+ // a fictional historical finding is recorded, not delivered again.
  assert.equal(fromUnknown(f,out,'MOCK_ACCEPTED').status,'SIMULATED');
- assert.equal(count(f,'notification_events'),3);
+ const actions=f.db.prepare(
+  'SELECT action FROM notification_events WHERE store_id=? AND draft_id=? ORDER BY seq'
+ ).all('A',d.draftId).map(row=>row.action);
+ assert.deepEqual(actions,[
+  'DRAFT_CREATED','OWNER_APPROVED','SUPPRESSED','SIMULATED_ONLY'
+ ]);
+ assert.equal(count(f,'notification_events'),4);
  assert.equal(claim(f),null);
  f.bookingStore.close();
 });
