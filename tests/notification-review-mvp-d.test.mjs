@@ -178,6 +178,7 @@ test('UI initial list gives incident details, status, and disabled unconfirmed a
  const f=ui(),e=f.byId;
  assert.match(f.content(e.incidentList),/結果不明・保留/);
  assert.match(f.content(e.caseDetails),/架空のお客様A/);
+ assert.match(f.content(e.caseDetails),/保留理由.*外部受付結果を確認できない想定/);
  assert.match(f.content(e.eventHistory),/結果不明として保留/);
  assert.equal(e.recordDecision.disabled,true);
  assert.equal(e.retryToggle.disabled,true);
