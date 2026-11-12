@@ -101,7 +101,7 @@ export function openFictionalNotificationAddon({
  function booking(storeId,bookingId){
   if(!validId(bookingId))fail('INVALID_BOOKING');
   const b=db.prepare(
-   'SELECT b.*,c.booking_id AS canceled FROM booking_records b LEFT JOIN booking_cancellations c ON c.store_id=b.store_id AND c.booking_id=b.booking_id WHERE b.store_id=? AND b.booking_id=?'
+   'SELECT b.*,c.booking_id AS canceled,c.cancellation_reason FROM booking_records b LEFT JOIN booking_cancellations c ON c.store_id=b.store_id AND c.booking_id=b.booking_id WHERE b.store_id=? AND b.booking_id=?'
   ).get(storeId,bookingId);
   if(!b)fail('BOOKING_NOT_FOUND');
   return b;
@@ -152,6 +152,7 @@ export function openFictionalNotificationAddon({
   if(purpose==='waitlist'){
    const b=booking(storeId,bookingId);
    if(!b.canceled||b.cancellation_reason==='MOVE')fail('WAITLIST_RELEASE_INVALID');
+   if(daysFrom(b.service_date,now)<0)fail('EXPIRED_WAITLIST_RELEASE');
    if(hasActiveFuture(storeId,customerId,now))fail('ALREADY_BOOKED');
    if(!pref(storeId,customerId,b))fail('WAITLIST_PREFERENCE_MISSING');
    // May be offered only if the exact resource/time is still available.
