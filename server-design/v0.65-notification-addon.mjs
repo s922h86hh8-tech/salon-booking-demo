@@ -190,6 +190,19 @@ export function openFictionalNotificationAddon({
    db.prepare(
     "INSERT INTO notification_consent_events(store_id,customer_subject_id,purpose,allowed,actor_subject_id,obtained_via,recorded_at) VALUES(?,?,?,?,?,'FICTIONAL_SELF_SERVICE',?)"
    ).run(input.storeId,a.id,input.purpose,input.allowed?1:0,a.id,instantOf(clock));
+   if(!input.allowed){
+    // Consent revocation suppresses all not-yet-dispatched records, including
+    // already approved drafts. A sent marker is immutable, never "unsent".
+    const pending=db.prepare(
+     'SELECT draft_id FROM notification_drafts WHERE store_id=? AND customer_subject_id=? AND purpose=?'
+    ).all(input.storeId,a.id,input.purpose);
+    for(const row of pending){
+     const d=draftDetails(input.storeId,row.draft_id);
+     if(['DRAFT_CREATED','OWNER_APPROVED'].includes(d.status)){
+      addEvent(input.storeId,row.draft_id,'SUPPRESSED',a.id);
+     }
+    }
+   }
    return {customerId:a.id,purpose:input.purpose,allowed:input.allowed,
     recordKind:'FICTIONAL_ONLY'};
   });
