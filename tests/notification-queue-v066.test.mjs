@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import {mkdtempSync,rmSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
+import {Worker} from 'node:worker_threads';
 import {openLocalBookingPrototype} from '../server-design/v0.63-local-booking-store.mjs';
 import {openFictionalNotificationAddon} from '../server-design/v0.65-notification-addon.mjs';
 import {openFictionalNotificationQueue} from '../server-design/v0.66-notification-queue.mjs';
@@ -387,4 +388,67 @@ test('invalid schedule, worker token and input fields reject without writes',()=
  }),'INVALID_WORKER');
  assert.equal(count(f,'notification_queue_jobs'),0);
  f.bookingStore.close();
+});
+
+test('two independent SQLite worker connections cannot claim the same queue job',async()=>{
+ const folder=mkdtempSync(join(tmpdir(),'salon-v066-race-'));
+ const workers=[];
+ try{
+  const path=join(folder,'queue.sqlite');
+  const f=fixture({path});
+  const d=prepReminder(f);enqueue(f,d.draftId);
+  f.bookingStore.close();
+  const url=new URL('./helpers/notification-queue-race-worker-v066.cjs',import.meta.url);
+  const bookingUrl=new URL('../server-design/v0.63-local-booking-store.mjs',import.meta.url).href;
+  const addonUrl=new URL('../server-design/v0.65-notification-addon.mjs',import.meta.url).href;
+  const queueUrl=new URL('../server-design/v0.66-notification-queue.mjs',import.meta.url).href;
+  for(const name of ['queue-worker-A','queue-worker-B'])
+   workers.push(new Worker(url,{workerData:{
+    dbPath:path,bookingUrl,addonUrl,queueUrl,workerId:name
+   }}));
+  await Promise.all(workers.map(w=>new Promise((resolve,reject)=>{
+   const onMsg=msg=>{
+    if(msg.type==='ready'){w.off('message',onMsg);resolve();}
+    if(msg.type==='done'){w.off('message',onMsg);reject(new Error(msg.code||msg.status));}
+   };
+   w.on('message',onMsg);w.once('error',reject);
+  })));
+  const outcomes=workers.map(w=>new Promise((resolve,reject)=>{
+   const onMsg=msg=>{
+    if(msg.type==='done'){w.off('message',onMsg);resolve(msg);}
+   };
+   w.on('message',onMsg);w.once('error',reject);
+  }));
+  workers.forEach(w=>w.postMessage('go'));
+  const res=await Promise.all(outcomes);
+  assert.deepEqual(res.map(x=>x.status).sort(),['CLAIMED','NONE']);
+  assert.ok(res.find(x=>x.status==='CLAIMED').draftId===d.draftId);
+  const reopened=open(path);
+  assert.equal(reopened.queue.list({sessionHandle:'ownerA',storeId:'A'})[0].state,'CLAIMED');
+  assert.equal(reopened.queue.audit({sessionHandle:'ownerA',storeId:'A'}).filter(x=>x.action==='CLAIMED').length,1);
+  reopened.bookingStore.close();
+ }finally{
+  await Promise.all(workers.map(w=>w.terminate()));
+  rmSync(folder,{recursive:true,force:true});
+ }
+});
+test('lease claimed before process crash can be reclaimed after file reopen and timeout',()=>{
+ const folder=mkdtempSync(join(tmpdir(),'salon-v066-restart-'));
+ try{
+  const path=join(folder,'queue.sqlite');
+  const f=fixture({path,leaseMillis:1000});
+  const d=prepReminder(f);enqueue(f,d.draftId);
+  const old=claim(f,'crashed-worker');
+  assert.equal(old.attempt,1);
+  f.bookingStore.close();
+  const ref={iso:'2026-10-25T08:00:01.000Z'};
+  const reopened=open(path,ref,3,3,1000);
+  const retry=claim(reopened,'recovered-worker');
+  assert.equal(retry.attempt,2);
+  rejected(()=>complete(reopened,d.draftId,old,'crashed-worker'),'STALE_LEASE');
+  assert.equal(complete(reopened,d.draftId,retry,'recovered-worker').status,'SIMULATED');
+  assert.equal(count(reopened,'notification_events'),3);
+  assert.equal(reopened.queue.audit({sessionHandle:'ownerA',storeId:'A'}).filter(x=>x.action==='CLAIMED').length,2);
+  reopened.bookingStore.close();
+ }finally{rmSync(folder,{recursive:true,force:true});}
 });
